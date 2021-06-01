@@ -2,4 +2,6 @@
 <resources>
     <string name="errorAboutCodeLength">de code moet 6 cijfers lang zijn</string>
     <string name="vliegendeAttractie">vliegend belgie</string>
+    <string name="nav_open">open</string>
+    <string name="nav_close">dicht</string>
 </resources>
