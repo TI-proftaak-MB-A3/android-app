@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity
     {
         String enteredCode = editText.getText().toString();
 
-        if (enteredCode.length() < 4)
+        if (enteredCode.length() < 6)
         {
-            Toast.makeText(view.getContext(), "de code moet 4 cijfers lang zijn", Toast.LENGTH_LONG).show();
+            Toast.makeText(view.getContext(), R.string.errorAboutCodeLength, Toast.LENGTH_LONG).show();
             Log.d(String.valueOf(view.getTag()), "value entered didn't meet the requirments");
         }
 

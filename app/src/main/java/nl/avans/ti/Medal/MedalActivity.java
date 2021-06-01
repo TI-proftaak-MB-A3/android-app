@@ -23,7 +23,7 @@ public class MedalActivity extends AppCompatActivity {
 
         //Temporary until JSOn was added
         for (int i = 0; i < 5; i++) {
-            this.attractions.add(new Attraction(R.drawable.efteling_vl_hollander, "Vliegende hollander " + i, R.drawable.check_failed, R.drawable.medal_progres));
+            this.attractions.add(new Attraction(R.drawable.efteling_vl_hollander, getString(R.string.vliegendeAttractie) + i, R.drawable.check_failed, R.drawable.medal_progres));
         }
 
         this.medalView = findViewById(R.id.medalView);
