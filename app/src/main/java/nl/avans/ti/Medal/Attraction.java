@@ -8,6 +8,18 @@ public class Attraction {
     private int checkTrueResourceID;
     private int medalTrueResourceID;
 
+    private Boolean hasMedal = false;
+    private Boolean failedMedal = false;
+
+    private Boolean hasCheckpointOne = false;
+    private Boolean failedCheckpointOne = false;
+
+    private Boolean hasCheckpointTwo = false;
+    private Boolean failedCheckpointTwo = false;
+
+    private Boolean hasCheckpointThree = false;
+    private Boolean failedCheckpointThree = false;
+
     public Attraction(int attractionResourceID, String name, int checkTrueResourceID, int medalTrueResourceID) {
         this.attractionResourceID = attractionResourceID;
         this.name = name;

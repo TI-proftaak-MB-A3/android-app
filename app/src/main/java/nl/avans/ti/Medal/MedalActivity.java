@@ -11,7 +11,7 @@ import java.util.LinkedList;
 
 import nl.avans.ti.R;
 
-public class medalAvtivity extends AppCompatActivity {
+public class MedalActivity extends AppCompatActivity {
     private RecyclerView medalView;
     private MedalListAdapter medalListAdapter;
     private LinkedList<Attraction> attractions = new LinkedList<>();
@@ -21,8 +21,9 @@ public class medalAvtivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medal);
 
+        //Temporary until JSOn was added
         for (int i = 0; i < 5; i++) {
-            this.attractions.add(new Attraction(R.drawable.efteling_vl_hollander, "Vliegende hollander " + i, R.drawable.download, R.drawable.download1));
+            this.attractions.add(new Attraction(R.drawable.efteling_vl_hollander, "Vliegende hollander " + i, R.drawable.check_failed, R.drawable.medal_progres));
         }
 
         this.medalView = findViewById(R.id.medalView);
