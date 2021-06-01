@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity
         editText = findViewById(R.id.editTextNumberSigned);
         Button button = findViewById(R.id.button);
 
-
     }
 
 
@@ -57,24 +56,25 @@ public class MainActivity extends AppCompatActivity
     {
         Intent openMedalsIntent = new Intent(this, MedalActivity.class);
         startActivity(openMedalsIntent);
-//MQTT code
-//     protected void onCreate(Bundle savedInstanceState) {
-//         Connect connection = new Connect(this);
+        //MQTT code
+        //     protected void onCreate(Bundle savedInstanceState) {
+        //         Connect connection = new Connect(this);
 
 
-//         super.onCreate(savedInstanceState);
-//         setContentView(R.layout.activity_main);
+        //         super.onCreate(savedInstanceState);
+        //         setContentView(R.layout.activity_main);
 
-//         Button button = findViewById(R.id.button);
-//         button.setOnClickListener((v -> {
-//             connection.publishMessage("test");
-//             System.out.println("pressed");
-//         }));
+        //         Button button = findViewById(R.id.button);
+        //         button.setOnClickListener((v -> {
+        //             connection.publishMessage("test");
+        //             System.out.println("pressed");
+        //         }));
 
-//         Button button1 = findViewById(R.id.button2);
-//         button1.setOnClickListener((v -> {
-//             connection.subscribeToTopic();
-//         }));
+        //         Button button1 = findViewById(R.id.button2);
+        //         button1.setOnClickListener((v -> {
+        //             connection.subscribeToTopic();
+        //         }));
 
-//     }
+        //     }
+    }
 }
