@@ -4,4 +4,8 @@
     <string name="vliegendeAttractie">flying belgium</string>
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
+    <string name="play_game">Play Game</string>
+    <string name="map">Map</string>
+    <string name="medals">Medals</string>
+    <string name="help">help</string>
 </resources>

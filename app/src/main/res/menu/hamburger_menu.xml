@@ -4,16 +4,16 @@
 
     <item
             android:id="@+id/nav_playGame"
-            android:title="Play Game" />
+            android:title="@string/play_game" />
 
     <item
             android:id="@+id/nav_map"
-            android:title="Map" />
+            android:title="@string/map" />
     <item
             android:id="@+id/nav_medals"
-            android:title="Medals" />
+            android:title="@string/medals" />
     <item
             android:id="@+id/nav_help"
-            android:title="help" />
+            android:title="@string/help" />
 
 </menu>
