@@ -32,7 +32,7 @@ public class Connect {
     private static final int QUALITY_OF_SERVICE = 0;
 
     //MQTT subscription topics
-    public static final String test = "ti/1.4/a3/test";
+    public static final String test = "ti/1.4/a3/code";
 
     private MqttAndroidClient mqttAndroidClient;
 
