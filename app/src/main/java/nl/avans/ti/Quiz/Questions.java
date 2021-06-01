@@ -12,16 +12,14 @@ public class Questions {
     private String AnswerTwo;
     private String AnswerThree;
     private String AnswerFour;
-    private String Combination;
     private String Correct;
 
-    public Questions(String question, String answerOne, String answerTwo, String answerThree, String answerFour, String combination, String correct) {
+    public Questions(String question, String answerOne, String answerTwo, String answerThree, String answerFour, String correct) {
         Question = question;
         AnswerOne = answerOne;
         AnswerTwo = answerTwo;
         AnswerThree = answerThree;
         AnswerFour = answerFour;
-        Combination = combination;
         Correct = correct;
 
     }
