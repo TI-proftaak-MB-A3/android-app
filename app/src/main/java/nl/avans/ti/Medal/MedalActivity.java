@@ -80,13 +80,12 @@ public class MedalActivity extends AppCompatActivity {
     private String JsonDataFromAsset() {
         String json = "";
         try {
-            AssetManager manager = getAssets();
-            InputStream inputStream = manager.open("attractions.json");
+            InputStream inputStream = getAssets().open("attractions.json");
             int sizeOffFile = inputStream.available();
             byte[] bufferData = new byte[sizeOffFile];
             inputStream.read(bufferData);
             inputStream.close();
-            json = new String(bufferData, "UTF-8");
+            json = new String(bufferData);
         } catch (IOException e) {
             e.printStackTrace();
         }
