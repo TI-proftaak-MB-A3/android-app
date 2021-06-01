@@ -1,14 +1,13 @@
 package nl.avans.ti.Medal;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.res.AssetManager;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.util.JsonReader;
+import android.view.MenuItem;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,12 +20,15 @@ import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+import nl.avans.ti.MenuHandler;
 import nl.avans.ti.R;
 
 public class MedalActivity extends AppCompatActivity {
     private RecyclerView medalView;
     private MedalListAdapter medalListAdapter;
     private LinkedList<Attraction> attractions = new LinkedList<>();
+    private MenuHandler menuHandler;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,17 @@ public class MedalActivity extends AppCompatActivity {
         this.medalView.setLayoutManager(new LinearLayoutManager(this));
 
         this.medalView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+
+        menuHandler = new MenuHandler(this);
+        menuHandler.start();
+
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item)
+    {
+        return menuHandler.onOptionsItemSelected(item);
     }
 
 //    private String JsonDataFromAsset() {

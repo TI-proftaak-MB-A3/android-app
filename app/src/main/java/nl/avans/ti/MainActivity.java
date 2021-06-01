@@ -3,22 +3,21 @@ package nl.avans.ti;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.Button;
 
-import nl.avans.ti.MQTT.Connect;
 import nl.avans.ti.Medal.MedalActivity;
 
 public class MainActivity extends AppCompatActivity
 {
 
     EditText editText;
+    MenuHandler menuHandler;
 
     @Override
 
@@ -28,7 +27,9 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         editText = findViewById(R.id.editTextNumberSigned);
-        Button button = findViewById(R.id.button);
+        menuHandler = new MenuHandler(this);
+        menuHandler.start();
+
 
     }
 
@@ -76,5 +77,12 @@ public class MainActivity extends AppCompatActivity
         //         }));
 
         //     }
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item)
+    {
+        return menuHandler.onOptionsItemSelected(item);
     }
 }

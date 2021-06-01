@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name" translatable="false">My Application</string>
+    <string name="app_name" translatable="false">Essteling Quiz</string>
     <string name="errorAboutCodeLength">the code must be 6 digits long</string>
     <string name="vliegendeAttractie">flying belgium</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
 </resources>
