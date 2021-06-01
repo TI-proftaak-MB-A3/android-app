@@ -36,10 +36,12 @@ public class Attraction {
     }
 
     public int getMedalTrueResourceID() {
+        System.out.println(medalTrueResourceID);
         return medalTrueResourceID;
     }
 
     public int getAttractionResourceID() {
         return attractionResourceID;
     }
+
 }
