@@ -32,7 +32,7 @@ public class Connect {
     private static final int QUALITY_OF_SERVICE = 0;
 
     //MQTT subscription topics
-    private static final String test = "ti/1.4/a3/test";
+    public static final String test = "ti/1.4/a3/test";
 
     private MqttAndroidClient mqttAndroidClient;
 
@@ -61,7 +61,7 @@ public class Connect {
     }
 
 
-    private void connectToBroker(MqttAndroidClient client, String client_id){
+    public void connectToBroker(MqttAndroidClient client, String client_id){
         MqttConnectOptions options = new MqttConnectOptions();
         options.setAutomaticReconnect(true);
         options.setCleanSession(false);
@@ -95,7 +95,7 @@ public class Connect {
 
     }
 
-    private void disconnectFromBroker(MqttAndroidClient client){
+    public void disconnectFromBroker(MqttAndroidClient client){
         try {
             // Try to disconnect from the MQTT broker
             IMqttToken token = client.disconnect();
@@ -119,7 +119,7 @@ public class Connect {
         }
     }
 
-    private void publishMessage(MqttAndroidClient client, String topic, String msg) {
+    public void publishMessage(String topic, String msg) {
         byte[] encodedPayload = new byte[0];
         try {
             // Convert the message to a UTF-8 encoded byte array
@@ -130,15 +130,17 @@ public class Connect {
             message.setQos(QUALITY_OF_SERVICE);
             message.setRetained(false);
             // Publish the message via the MQTT broker
-            client.publish(topic, message);
+            this.mqttAndroidClient.publish(topic, message);
+            System.out.println("printed");
         } catch (UnsupportedEncodingException | MqttException e) {
             Log.e(LOGTAG, "MQTT exception while publishing topic to MQTT broker, msg: " + e.getMessage() +
                     ", cause: " + e.getCause());
             e.printStackTrace();
+            System.out.println("didn't work");
         }
     }
 
-    private void subscribeToTopic(MqttAndroidClient client, final String topic) {
+    public void subscribeToTopic(MqttAndroidClient client, final String topic) {
         try {
             // Try to subscribe to the topic
             IMqttToken token = client.subscribe(topic, QUALITY_OF_SERVICE);
@@ -162,7 +164,7 @@ public class Connect {
         }
     }
 
-    private void unsubscribeToTopic(MqttAndroidClient client, final String topic) {
+    public void unsubscribeToTopic(MqttAndroidClient client, final String topic) {
         try {
             // Try to unsubscribe to the topic
             IMqttToken token = client.unsubscribe(topic);
