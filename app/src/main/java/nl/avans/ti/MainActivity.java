@@ -53,32 +53,6 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    public void openMedals(View view)
-    {
-        Intent openMedalsIntent = new Intent(this, MedalActivity.class);
-        startActivity(openMedalsIntent);
-        //MQTT code
-        //     protected void onCreate(Bundle savedInstanceState) {
-        //         Connect connection = new Connect(this);
-
-
-        //         super.onCreate(savedInstanceState);
-        //         setContentView(R.layout.activity_main);
-
-        //         Button button = findViewById(R.id.button);
-        //         button.setOnClickListener((v -> {
-        //             connection.publishMessage("test");
-        //             System.out.println("pressed");
-        //         }));
-
-        //         Button button1 = findViewById(R.id.button2);
-        //         button1.setOnClickListener((v -> {
-        //             connection.subscribeToTopic();
-        //         }));
-
-        //     }
-    }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item)
