@@ -1,47 +1,104 @@
 package nl.avans.ti.Medal;
 
-import android.widget.ImageView;
+import android.content.Context;
+
+import java.lang.reflect.Field;
+
+import nl.avans.ti.R;
 
 public class Attraction {
-    private int attractionResourceID;
+    private String imageName;
     private String name;
-    private int checkTrueResourceID;
-    private int medalTrueResourceID;
+    private int checkOneResourceID;
+    private int checkTwoResourceID;
+    private int checkThreeResourceID;
+    private int medalResourceId;
+    private Context context;
 
-    private Boolean hasMedal = false;
-    private Boolean failedMedal = false;
+    private Boolean hasMedal;
 
-    private Boolean hasCheckpointOne = false;
-    private Boolean failedCheckpointOne = false;
+    private Boolean hasCheckpointOne;
 
-    private Boolean hasCheckpointTwo = false;
-    private Boolean failedCheckpointTwo = false;
+    private Boolean hasCheckpointTwo;
 
-    private Boolean hasCheckpointThree = false;
-    private Boolean failedCheckpointThree = false;
+    private Boolean hasCheckpointThree;
 
-    public Attraction(int attractionResourceID, String name, int checkTrueResourceID, int medalTrueResourceID) {
-        this.attractionResourceID = attractionResourceID;
+    public Attraction(Context context, String imageName, String name, Boolean hasMedal, Boolean hasFirstCheck, Boolean hasSecondCheck, Boolean hasThirdCheck) {
         this.name = name;
-        this.checkTrueResourceID = checkTrueResourceID;
-        this.medalTrueResourceID = medalTrueResourceID;
+        this.imageName = imageName;
+
+        this.hasMedal = hasMedal;
+        this.hasCheckpointOne = hasFirstCheck;
+        this.hasCheckpointTwo = hasSecondCheck;
+        this.hasCheckpointThree = hasThirdCheck;
+
+        this.context = context;
+
+        checkImage();
+    }
+
+    private void checkImage() {
+        if (hasMedal) {
+            medalResourceId = R.drawable.medal_completed;
+        } else {
+            medalResourceId = R.drawable.medal_progres;
+        }
+
+        if (hasCheckpointOne) {
+            checkOneResourceID = R.drawable.check_complete;
+        } else {
+            checkOneResourceID = R.drawable.check_progres;
+        }
+
+        if (hasCheckpointTwo) {
+            checkTwoResourceID = R.drawable.check_complete;
+        } else {
+            checkTwoResourceID = R.drawable.check_progres;
+        }
+
+        if (hasCheckpointThree) {
+            checkThreeResourceID = R.drawable.check_complete;
+        } else {
+            checkThreeResourceID = R.drawable.check_progres;
+        }
     }
 
     public String getName() {
         return name;
     }
 
-    public int getCheckTrueResourceID() {
-        return checkTrueResourceID;
+    public int getCheckOneResourceID() {
+        return checkOneResourceID;
     }
 
-    public int getMedalTrueResourceID() {
-        System.out.println(medalTrueResourceID);
-        return medalTrueResourceID;
+    public int getCheckTwoResourceID() {
+        return this.checkTwoResourceID;
+    }
+
+    public int getCheckThreeResourceID() {
+        return this.checkThreeResourceID;
+    }
+
+    public int getMedalResourceId() {
+        System.out.println(medalResourceId);
+        return medalResourceId;
     }
 
     public int getAttractionResourceID() {
-        return attractionResourceID;
+        this.imageName = this.imageName.replace(".jpg", "");
+        this.imageName = this.imageName.trim();
+        int imageID = 0;
+
+        try {
+            Class<R.drawable> drawableClass = R.drawable.class;
+            Field image = drawableClass.getDeclaredField(this.imageName);
+            imageID = image.getInt(drawableClass);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(imageID);
+        return imageID;
     }
 
 }
