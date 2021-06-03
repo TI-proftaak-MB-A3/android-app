@@ -17,7 +17,8 @@
         android:theme="@style/Theme.MyApplication">
         <activity android:name=".questionActivity"></activity>
         <activity android:name=".Medal.MedalActivity" />
-
+        <activity android:name=".HelpActivity"></activity>
+        <activity android:name=".MapsActivity"></activity>
         <service android:name="org.eclipse.paho.android.service.MqttService"></service>
 
 
