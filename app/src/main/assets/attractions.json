@@ -2,21 +2,27 @@
   "attractions": [
     {
       "name":"Zwevende Belg",
-      "attractionResourceId":"2131165296",
-      "checkResourceId":"2131165289",
-      "medalResourceId":"2131165316"
+      "imageName":"efteling_vl_hollander.jpg",
+      "hasFirstCheckpoint":"false",
+      "hasSecondCheckpoint":"true",
+      "hasThirdCheckpoint":"false",
+      "hasMedal":"false"
     },
     {
       "name":"Cobra",
-      "attractionResourceId":"2131165296",
-      "checkResourceId":"2131165289",
-      "medalResourceId":"2131165316"
+      "imageName":"efteling_vl_hollander.jpg",
+      "hasFirstCheckpoint":"false",
+      "hasSecondCheckpoint":"false",
+      "hasThirdCheckpoint":"true",
+      "hasMedal":"true"
     },
     {
       "name":"SprookjesBos",
-      "attractionResourceId":"2131165296",
-      "checkResourceId":"2131165289",
-      "medalResourceId":"2131165316"
+      "imageName":"efteling_vl_hollander.jpg",
+      "hasFirstCheckpoint":"true",
+      "hasSecondCheckpoint":"false",
+      "hasThirdCheckpoint":"false",
+      "hasMedal":"false"
     }
     ]
 }
