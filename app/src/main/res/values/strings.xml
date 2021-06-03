@@ -8,5 +8,4 @@
     <string name="map">Map</string>
     <string name="medals">Medals</string>
     <string name="help">help</string>
-    <string name="helpLong">Welcome to the essteling quiz app. This app is played in the queue of an attraction of your choice. Above on the map you can see which attractions all contain one of our quiz boards. You play the quiz by going to one of these boards and entering the code that is displayed. After this, a question will be shown on your phone, you can answer this question by pressing 1 of the buttons at the board corresponding to your answer.</string>
 </resources>
