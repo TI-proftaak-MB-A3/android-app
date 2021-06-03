@@ -1,0 +1,22 @@
+{
+  "attractions": [
+    {
+      "name":"Zwevende Belg",
+      "attractionResourceId":"2131165296",
+      "checkResourceId":"2131165289",
+      "medalResourceId":"2131165316"
+    },
+    {
+      "name":"Cobra",
+      "attractionResourceId":"2131165296",
+      "checkResourceId":"2131165289",
+      "medalResourceId":"2131165316"
+    },
+    {
+      "name":"SprookjesBos",
+      "attractionResourceId":"2131165296",
+      "checkResourceId":"2131165289",
+      "medalResourceId":"2131165316"
+    }
+    ]
+}
