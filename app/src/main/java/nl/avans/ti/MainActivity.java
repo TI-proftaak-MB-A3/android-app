@@ -46,16 +46,13 @@ public class MainActivity extends AppCompatActivity
         {
             Toast.makeText(view.getContext(), R.string.errorAboutCodeLength, Toast.LENGTH_LONG).show();
             Log.d(String.valueOf(view.getTag()), "value entered didn't meet the requirments");
-        }else
-        {
-            //todo validate code and start activity
-            Intent intent = new Intent();
-            int code = Integer.parseInt(enteredCode);
-            intent.putExtra("placeholder", enteredCode);
-
         }
 
 
+        //todo validate code and start activity
+        Intent intent = new Intent();
+        String code = enteredCode;
+        intent.putExtra("placeholder", enteredCode);
 
         this.startQuiz = new StartQuiz(this.connect, code);
         this.startQuiz.addConnection();
