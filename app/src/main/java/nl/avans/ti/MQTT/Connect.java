@@ -1,6 +1,5 @@
 package nl.avans.ti.MQTT;
 
-import android.app.Application;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -17,9 +16,11 @@ import java.io.UnsupportedEncodingException;
 import java.util.UUID;
 
 import nl.avans.ti.MainActivity;
+import nl.avans.ti.Quiz.StartQuiz;
 
 public class Connect {
     private MainActivity app;
+    private StartQuiz startQuiz;
     private static final String LOGTAG = MainActivity.class.getName();
 
     //broker settings
@@ -31,13 +32,22 @@ public class Connect {
     private static final String CLIENT_ID = "A3_APP_" + UUID.randomUUID().toString();
     private static final int QUALITY_OF_SERVICE = 0;
 
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
     //MQTT subscription topics
-    public static final String test = "ti/1.4/a3/test";
+    private String adress = "ti/1.4/a3/";
 
     private MqttAndroidClient mqttAndroidClient;
 
     public Connect(MainActivity app) {
         this.app = app;
+
         this.mqttAndroidClient = new MqttAndroidClient(app.getApplicationContext(), BROKER_HOST_URL, CLIENT_ID);
 
         this.mqttAndroidClient.setCallback(new MqttCallback() {
@@ -48,7 +58,7 @@ public class Connect {
 
             @Override
             public void messageArrived(String topic, MqttMessage message) throws Exception {
-                System.out.println("message arrived: " + message);
+                startQuiz.receiveMessage(message);
                 Log.d(LOGTAG, "MQTT client delivery complete");
             }
 
@@ -125,13 +135,15 @@ public class Connect {
         try {
             // Convert the message to a UTF-8 encoded byte array
             encodedPayload = msg.getBytes("UTF-8");
+
             // Store it in an MqttMessage
             MqttMessage message = new MqttMessage(encodedPayload);
+
             // Set parameters for the message
             message.setQos(QUALITY_OF_SERVICE);
             message.setRetained(false);
             // Publish the message via the MQTT broker
-            this.mqttAndroidClient.publish(test, message);
+            this.mqttAndroidClient.publish(adress, message);
             System.out.println("printed");
         } catch (UnsupportedEncodingException | MqttException e) {
             Log.e(LOGTAG, "MQTT exception while publishing topic to MQTT broker, msg: " + e.getMessage() +
@@ -144,17 +156,17 @@ public class Connect {
     public void subscribeToTopic() {
         try {
             // Try to subscribe to the topic
-            IMqttToken token = this.mqttAndroidClient.subscribe(test, QUALITY_OF_SERVICE);
+            IMqttToken token = this.mqttAndroidClient.subscribe(this.adress, QUALITY_OF_SERVICE);
             // Set up callbacks to handle the result
             token.setActionCallback(new IMqttActionListener() {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
-                    Log.d(LOGTAG, "MQTT client is now subscribed to topic " + test);
+                    Log.d(LOGTAG, "MQTT client is now subscribed to topic " + adress);
                 }
 
                 @Override
                 public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                    Log.e(LOGTAG, "MQTT failed to subscribe to topic " + test + " because: " +
+                    Log.e(LOGTAG, "MQTT failed to subscribe to topic " + adress + " because: " +
                             exception.getLocalizedMessage());
                 }
             });
@@ -165,20 +177,20 @@ public class Connect {
         }
     }
 
-    public void unsubscribeToTopic(MqttAndroidClient client) {
+    public void unsubscribeToTopic() {
         try {
             // Try to unsubscribe to the topic
-            IMqttToken token = client.unsubscribe(test);
+            IMqttToken token = this.mqttAndroidClient.unsubscribe(adress);
             // Set up callbacks to handle the result
             token.setActionCallback(new IMqttActionListener() {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
-                    Log.d(LOGTAG, "MQTT client is now unsubscribed to topic " + test);
+                    Log.d(LOGTAG, "MQTT client is now unsubscribed to topic " + adress);
                 }
 
                 @Override
                 public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                    Log.e(LOGTAG, "MQTT client failed to unsubscribe to topic " + test + " because: " +
+                    Log.e(LOGTAG, "MQTT client failed to unsubscribe to topic " + adress + " because: " +
                             exception.getLocalizedMessage());
                 }
             });
