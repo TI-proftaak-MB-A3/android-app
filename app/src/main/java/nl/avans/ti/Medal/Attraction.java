@@ -80,7 +80,6 @@ public class Attraction {
     }
 
     public int getMedalResourceId() {
-        System.out.println(medalResourceId);
         return medalResourceId;
     }
 
@@ -97,7 +96,6 @@ public class Attraction {
             e.printStackTrace();
         }
 
-        System.out.println(imageID);
         return imageID;
     }
 
