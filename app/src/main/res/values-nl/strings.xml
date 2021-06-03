@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="errorAboutCodeLength">de code moet 6 cijfers lang zijn</string>
+    <string name="vliegendeAttractie">vliegend belgie</string>
+    <string name="nav_open">open</string>
+    <string name="nav_close">dicht</string>
+    <string name="play_game">speel het spel</string>
+    <string name="map">kaart</string>
+    <string name="medals">medailles</string>
+    <string name="help">hulp</string>
+</resources>
