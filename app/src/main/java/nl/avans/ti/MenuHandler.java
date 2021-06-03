@@ -19,8 +19,10 @@ import nl.avans.ti.Medal.MedalActivity;
 public class MenuHandler
 {
 
+    private static final String TAG = "Navigation Bar";
     AppCompatActivity appCompatActivity;
     HashMap<String, Class<? extends AppCompatActivity>> classHashMap;
+
 
     public MenuHandler(AppCompatActivity appCompatActivity)
     {
@@ -38,15 +40,19 @@ public class MenuHandler
         DrawerLayout drawerLayout = appCompatActivity.findViewById(R.id.my_drawer_layout);
         actionBarDrawerToggle = new ActionBarDrawerToggle(appCompatActivity, drawerLayout, R.string.nav_open, R.string.nav_close);
         navigationView = appCompatActivity.findViewById(R.id.hamburger);
-        classHashMap = new HashMap<>();
 
-        //todo keep this up to date with future
+
+        classHashMap = new HashMap<>();
         classHashMap.put(appCompatActivity.getString(R.string.play_game), MainActivity.class);
         classHashMap.put(appCompatActivity.getString(R.string.medals), MedalActivity.class);
+        classHashMap.put(appCompatActivity.getString(R.string.map), MapsActivity.class);
+        classHashMap.put(appCompatActivity.getString(R.string.help), HelpActivity.class);
 
 
         navigationView.setNavigationItemSelectedListener(item ->
         {
+            Log.d(TAG,"Button pressed");
+
             CharSequence title = item.getTitle();
             String titleAsString = title.toString();
 
@@ -56,7 +62,7 @@ public class MenuHandler
 
                 if (appCompatActivity.getClass() == aClass)
                 {
-                    Log.d("Navigation Bar", "start: allready in this menu");
+                    Log.d(TAG, "start: allready in this menu");
                 }
                 else
                 {
@@ -65,7 +71,7 @@ public class MenuHandler
                 }
             }else
             {
-                Log.d("Navigation Bar", "start: no action linked to this menuItem");
+                Log.d(TAG, "start: no action linked to this menuItem");
             }
 
 
