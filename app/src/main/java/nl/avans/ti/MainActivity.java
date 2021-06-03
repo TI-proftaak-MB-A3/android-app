@@ -56,8 +56,6 @@ public class MainActivity extends AppCompatActivity
 
         this.startQuiz = new StartQuiz(this.connect, code);
         this.startQuiz.addConnection();
-        System.out.println("wollah");
-
     }
 
     public void openMedals(View view)

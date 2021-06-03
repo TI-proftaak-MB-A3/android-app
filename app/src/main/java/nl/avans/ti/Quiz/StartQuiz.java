@@ -9,20 +9,22 @@ public class StartQuiz {
     private MainActivity app;
     private Connect connect;
     private String code;
+    private boolean alreadyConnected;
 
     public StartQuiz(Connect connect,String code) {
+        this.alreadyConnected = false;
         this.connect = connect;
         this.code = code;
     }
 
     public void addConnection(){
+        if (!alreadyConnected){
         connect.setAdress(connect.getAdress() + code);
+        }
         System.out.println(connect.getAdress());
         connect.subscribeToTopic();
         connect.publishMessage("test");
-        System.out.println("i'm here");
-        connect.publishMessage("start");
-
+        this.alreadyConnected = true;
     }
 
     public void removeConnection() {
