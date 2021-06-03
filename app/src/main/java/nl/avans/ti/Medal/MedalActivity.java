@@ -20,6 +20,7 @@ import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+import nl.avans.ti.Json.JsonFromData;
 import nl.avans.ti.MenuHandler;
 import nl.avans.ti.R;
 
@@ -36,7 +37,7 @@ public class MedalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_medal);
 
         try {
-            JSONObject jsonObject = new JSONObject(JsonDataFromAsset());
+            JSONObject jsonObject = new JSONObject(JsonFromData.JsonDataFromAsset(this,"attractions.json"));
             JSONArray jsonArray = jsonObject.getJSONArray("attractions");
 
             for (int i = 0; i < jsonArray.length(); i++) {
@@ -79,19 +80,5 @@ public class MedalActivity extends AppCompatActivity {
         return menuHandler.onOptionsItemSelected(item);
     }
 
-    private String JsonDataFromAsset() {
-        String json = "";
-        try {
-            InputStream inputStream = getAssets().open("attractions.json");
-            int sizeOffFile = inputStream.available();
-            byte[] bufferData = new byte[sizeOffFile];
-            inputStream.read(bufferData);
-            inputStream.close();
-            json = new String(bufferData);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        return json;
-    }
 }
