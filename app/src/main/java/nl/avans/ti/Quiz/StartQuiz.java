@@ -11,10 +11,22 @@ public class StartQuiz {
     private String code;
     private boolean alreadyConnected;
 
-    public StartQuiz(Connect connect,String code) {
+    public StartQuiz(Connect connect) {
         this.alreadyConnected = false;
         this.connect = connect;
         this.code = code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public void setAlreadyConnected(boolean alreadyConnected) {
+        this.alreadyConnected = alreadyConnected;
+    }
+
+    public boolean isAlreadyConnected() {
+        return alreadyConnected;
     }
 
     public void addConnection(){
@@ -24,7 +36,7 @@ public class StartQuiz {
         System.out.println(connect.getAdress());
         connect.subscribeToTopic();
         connect.publishMessage("test");
-        this.alreadyConnected = true;
+        setAlreadyConnected(true);
     }
 
     public void removeConnection() {

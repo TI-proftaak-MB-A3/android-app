@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity
         menuHandler = new MenuHandler(this);
         menuHandler.start();
         this.connect = new Connect(this);
+        this.startQuiz = new StartQuiz(this.connect);
 
     }
 
@@ -54,8 +55,12 @@ public class MainActivity extends AppCompatActivity
         String code = enteredCode;
         intent.putExtra("placeholder", enteredCode);
 
-        this.startQuiz = new StartQuiz(this.connect, code);
-        this.startQuiz.addConnection();
+
+        if (!this.startQuiz.isAlreadyConnected()){
+            this.startQuiz.setCode(code);
+            this.startQuiz.addConnection();
+        }
+        System.out.println(startQuiz.isAlreadyConnected());
     }
 
 
