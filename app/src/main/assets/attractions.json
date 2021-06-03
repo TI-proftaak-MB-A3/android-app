@@ -1,25 +1,81 @@
 {
   "attractions": [
     {
-      "name":"Zwevende Belg",
-      "imageName":"efteling_vl_hollander.jpg",
+      "name":"Jonkheer 1897",
+      "imageName":"jonkheer_1897.jpg",
       "hasFirstCheckpoint":"false",
-      "hasSecondCheckpoint":"true",
+      "hasSecondCheckpoint":"false",
+      "hasThirdCheckpoint":"false",
+      "hasMedal":"false"
+    },
+    {
+      "name":"Astrolica",
+      "imageName":"astrolica.jpg",
+      "hasFirstCheckpoint":"false",
+      "hasSecondCheckpoint":"false",
+      "hasThirdCheckpoint":"false",
+      "hasMedal":"false"
+    },
+    {
+      "name":"De Zwevende Belg",
+      "imageName":"de_zwevende_belg.jpg",
+      "hasFirstCheckpoint":"false",
+      "hasSecondCheckpoint":"false",
+      "hasThirdCheckpoint":"false",
+      "hasMedal":"false"
+    },
+    {
+      "name":"Droomreis",
+      "imageName":"droomreis.jpg",
+      "hasFirstCheckpoint":"false",
+      "hasSecondCheckpoint":"false",
+      "hasThirdCheckpoint":"false",
+      "hasMedal":"false"
+    },
+    {
+      "name":"Johan & de eenhoorn",
+      "imageName":"johan_en_de_eenhoorn.jpg",
+      "hasFirstCheckpoint":"false",
+      "hasSecondCheckpoint":"false",
+      "hasThirdCheckpoint":"false",
+      "hasMedal":"false"
+    },
+    {
+      "name":"HaluCinata",
+      "imageName":"halucinata.jpg",
+      "hasFirstCheckpoint":"false",
+      "hasSecondCheckpoint":"false",
       "hasThirdCheckpoint":"false",
       "hasMedal":"false"
     },
     {
       "name":"Cobra",
-      "imageName":"efteling_vl_hollander.jpg",
+      "imageName":"cobra.jpg",
       "hasFirstCheckpoint":"false",
       "hasSecondCheckpoint":"false",
-      "hasThirdCheckpoint":"true",
-      "hasMedal":"true"
+      "hasThirdCheckpoint":"false",
+      "hasMedal":"false"
     },
     {
-      "name":"SprookjesBos",
-      "imageName":"efteling_vl_hollander.jpg",
-      "hasFirstCheckpoint":"true",
+      "name":"Uilenrots",
+      "imageName":"uilenrots.jpg",
+      "hasFirstCheckpoint":"false",
+      "hasSecondCheckpoint":"false",
+      "hasThirdCheckpoint":"false",
+      "hasMedal":"false"
+    },
+    {
+      "name":"Rob",
+      "imageName":"rob.jpg",
+      "hasFirstCheckpoint":"false",
+      "hasSecondCheckpoint":"false",
+      "hasThirdCheckpoint":"false",
+      "hasMedal":"false"
+    },
+    {
+      "name":"Festival overal",
+      "imageName":"carnaval_overal.jpg",
+      "hasFirstCheckpoint":"false",
       "hasSecondCheckpoint":"false",
       "hasThirdCheckpoint":"false",
       "hasMedal":"false"
