@@ -42,11 +42,13 @@ public class MedalActivity extends AppCompatActivity {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject userData = jsonArray.getJSONObject(i);
                 String name = userData.getString("name");
-                int attractionID = Integer.parseInt(userData.getString("attractionResourceId"));
-                int checkID = Integer.parseInt(userData.getString("checkResourceId"));
-                int medalID = Integer.parseInt(userData.getString("medalResourceId"));
+                String attractionImageName = userData.getString("imageName");
+                boolean hasMedal = userData.getBoolean("hasMedal");
+                boolean hasFirstCheck = userData.getBoolean("hasFirstCheckpoint");
+                boolean hasSecondCheck = userData.getBoolean("hasSecondCheckpoint");
+                boolean hasThirdCheck = userData.getBoolean("hasThirdCheckpoint");
 
-                this.attractions.add(new Attraction(attractionID, name, checkID, medalID));
+                this.attractions.add(new Attraction(this, attractionImageName, name, hasMedal, hasFirstCheck, hasSecondCheck, hasThirdCheck));
             }
 
         } catch (JSONException e) {

@@ -35,10 +35,10 @@ public class MedalListAdapter extends RecyclerView.Adapter<MedalListAdapter.Proj
         Attraction current = this.attractions.get(position);
         holder.attractionImage.setImageResource(current.getAttractionResourceID());
         holder.attractionName.setText(current.getName());
-        holder.checkOne.setImageResource(current.getCheckTrueResourceID());
-        holder.checkTwo.setImageResource(current.getCheckTrueResourceID());
-        holder.checkThree.setImageResource(current.getCheckTrueResourceID());
-        holder.medalCheck.setImageResource(current.getMedalTrueResourceID());
+        holder.checkOne.setImageResource(current.getCheckOneResourceID());
+        holder.checkTwo.setImageResource(current.getCheckTwoResourceID());
+        holder.checkThree.setImageResource(current.getCheckThreeResourceID());
+        holder.medalCheck.setImageResource(current.getMedalResourceId());
     }
 
     @Override

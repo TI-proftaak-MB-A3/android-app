@@ -11,13 +11,17 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import nl.avans.ti.MQTT.Connect;
 import nl.avans.ti.Medal.MedalActivity;
+import nl.avans.ti.Quiz.StartQuiz;
 
 public class MainActivity extends AppCompatActivity
 {
+    private Connect connect;
 
     EditText editText;
     MenuHandler menuHandler;
+    private StartQuiz startQuiz;
 
     @Override
 
@@ -29,7 +33,7 @@ public class MainActivity extends AppCompatActivity
         editText = findViewById(R.id.editTextNumberSigned);
         menuHandler = new MenuHandler(this);
         menuHandler.start();
-
+        this.connect = new Connect(this);
 
     }
 
@@ -53,8 +57,8 @@ public class MainActivity extends AppCompatActivity
 
 
 
-
-
+        this.startQuiz = new StartQuiz(this.connect, code);
+        this.startQuiz.addConnection();
     }
 
 
