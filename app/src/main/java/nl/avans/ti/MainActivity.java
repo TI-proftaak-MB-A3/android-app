@@ -15,8 +15,8 @@ import java.util.List;
 
 import nl.avans.ti.MQTT.Connect;
 import nl.avans.ti.Quiz.StartQuiz;
-import nl.avans.ti.questions.Question;
-import nl.avans.ti.questions.QuestionsLoader;
+import nl.avans.ti.Questions.Question;
+import nl.avans.ti.Questions.QuestionsLoader;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -43,6 +43,9 @@ public class MainActivity extends AppCompatActivity
         menuHandler.start();
         this.connect = new Connect(this);
         this.startQuiz = new StartQuiz(this.connect);
+
+//        Intent intent = new Intent(MainActivity.this, QuestionActivity.class);
+//        startActivity(intent);
 
     }
 
