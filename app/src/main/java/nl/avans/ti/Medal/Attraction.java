@@ -99,4 +99,19 @@ public class Attraction {
         return imageID;
     }
 
+    public Boolean getHasMedal() {
+        return hasMedal;
+    }
+
+    public Boolean getHasCheckpointOne() {
+        return hasCheckpointOne;
+    }
+
+    public Boolean getHasCheckpointTwo() {
+        return hasCheckpointTwo;
+    }
+
+    public Boolean getHasCheckpointThree() {
+        return hasCheckpointThree;
+    }
 }

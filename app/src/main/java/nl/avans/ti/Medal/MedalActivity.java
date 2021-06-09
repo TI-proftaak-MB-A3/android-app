@@ -74,6 +74,13 @@ public class MedalActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        SaveDataToAsset();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item)
     {
         return menuHandler.onOptionsItemSelected(item);
@@ -93,5 +100,23 @@ public class MedalActivity extends AppCompatActivity {
         }
 
         return json;
+    }
+
+    private void SaveDataToAsset() {
+        try {
+            JSONObject jsonObject = new JSONObject(JsonDataFromAsset());
+            JSONArray jsonArray = jsonObject.getJSONArray("attractions");
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject userData = jsonArray.getJSONObject(i);
+                userData.put("hasMedal", this.attractions.get(i).getHasMedal());
+                userData.put("hasFirstCheckpoint", this.attractions.get(i).getHasCheckpointOne());
+                userData.put("hasSecondCheckpoint", this.attractions.get(i).getHasCheckpointTwo());
+                userData.put("hasThirdCheckpoint", this.attractions.get(i).getHasCheckpointThree());
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }
