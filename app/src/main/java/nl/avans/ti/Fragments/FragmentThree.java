@@ -1,4 +1,4 @@
-package nl.avans.ti;
+package nl.avans.ti.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,11 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class FragmentFour extends Fragment {
+import nl.avans.ti.R;
+
+public class FragmentThree extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup group = (ViewGroup)inflater.inflate(R.layout.help_page_four, container, false);
+        ViewGroup group = (ViewGroup)inflater.inflate(R.layout.help_page_three, container, false);
 
         return group;
     }
