@@ -1,17 +1,18 @@
 package nl.avans.ti.MQTT;
 
 public class CodeDecryption {
-    private int code;
+    private String code;
     private String attraction;
     private String question;
     private String combination;
 
 
-    public CodeDecryption(int code) {
+    public CodeDecryption(String code) {
         this.code = code;
         this.attraction = "";
         this.question = "";
         this.combination = "";
+        decryptCode();
     }
 
     public void decryptCode(){
@@ -22,7 +23,7 @@ public class CodeDecryption {
         this.combination = "" + stringCode.charAt(4) + stringCode.charAt(5);
     }
 
-    public int getCode() {
+    public String getCode() {
         return code;
     }
 

@@ -49,7 +49,7 @@ public class QuestionsLoader
 
                 String catogorie = questionObjectJson.getString("Catogorie");
 
-                int id = questionObjectJson.getInt("id");
+                int id = questionObjectJson.getInt("Id");
                 Question question = new Question(vraag, answers, correctAnswer, catogorie, id);
 
                 Log.d("QuestionsLoader", question.toString());
