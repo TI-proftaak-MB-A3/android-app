@@ -1,4 +1,4 @@
-package nl.avans.ti.questions;
+package nl.avans.ti.Questions;
 
 import android.util.Log;
 

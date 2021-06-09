@@ -1,7 +1,6 @@
-package nl.avans.ti.questions;
+package nl.avans.ti.Questions;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Question
 {
