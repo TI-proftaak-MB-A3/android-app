@@ -41,11 +41,17 @@ public class MainActivity extends AppCompatActivity
         editText = findViewById(R.id.editTextNumberSigned);
         menuHandler = new MenuHandler(this);
         menuHandler.start();
-        this.connect = new Connect(this);
-        this.startQuiz = new StartQuiz(this.connect);
+        this.connect = Connect.getConnect(this);
+        this.startQuiz = connect.getStartQuiz();
 
 //        Intent intent = new Intent(MainActivity.this, QuestionActivity.class);
 //        startActivity(intent);
+
+        if (this.startQuiz.isAlreadyConnected())
+        {
+            startQuizWithIntent();
+        }
+
 
     }
 
@@ -64,18 +70,30 @@ public class MainActivity extends AppCompatActivity
             Log.d(String.valueOf(view.getTag()), "value entered didn't meet the requirments");
         }
 
-
-        //todo validate code and start activity
-        Intent intent = new Intent();
         String code = enteredCode;
-        intent.putExtra("placeholder", enteredCode);
-
 
         if (!this.startQuiz.isAlreadyConnected()){
+
             this.startQuiz.setCode(code);
             this.startQuiz.addConnection();
         }
         System.out.println(startQuiz.isAlreadyConnected());
+
+        startQuizWithIntent();
+    }
+
+
+
+    public void startQuizWithIntent()
+    {
+        Intent intent = new Intent();
+        intent.putExtra("placeholder", startQuiz.getCode());
+
+
+        Log.d(this.getAttributionTag(), "startQuizWithIntent: Starting new activity");
+
+
+
     }
 
 
