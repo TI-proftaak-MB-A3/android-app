@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:textSize="20sp"
-        android:text="ALs u bij een van de schermen in de rij komt, kunt moet u als eerste een knop indukken om een code te zien."
+        android:text="@string/step1_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setpOneHeader"
         app:layout_constraintVertical_bias="0.027"
@@ -43,7 +43,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Swipe naar rechts >"
+        android:text="@string/swipe_right"
         android:textSize="15sp"
         android:textColor="@color/Green_500"
         android:layout_marginHorizontal="20dp"
