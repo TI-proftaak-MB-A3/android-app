@@ -43,7 +43,7 @@
         <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="numberSigned|number"
+                android:inputType="number"
                 android:maxLength="6"
                 android:gravity="center"
                 android:ems="10"
