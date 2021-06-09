@@ -46,6 +46,10 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 
     public void onButtonPressed(View view)
     {
