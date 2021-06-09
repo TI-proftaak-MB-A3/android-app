@@ -18,6 +18,7 @@ public class Question
         this.correctAnswer = correctAnswer;
         this.catogorie = catogorie;
         this.id = id;
+
     }
 
 
