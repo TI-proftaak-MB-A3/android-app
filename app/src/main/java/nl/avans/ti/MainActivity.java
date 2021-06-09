@@ -94,6 +94,17 @@ public class MainActivity extends AppCompatActivity
         Log.d(this.getAttributionTag(), "startQuizWithIntent: Starting new activity");
 
 
+        if (!this.startQuiz.isAlreadyConnected()){
+            this.startQuiz.setCode(code);
+            this.startQuiz.addConnection();
+            Intent intentSend = new Intent(MainActivity.this, QuestionActivity.class);
+            intentSend.putExtra("QUESTION", this.startQuiz.getQuestion().getQuestion());
+            intentSend.putExtra("ANSWERS", this.startQuiz.getQuestion().getAnswers());
+            intentSend.putExtra("RIGHT_ANSWER", this.startQuiz.getQuestion().getCorrectAnswer());
+            startActivity(intentSend);
+        }
+
+        System.out.println(startQuiz.isAlreadyConnected());
     }
 
 
