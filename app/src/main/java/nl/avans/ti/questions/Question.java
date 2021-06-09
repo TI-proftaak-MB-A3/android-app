@@ -1,8 +1,9 @@
 package nl.avans.ti.questions;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class Qeustion
+public class Question
 {
     private String question;
     private ArrayList<String> answers;
@@ -11,7 +12,7 @@ public class Qeustion
     private int id;
 
 
-    public Qeustion(String question, ArrayList<String> answers, String correctAnswer, String catogorie, int id)
+    public Question(String question, ArrayList<String> answers, String correctAnswer, String catogorie, int id)
     {
         this.question = question;
         this.answers = answers;

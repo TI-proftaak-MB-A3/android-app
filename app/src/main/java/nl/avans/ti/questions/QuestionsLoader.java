@@ -22,10 +22,10 @@ public class QuestionsLoader
     }
 
 
-    public ArrayList<Qeustion> jsonRead()
+    public ArrayList<Question> jsonRead()
     {
         String stringJson = JsonFromData.JsonDataFromAsset(appCompatActivity, "vragen.json");
-        ArrayList<Qeustion> questions = new ArrayList<>();
+        ArrayList<Question> questions = new ArrayList<>();
 
         try
         {
@@ -50,7 +50,7 @@ public class QuestionsLoader
                 String catogorie = questionObjectJson.getString("Catogorie");
 
                 int id = questionObjectJson.getInt("id");
-                Qeustion question = new Qeustion(vraag, answers, correctAnswer, catogorie, id);
+                Question question = new Question(vraag, answers, correctAnswer, catogorie, id);
 
                 Log.d("QuestionsLoader", question.toString());
 

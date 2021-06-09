@@ -11,16 +11,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.List;
 
-import nl.avans.ti.Json.JsonFromData;
 import nl.avans.ti.MQTT.Connect;
-import nl.avans.ti.Medal.MedalActivity;
 import nl.avans.ti.Quiz.StartQuiz;
-import nl.avans.ti.questions.Qeustion;
+import nl.avans.ti.questions.Question;
 import nl.avans.ti.questions.QuestionsLoader;
 
 public class MainActivity extends AppCompatActivity
@@ -30,7 +25,7 @@ public class MainActivity extends AppCompatActivity
     EditText editText;
     MenuHandler menuHandler;
     private StartQuiz startQuiz;
-    List<Qeustion> questions;
+    List<Question> questions;
 
     @Override
 
