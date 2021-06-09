@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:textSize="20sp"
-        android:text="Vervolgens komt er een vraag in de app met 4 antwoor mogelijkheden er onder. Als u uit het antwoord bent kunt u het antwoord bevestigen door op de corresponderende knop bij het LCD scherm te drukken."
+        android:text="@string/step3_message"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setpOneHeader"
         app:layout_constraintVertical_bias="0.027"
@@ -43,7 +43,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Swipe naar rechts >"
+        android:text="@string/swipe_right"
         android:textSize="15sp"
         android:textColor="@color/Green_500"
         android:layout_marginHorizontal="20dp"
