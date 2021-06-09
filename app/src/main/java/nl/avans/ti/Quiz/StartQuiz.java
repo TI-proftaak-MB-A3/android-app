@@ -51,14 +51,16 @@ public class StartQuiz {
     }
 
     public Question getQuestion() {
-        CodeDecryption decryption = new CodeDecryption(Integer.parseInt(this.code));
+        CodeDecryption decryption = new CodeDecryption(this.code);
         ArrayList<Question> questionsForAttraction = new ArrayList<>();
 
         for (Question q : this.questions) {
             if (q.getId() == Integer.parseInt(decryption.getAttraction())) {
                 questionsForAttraction.add(q);
+
             }
         }
+
 
         int position = Integer.parseInt(decryption.getQuestion());
 
