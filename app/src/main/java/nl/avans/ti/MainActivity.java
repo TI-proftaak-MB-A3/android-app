@@ -11,9 +11,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.List;
+
 import nl.avans.ti.MQTT.Connect;
-import nl.avans.ti.Medal.MedalActivity;
 import nl.avans.ti.Quiz.StartQuiz;
+import nl.avans.ti.questions.Question;
+import nl.avans.ti.questions.QuestionsLoader;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity
     EditText editText;
     MenuHandler menuHandler;
     private StartQuiz startQuiz;
+    List<Question> questions;
 
     @Override
 
@@ -29,6 +33,10 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        QuestionsLoader questionsLoader = new QuestionsLoader(this);
+        questions = questionsLoader.jsonRead();
+
 
         editText = findViewById(R.id.editTextNumberSigned);
         menuHandler = new MenuHandler(this);
