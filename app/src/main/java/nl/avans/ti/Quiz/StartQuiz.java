@@ -6,6 +6,8 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import nl.avans.ti.MQTT.CodeDecryption;
 import nl.avans.ti.MQTT.Connect;
@@ -55,14 +57,30 @@ public class StartQuiz
         }
         System.out.println(connect.getAdress());
         connect.subscribeToTopic();
-        connect.publishMessage("test");
+        connect.publishMessage("Connect");
+        System.out.println("hoi");
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                System.out.println("hey");
+
+            }
+        };
+        timer.schedule(task, 2000);
+        System.out.println("doei");
         setAlreadyConnected(true);
+
     }
 
     public void removeConnection()
     {
         connect.unsubscribeToTopic();
     }
+
+
+
+
 
     public Question getQuestion() {
         CodeDecryption decryption = new CodeDecryption(this.code);
@@ -84,6 +102,8 @@ public class StartQuiz
     public void receiveMessage(MqttMessage message){
     //todo decide what message does what (after the quiz layout is made)
         Log.d("StartQuiz", "receiveMessage: " + message.toString());
+
+
     }
 
 
