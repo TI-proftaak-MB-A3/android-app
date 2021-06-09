@@ -15,9 +15,11 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 import java.util.UUID;
 
 import nl.avans.ti.MainActivity;
+import nl.avans.ti.Questions.Question;
 import nl.avans.ti.Quiz.StartQuiz;
 
 public class Connect
@@ -56,10 +58,10 @@ public class Connect
         return startQuiz;
     }
 
-    private Connect(AppCompatActivity app)
+    private Connect(AppCompatActivity app, List<Question> questionList)
     {
         this.app = app;
-        startQuiz = new StartQuiz(this);
+        startQuiz = new StartQuiz(this, questionList);
 
         this.mqttAndroidClient = new MqttAndroidClient(app.getApplicationContext(), BROKER_HOST_URL, CLIENT_ID);
 
@@ -92,11 +94,11 @@ public class Connect
 
 
     private static Connect connect;
-    public static Connect getConnect(AppCompatActivity appCompatActivity)
+    public static Connect getConnect(AppCompatActivity appCompatActivity, List<Question> questionList)
     {
         if (connect == null)
         {
-            connect = new Connect(appCompatActivity);
+            connect = new Connect(appCompatActivity, questionList);
         }
 
         return connect;
