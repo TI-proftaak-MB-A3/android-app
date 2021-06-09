@@ -14,9 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.List;
 
 import nl.avans.ti.MQTT.Connect;
-import nl.avans.ti.Quiz.StartQuiz;
 import nl.avans.ti.Questions.Question;
 import nl.avans.ti.Questions.QuestionsLoader;
+import nl.avans.ti.Quiz.StartQuiz;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity
         this.connect = Connect.getConnect(this);
         this.startQuiz = connect.getStartQuiz();
 
-//        Intent intent = new Intent(MainActivity.this, QuestionActivity.class);
-//        startActivity(intent);
+        //        Intent intent = new Intent(MainActivity.this, QuestionActivity.class);
+        //        startActivity(intent);
 
         if (this.startQuiz.isAlreadyConnected())
         {
@@ -56,7 +56,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onDestroy()
+    {
         super.onDestroy();
     }
 
@@ -69,19 +70,19 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(view.getContext(), R.string.errorAboutCodeLength, Toast.LENGTH_LONG).show();
             Log.d(String.valueOf(view.getTag()), "value entered didn't meet the requirments");
         }
+        else
+        {
+            if (!this.startQuiz.isAlreadyConnected() /*|| !this.startQuiz.getCode().equals(enteredCode)*/)
+            {
 
-        String code = enteredCode;
-
-        if (!this.startQuiz.isAlreadyConnected()){
-
-            this.startQuiz.setCode(code);
-            this.startQuiz.addConnection();
+                this.startQuiz.setCode(enteredCode);
+                this.startQuiz.addConnection();
+            }
+            System.out.println(startQuiz.isAlreadyConnected());
+            startQuizWithIntent();
         }
-        System.out.println(startQuiz.isAlreadyConnected());
 
-        startQuizWithIntent();
     }
-
 
 
     public void startQuizWithIntent()
@@ -91,7 +92,6 @@ public class MainActivity extends AppCompatActivity
 
 
         Log.d(this.getAttributionTag(), "startQuizWithIntent: Starting new activity");
-
 
 
     }
