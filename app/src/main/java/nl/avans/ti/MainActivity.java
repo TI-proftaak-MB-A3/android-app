@@ -42,11 +42,7 @@ public class MainActivity extends AppCompatActivity
         menuHandler = new MenuHandler(this);
         menuHandler.start();
         this.connect = new Connect(this);
-        this.startQuiz = new StartQuiz(this.connect);
-
-//        Intent intent = new Intent(MainActivity.this, QuestionActivity.class);
-//        startActivity(intent);
-
+        this.startQuiz = new StartQuiz(this.connect, this.questions);
     }
 
     @Override
@@ -74,7 +70,13 @@ public class MainActivity extends AppCompatActivity
         if (!this.startQuiz.isAlreadyConnected()){
             this.startQuiz.setCode(code);
             this.startQuiz.addConnection();
+            Intent intentSend = new Intent(MainActivity.this, QuestionActivity.class);
+            intentSend.putExtra("QUESTION", this.startQuiz.getQuestion().getQuestion());
+            intentSend.putExtra("ANSWERS", this.startQuiz.getQuestion().getAnswers());
+            intentSend.putExtra("RIGHT_ANSWER", this.startQuiz.getQuestion().getCorrectAnswer());
+            startActivity(intentSend);
         }
+
         System.out.println(startQuiz.isAlreadyConnected());
     }
 
