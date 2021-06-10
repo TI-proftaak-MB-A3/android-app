@@ -18,14 +18,14 @@ import nl.avans.ti.Questions.Question;
 
 public class StartQuiz
 {
-    private AppCompatActivity app;
+    private MainActivity app;
     private Connect connect;
     private String code;
     private List<Question> questions;
     private boolean alreadyConnected;
     private ArrayList<String> messages;
 
-    public StartQuiz(Connect connect, List<Question> questions, AppCompatActivity app) {
+    public StartQuiz(Connect connect, List<Question> questions, MainActivity app) {
         this.app = app;
         this.alreadyConnected = false;
         this.connect = connect;
@@ -72,28 +72,33 @@ public class StartQuiz
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                for (String message : messages){
-                    if (message.equals("Accepted")){
-
-                    }else{
-                        removeConnection();
+                for (int i = 0; i < messages.size();i++){
+                    if (messages.get(i).equals("accepted")){
+                        app.gotoWaitingscreen();
+                        System.out.println("werkt dit?");
+                        setAlreadyConnected(true);
+                        break;
                     }
                 }
-
+                if (!alreadyConnected){
+                    removeConnection();
+                }
             }
         };
-        timer.schedule(task, 2000);
+        timer.schedule(task, 8000);
 
 
         System.out.println("doei");
-        setAlreadyConnected(true);
+
 
     }
 
     public void removeConnection()
     {
+        System.out.println("why");
         connect.unsubscribeToTopic();
         setAlreadyConnected(false);
+        setCode("");
     }
 
 
@@ -122,8 +127,8 @@ public class StartQuiz
         Log.d("StartQuiz", "receiveMessage: " + message.toString());
         this.messages.add(message.toString());
 
-        if (message.toString().equals("Start")){
-
+        if (message.toString().equals("start")){
+            app.startQuizWithIntent();
         }
 
 //        switch (message.toString()){
