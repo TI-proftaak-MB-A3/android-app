@@ -61,7 +61,7 @@ public class Connect
     private Connect(AppCompatActivity app, List<Question> questionList)
     {
         this.app = app;
-        startQuiz = new StartQuiz(this, questionList);
+        startQuiz = new StartQuiz(this, questionList, this.app);
 
         this.mqttAndroidClient = new MqttAndroidClient(app.getApplicationContext(), BROKER_HOST_URL, CLIENT_ID);
 
