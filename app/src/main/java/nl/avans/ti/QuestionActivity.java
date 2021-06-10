@@ -1,31 +1,95 @@
 package nl.avans.ti;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-public class QuestionActivity extends AppCompatActivity {
+public class QuestionActivity extends AppCompatActivity
+{
+    private TextView textViewQuestion;
+    private TextView textViewOptionA;
+    private TextView textViewOptionB;
+    private TextView textViewOptionC;
+    private TextView textViewOptionD;
+    private TextView textViewConnectedTo;
+
+
+    private int shuffle;
+    String correctAnswer;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
 
-        Intent getIntent = getIntent();
+        this.textViewQuestion = findViewById(R.id.textViewQuestion);
+        this.textViewOptionA = findViewById(R.id.textViewOptionA);
+        this.textViewOptionB = findViewById(R.id.textViewOptionB);
+        this.textViewOptionC = findViewById(R.id.textViewOptionC);
+        this.textViewOptionD = findViewById(R.id.textViewOptionD);
+        this.textViewConnectedTo = findViewById(R.id.textViewConnectedTo);
 
+        ArrayList<TextView> views = new ArrayList<>();
+        views.add(this.textViewOptionA);
+        views.add(this.textViewOptionB);
+        views.add(this.textViewOptionC);
+        views.add(this.textViewOptionD);
+
+        Intent getIntent = getIntent();
         String question = getIntent.getStringExtra("QUESTION");
-        System.out.println(question);
+        this.textViewQuestion.setText(question);
+
+        String categorie = getIntent.getStringExtra("CATEGORIE");
+        this.textViewConnectedTo.setText(categorie);
+
         ArrayList<String> answers = getIntent.getStringArrayListExtra("ANSWERS");
 
-        for (String s : answers) {
-            System.out.println(s);
+        correctAnswer = getIntent.getStringExtra("RIGHT_ANSWER");
+
+        shuffle = Integer.parseInt(getIntent.getStringExtra("SHUFFLE"));
+
+
+        for (int i = 0; i < views.size(); i++)
+        {
+            TextView textView = views.get(i);
+            String answer = answers.get((shuffle + i) % 4);
+            textView.setText(answer);
         }
 
-        String correct = getIntent.getStringExtra("RIGHT_ANSWER");
-        System.out.println(correct);
 
     }
+
+    public boolean checkAnswer(String recievedLetter)
+    {
+
+        String answer;
+
+        switch (recievedLetter)
+        {
+            case "A":
+                answer = textViewOptionA.getText().toString();
+                break;
+            case "B":
+                answer = textViewOptionB.getText().toString();
+                break;
+            case "C":
+                answer = textViewOptionC.getText().toString();
+                break;
+            case "D":
+                answer = textViewOptionD.getText().toString();
+                break;
+            default:
+                return false;
+        }
+
+        return correctAnswer.equals(answer);
+
+    }
+
+
 }

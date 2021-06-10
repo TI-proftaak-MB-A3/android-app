@@ -64,7 +64,6 @@ public class StartQuiz
         connect.subscribeToTopic();
         connect.publishMessage("connect");
 
-
         Timer timer = new Timer();
 
 
@@ -89,7 +88,6 @@ public class StartQuiz
 
 
         System.out.println("doei");
-
 
     }
 
@@ -119,12 +117,18 @@ public class StartQuiz
 
         int position = Integer.parseInt(decryption.getQuestion()) % questionsForAttraction.size();
 
-        return questionsForAttraction.get(position);
+
+        Question question = questionsForAttraction.get(position);
+
+        question.setShuffle(decryption.getCombination());
+        return question;
     }
+
 
     public void receiveMessage(MqttMessage message){
     //todo decide what message does what (after the quiz layout is made)
         Log.d("StartQuiz", "receiveMessage: " + message.toString());
+
         this.messages.add(message.toString());
 
         if (message.toString().equals("start")){
@@ -148,6 +152,7 @@ public class StartQuiz
 //
 //
 //        }
+
     }
 
 

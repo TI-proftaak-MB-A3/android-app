@@ -102,11 +102,16 @@ public class MainActivity extends AppCompatActivity
         }
 
 
+        Question question = this.startQuiz.getQuestion();
+
         Intent intentSend = new Intent(MainActivity.this, QuestionActivity.class);
-            intentSend.putExtra("QUESTION", this.startQuiz.getQuestion().getQuestion());
-            intentSend.putExtra("ANSWERS", this.startQuiz.getQuestion().getAnswers());
-            intentSend.putExtra("RIGHT_ANSWER", this.startQuiz.getQuestion().getCorrectAnswer());
-            startActivity(intentSend);
+        intentSend.putExtra("QUESTION", question.getQuestion());
+        intentSend.putExtra("ANSWERS", question.getAnswers());
+        intentSend.putExtra("RIGHT_ANSWER", question.getCorrectAnswer());
+        intentSend.putExtra("CATEGORIE", question.getCatogorie());
+        intentSend.putExtra("SHUFFLE", question.getShuffle());
+        startActivity(intentSend);
+
 
 
         System.out.println(startQuiz.isAlreadyConnected());

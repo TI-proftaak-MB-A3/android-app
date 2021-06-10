@@ -11,11 +11,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Connected to: "
+        android:text="Attractie: "
         android:textColor="@color/Green_400"
         android:textSize="15sp"
         app:layout_constraintEnd_toStartOf="@+id/textViewConnectedTo"
-        app:layout_constraintHorizontal_bias="0.68"
+        app:layout_constraintHorizontal_bias="0.887"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,16 +24,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="96dp"
-        android:text="Question name"
+        android:layout_marginEnd="152dp"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewQuestion"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:gravity="center"
         android:text="Question"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -41,54 +42,79 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.428" />
+        app:layout_constraintVertical_bias="0.195" />
 
-    <LinearLayout
-        android:id="@+id/topRow"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/info_answer"
+        android:layout_width="270dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/bottomRow"
+        android:layout_marginTop="44dp"
+        android:gravity="center"
+        android:text="Antwoord moet worden gegeven door middel van de drukknoppen die zich onder het LCD scherm bevinden"
+        android:textSize="17sp"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <Button
-            android:id="@+id/buttonAnswerA"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp" />
-
-        <Button
-            android:id="@+id/buttonAnswerB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp" />
-
-
-    </LinearLayout>
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewQuestion" />
 
     <LinearLayout
-        android:id="@+id/bottomRow"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewQuestion">
+        app:layout_constraintTop_toBottomOf="@+id/info_answer"
+        app:layout_constraintVertical_bias="0.287">
 
-        <Button
-            android:id="@+id/buttonAnswerC"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/textViewOptionA"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp" />
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/border"
+            android:gravity="center"
+            android:paddingVertical="5dp"
+            android:text="TextView"
+            android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/buttonAnswerD"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/textViewOptionB"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp" />
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/border"
+            android:gravity="center"
+            android:paddingVertical="5dp"
+            android:text="TextView"
+            android:textSize="20sp" />
 
+        <TextView
+            android:id="@+id/textViewOptionC"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/border"
+            android:gravity="center"
+            android:paddingVertical="5dp"
+            android:text="TextView"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textViewOptionD"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/border"
+            android:gravity="center"
+            android:paddingVertical="5dp"
+            android:text="TextView"
+            android:textSize="20sp" />
 
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

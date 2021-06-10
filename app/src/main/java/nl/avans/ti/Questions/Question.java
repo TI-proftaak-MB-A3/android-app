@@ -10,6 +10,8 @@ public class Question
     private String catogorie;
     private int id;
 
+    private String shuffle;
+
 
     public Question(String question, ArrayList<String> answers, String correctAnswer, String catogorie, int id)
     {
@@ -18,6 +20,7 @@ public class Question
         this.correctAnswer = correctAnswer;
         this.catogorie = catogorie;
         this.id = id;
+
     }
 
 
@@ -45,6 +48,17 @@ public class Question
     public String getCatogorie()
     {
         return catogorie;
+    }
+
+
+    public String getShuffle()
+    {
+        return shuffle;
+    }
+
+    public void setShuffle(String shuffle)
+    {
+        this.shuffle = shuffle;
     }
 
     public int getId()
