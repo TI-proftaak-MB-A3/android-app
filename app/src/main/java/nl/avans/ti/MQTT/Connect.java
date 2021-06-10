@@ -50,6 +50,13 @@ public class Connect
     //MQTT subscription topics
     private String adress = "ti/1.4/a3/";
 
+    private String defaultAdress = "ti/1.4/a3/";
+
+    public String getDefaultAdress()
+    {
+        return defaultAdress;
+    }
+
     private MqttAndroidClient mqttAndroidClient;
 
 
@@ -243,7 +250,7 @@ public class Connect
                 public void onSuccess(IMqttToken asyncActionToken)
                 {
                     Log.d(LOGTAG, "MQTT client is now unsubscribed to topic " + adress);
-                    adress = "ti/1.4/a3/";
+                    adress = defaultAdress;
                 }
                 @Override
                 public void onFailure(IMqttToken asyncActionToken, Throwable exception)

@@ -80,7 +80,6 @@ public class MainActivity extends AppCompatActivity
 
             if (!this.startQuiz.isAlreadyConnected() /*|| !this.startQuiz.getCode().equals(enteredCode)*/)
             {
-
                 this.startQuiz.setCode(enteredCode);
                 this.startQuiz.addConnection();
             }
