@@ -74,10 +74,12 @@ public class LoadAttractionsJSON {
 
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject userData = jsonArray.getJSONObject(i);
-                userData.put("hasMedal", this.attractions.get(i).getHasMedal());
-                userData.put("hasFirstCheckpoint", this.attractions.get(i).getHasCheckpointOne());
-                userData.put("hasSecondCheckpoint", this.attractions.get(i).getHasCheckpointTwo());
-                userData.put("hasThirdCheckpoint", this.attractions.get(i).getHasCheckpointThree());
+
+                Attraction attraction = this.attractions.get(i);
+                userData.put("hasMedal", attraction.getHasMedal());
+                userData.put("hasFirstCheckpoint", attraction.getHasCheckpointOne());
+                userData.put("hasSecondCheckpoint", attraction.getHasCheckpointTwo());
+                userData.put("hasThirdCheckpoint", attraction.getHasCheckpointThree());
             }
 
         } catch (JSONException e) {
