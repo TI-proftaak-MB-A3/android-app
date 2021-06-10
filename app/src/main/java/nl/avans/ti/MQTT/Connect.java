@@ -24,7 +24,7 @@ import nl.avans.ti.Quiz.StartQuiz;
 
 public class Connect
 {
-    private AppCompatActivity app;
+    private MainActivity app;
     private StartQuiz startQuiz;
     private static final String LOGTAG = MainActivity.class.getName();
 
@@ -58,10 +58,10 @@ public class Connect
         return startQuiz;
     }
 
-    private Connect(AppCompatActivity app, List<Question> questionList)
+    private Connect(MainActivity app, List<Question> questionList)
     {
         this.app = app;
-        startQuiz = new StartQuiz(this, questionList);
+        startQuiz = new StartQuiz(this, questionList, this.app);
 
         this.mqttAndroidClient = new MqttAndroidClient(app.getApplicationContext(), BROKER_HOST_URL, CLIENT_ID);
 
@@ -94,11 +94,11 @@ public class Connect
 
 
     private static Connect connect;
-    public static Connect getConnect(AppCompatActivity appCompatActivity, List<Question> questionList)
+    public static Connect getConnect(MainActivity mainActivity, List<Question> questionList)
     {
         if (connect == null)
         {
-            connect = new Connect(appCompatActivity, questionList);
+            connect = new Connect(mainActivity, questionList);
         }
 
         return connect;
@@ -243,8 +243,8 @@ public class Connect
                 public void onSuccess(IMqttToken asyncActionToken)
                 {
                     Log.d(LOGTAG, "MQTT client is now unsubscribed to topic " + adress);
+                    adress = "ti/1.4/a3/";
                 }
-
                 @Override
                 public void onFailure(IMqttToken asyncActionToken, Throwable exception)
                 {

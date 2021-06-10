@@ -1,7 +1,9 @@
 package nl.avans.ti;
 
 
+import android.app.AlarmManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -21,6 +23,8 @@ import nl.avans.ti.Quiz.StartQuiz;
 
 public class MainActivity extends AppCompatActivity
 {
+
+
     private Connect connect;
 
     EditText editText;
@@ -82,7 +86,6 @@ public class MainActivity extends AppCompatActivity
             }
 
             System.out.println(startQuiz.isAlreadyConnected());
-            startQuizWithIntent();
         }
 
     }
@@ -94,7 +97,9 @@ public class MainActivity extends AppCompatActivity
         intent.putExtra("placeholder", startQuiz.getCode());
 
 
-        Log.d(this.getAttributionTag(), "startQuizWithIntent: Starting new activity");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            Log.d(this.getAttributionTag(), "startQuizWithIntent: Starting new activity");
+        }
 
 
         Question question = this.startQuiz.getQuestion();
@@ -108,6 +113,7 @@ public class MainActivity extends AppCompatActivity
         startActivity(intentSend);
 
 
+
         System.out.println(startQuiz.isAlreadyConnected());
     }
 
@@ -116,5 +122,13 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(@NonNull MenuItem item)
     {
         return menuHandler.onOptionsItemSelected(item);
+    }
+
+    public void gotoWaitingscreen() {
+        System.out.println("test12314");
+        Intent intent = new Intent(this, WaitingScreen.class);
+        startActivity(intent);
+
+
     }
 }

@@ -2,10 +2,14 @@ package nl.avans.ti.Quiz;
 
 import android.util.Log;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import nl.avans.ti.MQTT.CodeDecryption;
 import nl.avans.ti.MQTT.Connect;
@@ -19,12 +23,15 @@ public class StartQuiz
     private String code;
     private List<Question> questions;
     private boolean alreadyConnected;
+    private ArrayList<String> messages;
 
-    public StartQuiz(Connect connect, List<Question> questions) {
+    public StartQuiz(Connect connect, List<Question> questions, MainActivity app) {
+        this.app = app;
         this.alreadyConnected = false;
         this.connect = connect;
         this.code = code;
         this.questions = questions;
+        this.messages = new ArrayList<>();
     }
 
     public void setCode(String code)
@@ -56,13 +63,45 @@ public class StartQuiz
         System.out.println(connect.getAdress());
         connect.subscribeToTopic();
         connect.publishMessage("connect");
-        setAlreadyConnected(true);
+
+        Timer timer = new Timer();
+
+
+
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                for (int i = 0; i < messages.size();i++){
+                    if (messages.get(i).equals("accepted")){
+                        app.gotoWaitingscreen();
+                        System.out.println("werkt dit?");
+                        setAlreadyConnected(true);
+                        break;
+                    }
+                }
+                if (!alreadyConnected){
+                    removeConnection();
+                }
+            }
+        };
+        timer.schedule(task, 8000);
+
+
+        System.out.println("doei");
+
     }
 
     public void removeConnection()
     {
+        System.out.println("why");
         connect.unsubscribeToTopic();
+        setAlreadyConnected(false);
+        setCode("");
     }
+
+
+
+
 
     public Question getQuestion() {
         CodeDecryption decryption = new CodeDecryption(this.code);
@@ -90,8 +129,29 @@ public class StartQuiz
     //todo decide what message does what (after the quiz layout is made)
         Log.d("StartQuiz", "receiveMessage: " + message.toString());
 
+        this.messages.add(message.toString());
 
+        if (message.toString().equals("start")){
+            app.startQuizWithIntent();
+        }
 
+//        switch (message.toString()){
+//            case("A") :
+//                break;
+//            case("B") :
+//                break;
+//            case("C") :
+//                break;
+//            case("D") :
+//                break;
+//
+//            case("Start") :
+//                app.startQuizWithIntent();
+//                break;
+//
+//
+//
+//        }
 
     }
 
