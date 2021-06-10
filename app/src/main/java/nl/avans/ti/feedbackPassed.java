@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class feedbackPassed extends AppCompatActivity {
 
@@ -17,5 +18,8 @@ public class feedbackPassed extends AppCompatActivity {
     public void backToHome(View view) {
         Intent openHomeIntent = new Intent(this, MainActivity.class);
         startActivity(openHomeIntent);
+    }
+    public void onBackPressed() {
+//TODO Connect.getConnect().getStartQuiz().backToStart();
     }
 }

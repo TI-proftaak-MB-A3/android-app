@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,7 +47,7 @@ public class MapsActivity extends AppCompatActivity
     {
         return menuHandler.onOptionsItemSelected(item);
     }
-    
+
 
 
 }

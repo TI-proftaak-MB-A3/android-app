@@ -3,6 +3,7 @@ package nl.avans.ti;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -89,6 +90,9 @@ public class QuestionActivity extends AppCompatActivity
 
         return correctAnswer.equals(answer);
 
+    }
+    public void onBackPressed() {
+        Toast.makeText(getApplicationContext(), "Can't go back", Toast.LENGTH_SHORT).show();
     }
 
 
