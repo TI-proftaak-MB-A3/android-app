@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity
             intentSend.putExtra("QUESTION", this.startQuiz.getQuestion().getQuestion());
             intentSend.putExtra("ANSWERS", this.startQuiz.getQuestion().getAnswers());
             intentSend.putExtra("RIGHT_ANSWER", this.startQuiz.getQuestion().getCorrectAnswer());
+            intentSend.putExtra("CATEGORIE", this.startQuiz.getQuestion().getCatogorie());
             startActivity(intentSend);
 
 

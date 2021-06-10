@@ -76,7 +76,7 @@ public class StartQuiz
         }
 
 
-        int position = Integer.parseInt(decryption.getQuestion());
+        int position = Integer.parseInt(decryption.getQuestion()) % questionsForAttraction.size();
 
         return questionsForAttraction.get(position);
     }
