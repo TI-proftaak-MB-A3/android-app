@@ -25,4 +25,7 @@
     <string name="step4_message">Als het antwoord goed is wordt dit opgeslagen in de app. Per attractie moet je 3 vragen goed hebben. Je kan zien hoeveel vragen je goed hebt bij het medaille overzicht. Als er 3 vragen goed zijn wordt de medaille vrij gespeeld.</string>
     <string name="step5_message">Als alle medailles behaald zijn kan heeft u het spel gewonnen en krijgt u een code, deze kan u inleveren bij een giftshope voor een cadeautje.</string>
     <string name="errorConnection">Er word al een verbinding gemaakt</string>
+    <string name="congratulations">Gefeliciteerd!</string>
+    <string name="allmedals_message">Goed gedaan! Je hebt al je medailles gehaald!</string>
+    <string name="discount_message">Je kunt je beloning inwisselen in een van de cadeauwinkels!</string>
 </resources>
