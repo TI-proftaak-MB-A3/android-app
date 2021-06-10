@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="errorAboutCodeLength">de code moet 6 cijfers lang zijn</string>
-    <string name="vliegendeAttractie">vliegend belgie</string>
-    <string name="nav_open">open</string>
-    <string name="nav_close">dicht</string>
-    <string name="play_game">speel het spel</string>
-    <string name="map">kaart</string>
-    <string name="medals">medailles</string>
-    <string name="help">hulp</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Dicht</string>
+    <string name="play_game">Speel het spel</string>
+    <string name="map">Kaart</string>
+    <string name="medals">Medailles</string>
+    <string name="help">Hulp</string>
     <string name="helpLong">Welkom bij de essteling quiz app. Deze app wordt gespeeld in de wachtrij van een attractie naar keuzen, Hierboven op de kaart kan u zien welke attracties allemaal een van onze quiz borden bevat. U speelt de quiz door naar een van deze borden toe te gaan en de code die wordt getoond in te vullen. Hierna word er op u telefoon een vraag getoond, deze vraag kan u dn beantwoorden door op 1 van de knoppen bij het bord te drukken corresponderend met u antwoord</string>
     <string name="step_1">Stap 1</string>
     <string name="step_2">Stap 2</string>
@@ -25,4 +24,5 @@
     <string name="step4_message">Als het antwoord goed is wordt dit opgeslagen in de app. Per attractie moet je 3 vragen goed hebben. Je kan zien hoeveel vragen je goed hebt bij het medaille overzicht. Als er 3 vragen goed zijn wordt de medaille vrij gespeeld.</string>
     <string name="step5_message">Als alle medailles behaald zijn kan heeft u het spel gewonnen en krijgt u een code, deze kan u inleveren bij een giftshope voor een cadeautje.</string>
     <string name="errorConnection">Er word al een verbinding gemaakt</string>
+    <string name="vliegendeAttractie">Zwevende Belg</string>
 </resources>
