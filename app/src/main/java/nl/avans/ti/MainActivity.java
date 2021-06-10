@@ -2,6 +2,7 @@ package nl.avans.ti;
 
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -21,6 +22,8 @@ import nl.avans.ti.Quiz.StartQuiz;
 
 public class MainActivity extends AppCompatActivity
 {
+
+
     private Connect connect;
 
     EditText editText;
@@ -74,15 +77,20 @@ public class MainActivity extends AppCompatActivity
         else
         {
 
-            if (!this.startQuiz.isAlreadyConnected() /*|| !this.startQuiz.getCode().equals(enteredCode)*/)
+            if (!this.startQuiz.isTryingToConnect())
             {
-
-                this.startQuiz.setCode(enteredCode);
-                this.startQuiz.addConnection();
+                if (!this.startQuiz.isAlreadyConnected()  /*|| !this.startQuiz.getCode().equals(enteredCode)*/)
+                {
+                    this.startQuiz.setCode(enteredCode);
+                    this.startQuiz.addConnection();
+                }
+            }
+            else
+            {
+                Toast.makeText(view.getContext(), R.string.errorConnection, Toast.LENGTH_LONG).show();
             }
 
             System.out.println(startQuiz.isAlreadyConnected());
-            startQuizWithIntent();
         }
 
     }
@@ -94,7 +102,10 @@ public class MainActivity extends AppCompatActivity
         intent.putExtra("placeholder", startQuiz.getCode());
 
 
-        Log.d(this.getAttributionTag(), "startQuizWithIntent: Starting new activity");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+        {
+            Log.d(this.getAttributionTag(), "startQuizWithIntent: Starting new activity");
+        }
 
 
         Question question = this.startQuiz.getQuestion();
@@ -116,5 +127,14 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(@NonNull MenuItem item)
     {
         return menuHandler.onOptionsItemSelected(item);
+    }
+
+    public void gotoWaitingscreen()
+    {
+        System.out.println("test12314");
+        Intent intent = new Intent(this, WaitingScreen.class);
+        startActivity(intent);
+
+
     }
 }
