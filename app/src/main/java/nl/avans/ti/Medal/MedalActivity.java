@@ -72,20 +72,20 @@ public class MedalActivity extends AppCompatActivity {
         menuHandler.start();
 
 
-    }
+ }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        SaveDataToAsset();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item)
-    {
-        return menuHandler.onOptionsItemSelected(item);
-    }
-
-
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//
+//        SaveDataToAsset();
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item)
+//    {
+//        return menuHandler.onOptionsItemSelected(item);
+//    }
+//
+//
 }

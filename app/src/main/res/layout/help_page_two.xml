@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -32,11 +33,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
+        android:text="Als u dit doet verschijnt er een code op het schermpje. Wanneer u deze code invoerd in de app word er een timer gestart. deze timer loop 30 seconden, binnen deze tijd kunnen er tot 10 verschillende apparaten verbinden."
         android:textSize="20sp"
-        android:text="Vervolgens wordt er een code getoond en wordt er een timer gestart. Binenn deze timer kunnen er tot 10 verschillende apparaten verbonden worden. U kunt verbinden door de code in te voeren in de app."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setpTwoHeader"
-        app:layout_constraintVertical_bias="0.027" />
+        app:layout_constraintVertical_bias="0.028"
+        tools:layout_editor_absoluteX="20dp" />
 
     <TextView
         android:layout_width="wrap_content"

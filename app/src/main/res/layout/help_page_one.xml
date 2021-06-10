@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:textSize="20sp"
-        android:text="ALs u bij een van de schermen in de rij komt, kunt moet u als eerste een knop indukken om een code te zien."
+        android:text="Als u bij een van de schermen in de rij komt, moet u op 1 van de 4 knoppen bij het scherm drukken om te beginnen."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setpOneHeader"
         app:layout_constraintVertical_bias="0.027"

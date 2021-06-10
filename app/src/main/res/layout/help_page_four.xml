@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:textSize="20sp"
-        android:text="Als het antwoord goed is wordt dit opgeslagen in de app. Per attractie moet je 3 vragen goed hebben. Je kan zien hoeveel vragen je goed hebt bij het medaille overzicht. Als er 3 vragen goed zijn wordt de medaille vrij gespeeld."
+        android:text="Als u het juiste antwoord heeft gegeven word een van de 3 bolletjes onder het vakje medailles gekleurd. Per attractie staan 3 vragen, u moet op alle 3 de vragen het juiste antwoord geven om de medaille vrij te spelen."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setpOneHeader"
         app:layout_constraintVertical_bias="0.027"
