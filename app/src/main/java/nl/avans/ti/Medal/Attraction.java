@@ -129,4 +129,11 @@ public class Attraction {
     public void setHasCheckpointThree(Boolean hasCheckpointThree) {
         this.hasCheckpointThree = hasCheckpointThree;
     }
+
+
+    @Override
+    public String toString()
+    {
+        return "Attraction{" + "hasMedal=" + hasMedal + ", hasCheckpointOne=" + hasCheckpointOne + ", hasCheckpointTwo=" + hasCheckpointTwo + ", hasCheckpointThree=" + hasCheckpointThree + '}';
+    }
 }

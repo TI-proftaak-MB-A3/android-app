@@ -58,6 +58,8 @@ public class MedalActivity extends AppCompatActivity {
         menuHandler = new MenuHandler(this);
         menuHandler.start();
 
+        medalView.getAdapter().notifyDataSetChanged();
+
 
     }
 

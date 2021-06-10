@@ -198,7 +198,6 @@ public class StartQuiz
                     if (isCorrectAnswer)
                     {
                         connect.publishMessage("correct");
-                        updateMedals(question);
                     }
                     else
                     {
@@ -214,22 +213,7 @@ public class StartQuiz
         }
     }
 
-    private void updateMedals(Question question) {
-        for (Attraction a : LoadAttractionsJSON.getInstance(app).getAttractions()) {
-            if (a.getName().toLowerCase().equals(question.getCatogorie().toLowerCase())) {
-                if (!a.getHasCheckpointOne()) {
-                    a.setHasCheckpointOne(true);
-                } else if (a.getHasCheckpointOne() && !a.getHasCheckpointTwo()) {
-                    a.setHasCheckpointTwo(true);
-                } else if (a.getHasCheckpointOne() && a.getHasCheckpointTwo() && !a.getHasCheckpointThree()) {
-                    a.setHasCheckpointThree(true);
-                    a.setHasMedal(true);
-                }
-            }
-        }
 
-        LoadAttractionsJSON.getInstance(app).save();
-    }
 
     public void showAnswerScreen(boolean answeredCorrect, Question question)
     {

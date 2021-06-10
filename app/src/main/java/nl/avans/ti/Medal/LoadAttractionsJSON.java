@@ -1,6 +1,8 @@
 package nl.avans.ti.Medal;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -63,10 +65,22 @@ public class LoadAttractionsJSON {
     }
 
     public void save() {
-        SaveDataToAsset();
+//        load();
+//        SaveDataToAsset();
+
+
+        for (Attraction attraction : getAttractions())
+        {
+            Log.d("LoadAttractionsJSON", " " + attraction.toString());
+        }
+
+
+
+
     }
 
     private void SaveDataToAsset() {
+
         try {
 
             JSONObject jsonObject = new JSONObject(json);
@@ -81,6 +95,7 @@ public class LoadAttractionsJSON {
                 userData.put("hasSecondCheckpoint", attraction.getHasCheckpointTwo());
                 userData.put("hasThirdCheckpoint", attraction.getHasCheckpointThree());
             }
+
 
         } catch (JSONException e) {
             e.printStackTrace();
