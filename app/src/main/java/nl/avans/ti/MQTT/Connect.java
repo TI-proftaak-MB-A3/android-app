@@ -109,9 +109,12 @@ public class Connect
         }
 
         return connect;
-
     }
 
+    public static Connect getConnect()
+    {
+        return connect;
+    }
 
 
 

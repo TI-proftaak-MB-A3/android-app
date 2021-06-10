@@ -118,7 +118,6 @@ public class MainActivity extends AppCompatActivity
         intentSend.putExtra("SHUFFLE", question.getShuffle());
         startActivity(intentSend);
 
-
         System.out.println(startQuiz.isAlreadyConnected());
     }
 
