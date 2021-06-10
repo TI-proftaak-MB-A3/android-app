@@ -1,6 +1,8 @@
 package nl.avans.ti.Quiz;
 
+import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
@@ -23,7 +25,22 @@ public class StartQuiz
     private boolean alreadyConnected;
     private ArrayList<String> messages;
 
+
+    private boolean quizShown;
+
     private boolean tryingToConnect;
+
+    public static interface AnswerChecker
+    {
+        boolean checkAnswer(String string);
+    }
+
+    private AnswerChecker answerChecker;
+
+    public void setAnswerChecker(AnswerChecker answerChecker)
+    {
+        this.answerChecker = answerChecker;
+    }
 
     public StartQuiz(Connect connect, List<Question> questions, MainActivity app)
     {
@@ -100,6 +117,9 @@ public class StartQuiz
         setAlreadyConnected(false);
         setCode("");
         tryingToConnect = false;
+        quizShown = false;
+        answerChecker = null;
+
     }
 
 
@@ -147,30 +167,46 @@ public class StartQuiz
             if (recievedMessage.equals("start"))
             {
                 app.startQuizWithIntent();
+                quizShown = true;
             }
         }
 
 
+        if (quizShown)
+        {
+            if (recievedMessage.equals("time_out"))
+            {
+                //methods to go back to main and close connection aka backToStart
+                backToStart();
+                Toast.makeText(app.getBaseContext(), "Closing conection because of timeout", Toast.LENGTH_LONG).show();
+            }
+            else
+            {
+                boolean isCorrectAnswer = answerChecker.checkAnswer(recievedMessage);
 
+                if ("ABCD".contains(recievedMessage.toUpperCase()))
+                {
+                    if (isCorrectAnswer)
+                    {
+                        connect.publishMessage("correct");
+                    }
+                    else
+                    {
+                        connect.publishMessage("incorrect");
+                    }
+                    removeConnection();
+                    backToStart();
+                }
+            }
 
-        //        switch (message.toString()){
-        //            case("A") :
-        //                break;
-        //            case("B") :
-        //                break;
-        //            case("C") :
-        //                break;
-        //            case("D") :
-        //                break;
-        //
-        //            case("Start") :
-        //                app.startQuizWithIntent();
-        //                break;
-        //
-        //
-        //
-        //        }
+        }
+    }
 
+    //implement method to go back to start
+    public void backToStart()
+    {
+        Intent intent = new Intent(app.getBaseContext(), MainActivity.class);
+        app.startActivity(intent);
     }
 
 

@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+import nl.avans.ti.MQTT.Connect;
+import nl.avans.ti.Quiz.StartQuiz;
+
 public class QuestionActivity extends AppCompatActivity
 {
     private TextView textViewQuestion;
@@ -62,12 +65,13 @@ public class QuestionActivity extends AppCompatActivity
         }
 
 
+        Connect.getConnect().getStartQuiz().setAnswerChecker(this::checkAnswer);
     }
 
     public boolean checkAnswer(String recievedLetter)
     {
-
         String answer;
+        recievedLetter = recievedLetter.toUpperCase();
 
         switch (recievedLetter)
         {
