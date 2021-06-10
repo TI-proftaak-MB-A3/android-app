@@ -2,8 +2,6 @@ package nl.avans.ti.Quiz;
 
 import android.util.Log;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 import java.util.ArrayList;
@@ -25,7 +23,10 @@ public class StartQuiz
     private boolean alreadyConnected;
     private ArrayList<String> messages;
 
-    public StartQuiz(Connect connect, List<Question> questions, MainActivity app) {
+    private boolean tryingToConnect;
+
+    public StartQuiz(Connect connect, List<Question> questions, MainActivity app)
+    {
         this.app = app;
         this.alreadyConnected = false;
         this.connect = connect;
@@ -56,9 +57,10 @@ public class StartQuiz
 
     public void addConnection()
     {
+        tryingToConnect = true;
         if (!alreadyConnected)
         {
-            connect.setAdress(connect.getAdress() + code);
+            connect.setAdress(connect.getDefaultAdress() + code);
         }
         System.out.println(connect.getAdress());
         connect.subscribeToTopic();
@@ -67,19 +69,13 @@ public class StartQuiz
         Timer timer = new Timer();
 
 
-
-        TimerTask task = new TimerTask() {
+        TimerTask task = new TimerTask()
+        {
             @Override
-            public void run() {
-                for (int i = 0; i < messages.size();i++){
-                    if (messages.get(i).equals("accepted")){
-                        app.gotoWaitingscreen();
-                        System.out.println("werkt dit?");
-                        setAlreadyConnected(true);
-                        break;
-                    }
-                }
-                if (!alreadyConnected){
+            public void run()
+            {
+                if (!alreadyConnected)
+                {
                     removeConnection();
                 }
             }
@@ -91,24 +87,31 @@ public class StartQuiz
 
     }
 
+    public boolean isTryingToConnect()
+    {
+        return tryingToConnect;
+    }
+
+
     public void removeConnection()
     {
         System.out.println("why");
         connect.unsubscribeToTopic();
         setAlreadyConnected(false);
         setCode("");
+        tryingToConnect = false;
     }
 
 
-
-
-
-    public Question getQuestion() {
+    public Question getQuestion()
+    {
         CodeDecryption decryption = new CodeDecryption(this.code);
         ArrayList<Question> questionsForAttraction = new ArrayList<>();
 
-        for (Question q : this.questions) {
-            if (q.getId() == Integer.parseInt(decryption.getAttraction())) {
+        for (Question q : this.questions)
+        {
+            if (q.getId() == Integer.parseInt(decryption.getAttraction()))
+            {
                 questionsForAttraction.add(q);
 
             }
@@ -125,33 +128,48 @@ public class StartQuiz
     }
 
 
-    public void receiveMessage(MqttMessage message){
-    //todo decide what message does what (after the quiz layout is made)
-        Log.d("StartQuiz", "receiveMessage: " + message.toString());
+    public void receiveMessage(MqttMessage message)
+    {
+        //todo decide what message does what (after the quiz layout is made)
 
-        this.messages.add(message.toString());
+        String recievedMessage = message.toString();
+        Log.d("StartQuiz", "receiveMessage: " + recievedMessage);
 
-        if (message.toString().equals("start")){
-            app.startQuizWithIntent();
+
+        if (recievedMessage.equals("accepted"))
+        {
+            app.gotoWaitingscreen();
+            setAlreadyConnected(true);
         }
 
-//        switch (message.toString()){
-//            case("A") :
-//                break;
-//            case("B") :
-//                break;
-//            case("C") :
-//                break;
-//            case("D") :
-//                break;
-//
-//            case("Start") :
-//                app.startQuizWithIntent();
-//                break;
-//
-//
-//
-//        }
+        if (alreadyConnected)
+        {
+            if (recievedMessage.equals("start"))
+            {
+                app.startQuizWithIntent();
+            }
+        }
+
+
+
+
+        //        switch (message.toString()){
+        //            case("A") :
+        //                break;
+        //            case("B") :
+        //                break;
+        //            case("C") :
+        //                break;
+        //            case("D") :
+        //                break;
+        //
+        //            case("Start") :
+        //                app.startQuizWithIntent();
+        //                break;
+        //
+        //
+        //
+        //        }
 
     }
 
