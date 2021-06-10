@@ -198,7 +198,7 @@ public class StartQuiz
                     if (isCorrectAnswer)
                     {
                         connect.publishMessage("correct");
-                        updateMedals();
+                        updateMedals(question);
                     }
                     else
                     {
@@ -210,6 +210,16 @@ public class StartQuiz
                 }
             }
 
+        }
+    }
+
+    private void updateMedals(Question question) {
+        for (Attraction a : LoadAttractionsJSON.getInstance(app).getAttractions()) {
+            if (a.getName().equals(question.getCatogorie())) {
+                if (!a.getHasCheckpointOne()) {
+                    a.setHasCheckpointOne(true);
+                }
+            }
         }
     }
 
