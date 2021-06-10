@@ -55,7 +55,7 @@ public class StartQuiz
         }
         System.out.println(connect.getAdress());
         connect.subscribeToTopic();
-        connect.publishMessage("test");
+        connect.publishMessage("connect");
         setAlreadyConnected(true);
     }
 
@@ -78,12 +78,21 @@ public class StartQuiz
 
         int position = Integer.parseInt(decryption.getQuestion()) % questionsForAttraction.size();
 
-        return questionsForAttraction.get(position);
+
+        Question question = questionsForAttraction.get(position);
+
+        question.setShuffle(decryption.getCombination());
+        return question;
     }
+
 
     public void receiveMessage(MqttMessage message){
     //todo decide what message does what (after the quiz layout is made)
         Log.d("StartQuiz", "receiveMessage: " + message.toString());
+
+
+
+
     }
 
 

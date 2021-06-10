@@ -1,15 +1,15 @@
 package nl.avans.ti;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 
-public class QuestionActivity extends AppCompatActivity {
+public class QuestionActivity extends AppCompatActivity
+{
     private TextView textViewQuestion;
     private TextView textViewOptionA;
     private TextView textViewOptionB;
@@ -17,8 +17,13 @@ public class QuestionActivity extends AppCompatActivity {
     private TextView textViewOptionD;
     private TextView textViewConnectedTo;
 
+
+    private int shuffle;
+    String correctAnswer;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
 
@@ -44,13 +49,47 @@ public class QuestionActivity extends AppCompatActivity {
 
         ArrayList<String> answers = getIntent.getStringArrayListExtra("ANSWERS");
 
-        String correct = getIntent.getStringExtra("RIGHT_ANSWER");
+        correctAnswer = getIntent.getStringExtra("RIGHT_ANSWER");
 
-        for (TextView view : views) {
-            int pos = (int) Math.floor(Math.random() * answers.size());
-            view.setText(answers.get(pos));
-            answers.remove(pos);
+        shuffle = Integer.parseInt(getIntent.getStringExtra("SHUFFLE"));
+
+
+        for (int i = 0; i < views.size(); i++)
+        {
+            TextView textView = views.get(i);
+            String answer = answers.get((shuffle + i) % 4);
+            textView.setText(answer);
         }
 
+
     }
+
+    public boolean checkAnswer(String recievedLetter)
+    {
+
+        String answer;
+
+        switch (recievedLetter)
+        {
+            case "A":
+                answer = textViewOptionA.getText().toString();
+                break;
+            case "B":
+                answer = textViewOptionB.getText().toString();
+                break;
+            case "C":
+                answer = textViewOptionC.getText().toString();
+                break;
+            case "D":
+                answer = textViewOptionD.getText().toString();
+                break;
+            default:
+                return false;
+        }
+
+        return correctAnswer.equals(answer);
+
+    }
+
+
 }
