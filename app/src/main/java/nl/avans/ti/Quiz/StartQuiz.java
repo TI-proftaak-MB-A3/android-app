@@ -132,11 +132,16 @@ public class StartQuiz
             setAlreadyConnected(true);
         }
 
-
-        if (recievedMessage.equals("start"))
+        if (alreadyConnected)
         {
-            app.startQuizWithIntent();
+            if (recievedMessage.equals("start"))
+            {
+                app.startQuizWithIntent();
+            }
         }
+
+
+
 
         //        switch (message.toString()){
         //            case("A") :
