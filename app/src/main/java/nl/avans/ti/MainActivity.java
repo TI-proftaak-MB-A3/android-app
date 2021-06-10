@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity
         else
         {
 
-            if (!this.startQuiz.isAlreadyConnected() /*|| !this.startQuiz.getCode().equals(enteredCode)*/)
+            if (!this.startQuiz.isAlreadyConnected() &&  !this.startQuiz.isTryingToConnect() /*|| !this.startQuiz.getCode().equals(enteredCode)*/)
             {
                 this.startQuiz.setCode(enteredCode);
                 this.startQuiz.addConnection();

@@ -23,6 +23,8 @@ public class StartQuiz
     private boolean alreadyConnected;
     private ArrayList<String> messages;
 
+    private boolean tryingToConnect;
+
     public StartQuiz(Connect connect, List<Question> questions, MainActivity app)
     {
         this.app = app;
@@ -55,6 +57,7 @@ public class StartQuiz
 
     public void addConnection()
     {
+        tryingToConnect = true;
         if (!alreadyConnected)
         {
             connect.setAdress(connect.getDefaultAdress() + code);
@@ -84,12 +87,19 @@ public class StartQuiz
 
     }
 
+    public boolean isTryingToConnect()
+    {
+        return tryingToConnect;
+    }
+
+
     public void removeConnection()
     {
         System.out.println("why");
         connect.unsubscribeToTopic();
         setAlreadyConnected(false);
         setCode("");
+        tryingToConnect = false;
     }
 
 
