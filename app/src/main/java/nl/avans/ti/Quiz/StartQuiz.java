@@ -99,9 +99,6 @@ public class StartQuiz
         };
         timer.schedule(task, 8000);
 
-
-        System.out.println("doei");
-
     }
 
     public boolean isTryingToConnect()
@@ -112,7 +109,6 @@ public class StartQuiz
 
     public void removeConnection()
     {
-        System.out.println("why");
         connect.unsubscribeToTopic();
         setAlreadyConnected(false);
         setCode("");

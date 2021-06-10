@@ -130,7 +130,6 @@ public class MainActivity extends AppCompatActivity
 
     public void gotoWaitingscreen()
     {
-        System.out.println("test12314");
         Intent intent = new Intent(this, WaitingScreen.class);
         startActivity(intent);
 
