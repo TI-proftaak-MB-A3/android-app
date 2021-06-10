@@ -7,17 +7,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-public class feedbackPassed extends AppCompatActivity {
+import nl.avans.ti.MQTT.Connect;
+import nl.avans.ti.Questions.Question;
+
+public class FeedbackPassed extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback_passed);
+        Question question = (Question) getIntent().getSerializableExtra("Question");
+
     }
 
     public void backToHome(View view) {
-        Intent openHomeIntent = new Intent(this, MainActivity.class);
-        startActivity(openHomeIntent);
+        Connect.getConnect().getStartQuiz().backToStart();
     }
 
     public void onBackPressed() {
