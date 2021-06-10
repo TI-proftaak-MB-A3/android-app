@@ -1,7 +1,6 @@
 package nl.avans.ti;
 
 
-import android.app.AlarmManager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -78,10 +77,17 @@ public class MainActivity extends AppCompatActivity
         else
         {
 
-            if (!this.startQuiz.isAlreadyConnected() &&  !this.startQuiz.isTryingToConnect() /*|| !this.startQuiz.getCode().equals(enteredCode)*/)
+            if (!this.startQuiz.isTryingToConnect())
             {
-                this.startQuiz.setCode(enteredCode);
-                this.startQuiz.addConnection();
+                if (!this.startQuiz.isAlreadyConnected()  /*|| !this.startQuiz.getCode().equals(enteredCode)*/)
+                {
+                    this.startQuiz.setCode(enteredCode);
+                    this.startQuiz.addConnection();
+                }
+            }
+            else
+            {
+                Toast.makeText(view.getContext(), R.string.errorConnection, Toast.LENGTH_LONG).show();
             }
 
             System.out.println(startQuiz.isAlreadyConnected());
@@ -96,7 +102,8 @@ public class MainActivity extends AppCompatActivity
         intent.putExtra("placeholder", startQuiz.getCode());
 
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+        {
             Log.d(this.getAttributionTag(), "startQuizWithIntent: Starting new activity");
         }
 
@@ -112,7 +119,6 @@ public class MainActivity extends AppCompatActivity
         startActivity(intentSend);
 
 
-
         System.out.println(startQuiz.isAlreadyConnected());
     }
 
@@ -123,7 +129,8 @@ public class MainActivity extends AppCompatActivity
         return menuHandler.onOptionsItemSelected(item);
     }
 
-    public void gotoWaitingscreen() {
+    public void gotoWaitingscreen()
+    {
         System.out.println("test12314");
         Intent intent = new Intent(this, WaitingScreen.class);
         startActivity(intent);

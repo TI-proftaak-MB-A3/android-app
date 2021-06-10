@@ -24,4 +24,5 @@
     <string name="step3_message">Within a few seconds a question will be displaayed in the app with 4 mulitple choice options below it. When you have discussed all the possible options and knop the answer, you can enter the answer using the buttons below the LCD screen</string>
     <string name="step4_message">Als het antwoord goed is wordt dit opgeslagen in de app. Per attractie moet je 3 vragen goed hebben. Je kan zien hoeveel vragen je goed hebt bij het medaille overzicht. Als er 3 vragen goed zijn wordt de medaille vrij gespeeld.</string>
     <string name="step5_message">Als alle medailles behaald zijn kan heeft u het spel gewonnen en krijgt u een code, deze kan u inleveren bij een giftshope voor een cadeautje.</string>
+    <string name="errorConnection">Er word al een verbinding gemaakt</string>
 </resources>
