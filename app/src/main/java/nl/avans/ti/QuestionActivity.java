@@ -3,6 +3,7 @@ package nl.avans.ti;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -95,5 +96,8 @@ public class QuestionActivity extends AppCompatActivity
 
     }
 
+    public void onBackPressed() {
+        Toast.makeText(getApplicationContext(), "Disabled Back Press", Toast.LENGTH_SHORT).show();
+    }
 
 }

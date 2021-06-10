@@ -13,7 +13,7 @@ public class Attraction {
     private int checkTwoResourceID;
     private int checkThreeResourceID;
     private int medalResourceId;
-    private Context context;
+
 
     private Boolean hasMedal;
 
@@ -23,7 +23,7 @@ public class Attraction {
 
     private Boolean hasCheckpointThree;
 
-    public Attraction(Context context, String imageName, String name, Boolean hasMedal, Boolean hasFirstCheck, Boolean hasSecondCheck, Boolean hasThirdCheck) {
+    public Attraction(String imageName, String name, Boolean hasMedal, Boolean hasFirstCheck, Boolean hasSecondCheck, Boolean hasThirdCheck) {
         this.name = name;
         this.imageName = imageName;
 
@@ -32,7 +32,6 @@ public class Attraction {
         this.hasCheckpointTwo = hasSecondCheck;
         this.hasCheckpointThree = hasThirdCheck;
 
-        this.context = context;
 
         checkImage();
     }
@@ -114,4 +113,5 @@ public class Attraction {
     public Boolean getHasCheckpointThree() {
         return hasCheckpointThree;
     }
+
 }

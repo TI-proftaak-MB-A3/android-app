@@ -26,34 +26,22 @@ import nl.avans.ti.R;
 public class MedalActivity extends AppCompatActivity {
     private RecyclerView medalView;
     private MedalListAdapter medalListAdapter;
-    private LinkedList<Attraction> attractions = new LinkedList<>();
-    private MenuHandler menuHandler;
 
+    private MenuHandler menuHandler;
+    private LoadAttractionsJSON load;
+    private LinkedList<Attraction> attractions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medal);
 
-        try {
-            JSONObject jsonObject = new JSONObject(JsonDataFromAsset());
-            JSONArray jsonArray = jsonObject.getJSONArray("attractions");
 
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject userData = jsonArray.getJSONObject(i);
-                String name = userData.getString("name");
-                String attractionImageName = userData.getString("imageName");
-                boolean hasMedal = userData.getBoolean("hasMedal");
-                boolean hasFirstCheck = userData.getBoolean("hasFirstCheckpoint");
-                boolean hasSecondCheck = userData.getBoolean("hasSecondCheckpoint");
-                boolean hasThirdCheck = userData.getBoolean("hasThirdCheckpoint");
 
-                this.attractions.add(new Attraction(this, attractionImageName, name, hasMedal, hasFirstCheck, hasSecondCheck, hasThirdCheck));
-            }
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+
+        load = LoadAttractionsJSON.getInstance(this);
+        this.attractions = load.getAttractions();
 
         //Temporary until JSOn was added
 //        for (int i = 0; i < 5; i++) {
@@ -77,46 +65,12 @@ public class MedalActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
 
-        SaveDataToAsset();
+        load.save();
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item)
     {
         return menuHandler.onOptionsItemSelected(item);
-    }
-
-    private String JsonDataFromAsset() {
-        String json = "";
-        try {
-            InputStream inputStream = getAssets().open("attractions.json");
-            int sizeOffFile = inputStream.available();
-            byte[] bufferData = new byte[sizeOffFile];
-            inputStream.read(bufferData);
-            inputStream.close();
-            json = new String(bufferData);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return json;
-    }
-
-    private void SaveDataToAsset() {
-        try {
-            JSONObject jsonObject = new JSONObject(JsonDataFromAsset());
-            JSONArray jsonArray = jsonObject.getJSONArray("attractions");
-
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject userData = jsonArray.getJSONObject(i);
-                userData.put("hasMedal", this.attractions.get(i).getHasMedal());
-                userData.put("hasFirstCheckpoint", this.attractions.get(i).getHasCheckpointOne());
-                userData.put("hasSecondCheckpoint", this.attractions.get(i).getHasCheckpointTwo());
-                userData.put("hasThirdCheckpoint", this.attractions.get(i).getHasCheckpointThree());
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
     }
 }

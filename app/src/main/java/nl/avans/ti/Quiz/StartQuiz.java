@@ -14,6 +14,8 @@ import java.util.TimerTask;
 import nl.avans.ti.MQTT.CodeDecryption;
 import nl.avans.ti.MQTT.Connect;
 import nl.avans.ti.MainActivity;
+import nl.avans.ti.Medal.Attraction;
+import nl.avans.ti.Medal.LoadAttractionsJSON;
 import nl.avans.ti.Questions.Question;
 
 public class StartQuiz
@@ -189,6 +191,7 @@ public class StartQuiz
                     if (isCorrectAnswer)
                     {
                         connect.publishMessage("correct");
+                        updateMedals();
                     }
                     else
                     {
@@ -198,6 +201,12 @@ public class StartQuiz
                     backToStart();
                 }
             }
+
+        }
+    }
+
+    private void updateMedals() {
+        for (Attraction a : LoadAttractionsJSON.getInstance(app).getAttractions()) {
 
         }
     }
