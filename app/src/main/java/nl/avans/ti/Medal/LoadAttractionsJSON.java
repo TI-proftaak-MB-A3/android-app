@@ -104,7 +104,7 @@ public class LoadAttractionsJSON {
                 userData.put("hasFirstCheckpoint", attraction.getHasCheckpointOne());
                 userData.put("hasSecondCheckpoint", attraction.getHasCheckpointTwo());
                 userData.put("hasThirdCheckpoint", attraction.getHasCheckpointThree());
-                writeFileOnInternalStorage(, "attractions.json", json);
+//                writeFileOnInternalStorage(, "attractions.json", json);
             }
 
         } catch (JSONException e) {
@@ -112,22 +112,22 @@ public class LoadAttractionsJSON {
         }
     }
 
-    public void writeFileOnInternalStorage(Context mcoContext, String sFileName, String sBody){
-        File dir = new File(mcoContext.getFilesDir(), "mydir");
-        if(!dir.exists()){
-            dir.mkdir();
-        }
-
-        try {
-            File gpxfile = new File(dir, sFileName);
-            FileWriter writer = new FileWriter(gpxfile);
-            writer.append(sBody);
-            writer.flush();
-            writer.close();
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-    }
+//    public void writeFileOnInternalStorage(Context mcoContext, String sFileName, String sBody){
+//        File dir = new File(mcoContext.getFilesDir(), "mydir");
+//        if(!dir.exists()){
+//            dir.mkdir();
+//        }
+//
+//        try {
+//            File gpxfile = new File(dir, sFileName);
+//            FileWriter writer = new FileWriter(gpxfile);
+//            writer.append(sBody);
+//            writer.flush();
+//            writer.close();
+//        } catch (Exception e){
+//            e.printStackTrace();
+//        }
+//    }
 
 
 }
