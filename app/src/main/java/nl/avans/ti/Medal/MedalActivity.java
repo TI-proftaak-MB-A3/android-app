@@ -67,7 +67,7 @@ public class MedalActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
 
-        load.save();
+//        load.save(LinkedList<Attraction> attractions);
     }
 
     @Override

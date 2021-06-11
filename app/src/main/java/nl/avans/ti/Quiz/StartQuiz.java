@@ -17,8 +17,6 @@ import nl.avans.ti.FeedbackPassed;
 import nl.avans.ti.MQTT.CodeDecryption;
 import nl.avans.ti.MQTT.Connect;
 import nl.avans.ti.MainActivity;
-import nl.avans.ti.Medal.Attraction;
-import nl.avans.ti.Medal.LoadAttractionsJSON;
 import nl.avans.ti.Questions.Question;
 
 public class StartQuiz
@@ -29,6 +27,7 @@ public class StartQuiz
     private List<Question> questions;
     private boolean alreadyConnected;
     private ArrayList<String> messages;
+
 
 
     private boolean quizShown;
@@ -105,9 +104,6 @@ public class StartQuiz
         };
         timer.schedule(task, 8000);
 
-
-        System.out.println("doei");
-
     }
 
     public boolean isTryingToConnect()
@@ -118,14 +114,12 @@ public class StartQuiz
 
     public void removeConnection()
     {
-        System.out.println("why");
         connect.unsubscribeToTopic();
         setAlreadyConnected(false);
         setCode("");
         tryingToConnect = false;
         quizShown = false;
         answerChecker = null;
-
     }
 
 
@@ -219,7 +213,6 @@ public class StartQuiz
     {
         Intent intent;
         Context baseContext = app.getBaseContext();
-
         if (answeredCorrect)
         {
             intent = new Intent(baseContext, FeedbackPassed.class);

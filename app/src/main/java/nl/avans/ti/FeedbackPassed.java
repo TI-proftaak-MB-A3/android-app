@@ -12,6 +12,7 @@ import nl.avans.ti.MQTT.Connect;
 import nl.avans.ti.Medal.Attraction;
 import nl.avans.ti.Medal.LoadAttractionsJSON;
 import nl.avans.ti.Questions.Question;
+import nl.avans.ti.R;
 
 public class FeedbackPassed extends AppCompatActivity
 {
@@ -40,12 +41,10 @@ public class FeedbackPassed extends AppCompatActivity
 
     private void updateMedals(Question question)
     {
-
         LinkedList<Attraction> attractions = LoadAttractionsJSON.getInstance(this).getAttractions();
 
         System.out.println(attractions.size() + "size of atractions");
-
-
+        int i = 0;
         for (Attraction attraction : attractions)
         {
             String name = attraction.getName().toLowerCase();
@@ -54,33 +53,34 @@ public class FeedbackPassed extends AppCompatActivity
             if (name.equals(catogorie))
             {
                 System.out.println("Hoegaboega");
+                if (!attraction.getHasCheckpointOne())
+                {
+                    System.out.println("hey 1");
+                    attraction.setHasCheckpointOne(true);
+                }
+                else if (attraction.getHasCheckpointOne() && !attraction.getHasCheckpointTwo())
+                {
+                    System.out.println("hey 2");
+                    attraction.setHasCheckpointTwo(true);
+                }
+                else if (attraction.getHasCheckpointOne() && attraction.getHasCheckpointTwo() && !attraction.getHasCheckpointThree())
+                {
+                    System.out.println("hey 3");
+                    attraction.setHasCheckpointThree(true);
+                    attraction.setHasMedal(true);
+                }
+
+                System.out.println("it is something" + attraction.getHasCheckpointOne());
+                System.out.println(attraction.toString() + " " + i);
             }
 
-
+            i++;
         }
 
 
-
-
-//            if (a.getName().toLowerCase().equals(question.getCatogorie().toLowerCase()))
-//            {
-//                if (!a.getHasCheckpointOne())
-//                {
-//                    a.setHasCheckpointOne(true);
-//                }
-//                else if (a.getHasCheckpointOne() && !a.getHasCheckpointTwo())
-//                {
-//                    a.setHasCheckpointTwo(true);
-//                }
-//                else if (a.getHasCheckpointOne() && a.getHasCheckpointTwo() && !a.getHasCheckpointThree())
-//                {
-//                    a.setHasCheckpointThree(true);
-//                    a.setHasMedal(true);
-//                }
-//            }
-
-
-        LoadAttractionsJSON.getInstance(this).save();
+        System.out.println("Hoi Hey");
+        LoadAttractionsJSON.getInstance(this).save(attractions);
+        System.out.println("Hey hoi");
     }
 
 }

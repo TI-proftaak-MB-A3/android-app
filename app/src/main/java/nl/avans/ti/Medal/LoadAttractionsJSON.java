@@ -2,6 +2,7 @@ package nl.avans.ti.Medal;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.storage.StorageManager;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,12 +11,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 import nl.avans.ti.Json.JsonFromData;
+import nl.avans.ti.MainActivity;
 
 public class LoadAttractionsJSON {
     private LinkedList<Attraction> attractions;
@@ -35,6 +39,9 @@ public class LoadAttractionsJSON {
         return loadAttractionsJSON;
     }
 
+    public void setAttractions(LinkedList<Attraction> attractions) {
+        this.attractions = attractions;
+    }
 
     public LinkedList<Attraction> getAttractions() {
         load();
@@ -64,13 +71,14 @@ public class LoadAttractionsJSON {
         }
     }
 
-    public void save() {
-//        load();
-//        SaveDataToAsset();
+    public void save(LinkedList<Attraction> attractions) {
+ //       load();
+        SaveDataToAsset(attractions);
 
 
         for (Attraction attraction : getAttractions())
         {
+            System.out.println("please make it stop");
             Log.d("LoadAttractionsJSON", " " + attraction.toString());
         }
 
@@ -79,7 +87,7 @@ public class LoadAttractionsJSON {
 
     }
 
-    private void SaveDataToAsset() {
+    private void SaveDataToAsset(LinkedList<Attraction> attractionLinkedList) {
 
         try {
 
@@ -88,17 +96,38 @@ public class LoadAttractionsJSON {
 
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject userData = jsonArray.getJSONObject(i);
-
-                Attraction attraction = this.attractions.get(i);
+                System.out.println(userData);
+                System.out.println("sgderfhjkl");
+                Attraction attraction = attractionLinkedList.get(i);
+                System.out.println(attractionLinkedList.size());
                 userData.put("hasMedal", attraction.getHasMedal());
                 userData.put("hasFirstCheckpoint", attraction.getHasCheckpointOne());
                 userData.put("hasSecondCheckpoint", attraction.getHasCheckpointTwo());
                 userData.put("hasThirdCheckpoint", attraction.getHasCheckpointThree());
+                writeFileOnInternalStorage(, "attractions.json", json);
             }
-
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
+
+    public void writeFileOnInternalStorage(Context mcoContext, String sFileName, String sBody){
+        File dir = new File(mcoContext.getFilesDir(), "mydir");
+        if(!dir.exists()){
+            dir.mkdir();
+        }
+
+        try {
+            File gpxfile = new File(dir, sFileName);
+            FileWriter writer = new FileWriter(gpxfile);
+            writer.append(sBody);
+            writer.flush();
+            writer.close();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
 }

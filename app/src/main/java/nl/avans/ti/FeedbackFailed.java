@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import nl.avans.ti.MQTT.Connect;
 import nl.avans.ti.Questions.Question;
+import nl.avans.ti.R;
 
 public class FeedbackFailed extends AppCompatActivity {
     private TextView answerView;
