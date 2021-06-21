@@ -36,10 +36,11 @@ public class Attraction {
     }
 
     public void checkImage() {
+        //todo fix this
         if (hasMedal) {
-            medalResourceId = R.drawable.medal_completed;
+            medalResourceId = R.drawable.baron_true;
         } else {
-            medalResourceId = R.drawable.medal_progres;
+            medalResourceId = R.drawable.baron_false;
         }
 
         if (hasCheckpointOne) {
