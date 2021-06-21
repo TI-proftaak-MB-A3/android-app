@@ -1,5 +1,7 @@
 package nl.avans.ti.Medal;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,16 +16,20 @@ import nl.avans.ti.Json.JsonFromData;
 
 public class LoadAttractionsJSON
 {
-    private LinkedList<Attraction> attractions;
     private String json;
     private static LoadAttractionsJSON loadAttractionsJSON;
 
     private static final String TAG = LoadAttractionsJSON.class.getName();
+    private AppCompatActivity appCompatActivity;
+
+    private static final String jsonSaveKey = "JsonAttractions";
+
 
     private LoadAttractionsJSON(AppCompatActivity appCompatActivity)
     {
-        this.attractions = new LinkedList<>();
-        json = JsonFromData.JsonDataFromAsset(appCompatActivity, "attractions.json");
+        this.appCompatActivity = appCompatActivity;
+
+        save(getAttractions());
     }
 
     public static LoadAttractionsJSON getInstance(AppCompatActivity appCompatActivity)
@@ -35,19 +41,34 @@ public class LoadAttractionsJSON
         return loadAttractionsJSON;
     }
 
-    public void setAttractions(LinkedList<Attraction> attractions)
-    {
-        this.attractions = attractions;
-    }
 
     public LinkedList<Attraction> getAttractions()
     {
         load();
-        return attractions;
+        return loadFromJson();
     }
 
     private void load()
     {
+        SharedPreferences sharedPref = appCompatActivity.getPreferences(Context.MODE_PRIVATE);
+
+
+        String defaultValue = JsonFromData.JsonDataFromAsset(appCompatActivity, "attractions.json");
+        if (sharedPref.contains(jsonSaveKey))
+        {
+            json = sharedPref.getString(jsonSaveKey, "bingo");
+        }
+        else
+        {
+            json = sharedPref.getString(jsonSaveKey, defaultValue);
+        }
+    }
+
+
+    private LinkedList<Attraction> loadFromJson()
+    {
+        LinkedList<Attraction> attractions = new LinkedList<>();
+
         try
         {
 
@@ -64,7 +85,7 @@ public class LoadAttractionsJSON
                 boolean hasSecondCheck = userData.getBoolean("hasSecondCheckpoint");
                 boolean hasThirdCheck = userData.getBoolean("hasThirdCheckpoint");
 
-                this.attractions.add(new Attraction(attractionImageName, name, hasMedal, hasFirstCheck, hasSecondCheck, hasThirdCheck));
+                attractions.add(new Attraction(attractionImageName, name, hasMedal, hasFirstCheck, hasSecondCheck, hasThirdCheck));
             }
 
         }
@@ -72,20 +93,18 @@ public class LoadAttractionsJSON
         {
             e.printStackTrace();
         }
+
+        return attractions;
     }
 
     public void save(LinkedList<Attraction> attractions)
     {
-        //       load();
         SaveDataToAsset(attractions);
 
-
-        for (Attraction attraction : getAttractions())
-        {
-            System.out.println("please make it stop");
-            Log.d("LoadAttractionsJSON", " " + attraction.toString());
-        }
-
+        SharedPreferences sharedPref = appCompatActivity.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(jsonSaveKey, json);
+        editor.apply();
     }
 
     private void SaveDataToAsset(LinkedList<Attraction> attractionLinkedList)
