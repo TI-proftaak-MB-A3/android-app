@@ -1,0 +1,104 @@
+{
+  "attractions": [
+    {
+      "name":"Jonkheer 1897",
+      "imageName":"jonkheer_1897.jpg",
+      "iconFalse": "baron_false",
+      "iconTrue": "baron_true",
+      "hasFirstCheckpoint":"false",
+      "hasSecondCheckpoint":"false",
+      "hasThirdCheckpoint":"false",
+      "hasMedal":"false"
+    },
+    {
+      "name":"Astrolica",
+      "imageName":"astrolica.jpg",
+      "iconFalse": "galaxy_false",
+      "iconTrue": "galaxy_true",
+      "hasFirstCheckpoint":"false",
+      "hasSecondCheckpoint":"false",
+      "hasThirdCheckpoint":"false",
+      "hasMedal":"false"
+    },
+    {
+      "name":"De Zwevende Belg",
+      "imageName":"de_zwevende_belg.jpg",
+      "iconFalse": "ship_false",
+      "iconTrue": "ship_true",
+      "hasFirstCheckpoint":"false",
+      "hasSecondCheckpoint":"false",
+      "hasThirdCheckpoint":"false",
+      "hasMedal":"false"
+    },
+    {
+      "name":"Droomreis",
+      "imageName":"droomreis.jpg",
+      "iconFalse": "fairy_false",
+      "iconTrue": "fairy_true",
+      "hasFirstCheckpoint":"false",
+      "hasSecondCheckpoint":"false",
+      "hasThirdCheckpoint":"false",
+      "hasMedal":"false"
+    },
+    {
+      "name":"Johan & de eenhoorn",
+      "imageName":"johan_en_de_eenhoorn.jpg",
+      "iconFalse": "unicorn_false.jpg",
+      "iconTrue": "unicorn_true.jpg",
+      "hasFirstCheckpoint":"false",
+      "hasSecondCheckpoint":"false",
+      "hasThirdCheckpoint":"false",
+      "hasMedal":"false"
+    },
+    {
+      "name":"HaluCinata",
+      "imageName":"halucinata.jpg",
+      "iconFalse": "fakir_false",
+      "iconTrue": "fakir_true",
+      "hasFirstCheckpoint":"false",
+      "hasSecondCheckpoint":"false",
+      "hasThirdCheckpoint":"false",
+      "hasMedal":"false"
+    },
+    {
+      "name":"Cobra",
+      "imageName":"cobra.jpg",
+      "iconFalse": "cobra_false",
+      "iconTrue": "cobra_true",
+      "hasFirstCheckpoint":"false",
+      "hasSecondCheckpoint":"false",
+      "hasThirdCheckpoint":"false",
+      "hasMedal":"false"
+    },
+    {
+      "name":"Uilenrots",
+      "imageName":"uilenrots.jpg",
+      "iconFalse": "owl_false",
+      "iconTrue": "owl_true",
+      "hasFirstCheckpoint":"false",
+      "hasSecondCheckpoint":"false",
+      "hasThirdCheckpoint":"false",
+      "hasMedal":"false"
+    },
+    {
+      "name":"Rob",
+      "imageName":"rob.jpg",
+      "iconFalse": "rob_false",
+      "iconTrue": "rob_true",
+      "hasFirstCheckpoint":"false",
+      "hasSecondCheckpoint":"false",
+      "hasThirdCheckpoint":"false",
+      "hasMedal":"false"
+    },
+    {
+      "name":"Festival overal",
+      "imageName":"carnaval_overal.jpg",
+      "iconFalse": "joker_false",
+      "iconTrue": "joker_true",
+      "hasFirstCheckpoint":"false",
+      "hasSecondCheckpoint":"false",
+      "hasThirdCheckpoint":"false",
+      "hasMedal":"false"
+    }
+    ]
+}

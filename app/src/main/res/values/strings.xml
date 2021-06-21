@@ -1,3 +1,30 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name" translatable="false">Essteling Quiz</string>
+    <string name="errorAboutCodeLength">The code must be 6 digits long</string>
+    <string name="vliegendeAttractie">Flying belgium</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+    <string name="play_game">Play Game</string>
+    <string name="map">Map</string>
+    <string name="medals">Medals</string>
+    <string name="help">Help</string>
+    <string name="helpLong">Welcome to the essteling quiz app. This app is played in the queue of an attraction of your choice. Above on the map you can see which attractions all contain one of our quiz boards. You play the quiz by going to one of these boards and entering the code that is displayed. After this, a question will be shown on your phone, you can answer this question by pressing 1 of the buttons at the board corresponding to your answer.</string>
+    <string name="step_1">Step 1</string>
+    <string name="step_2">Step 2</string>
+    <string name="step_3">Step 3</string>
+    <string name="step_4">Step 4</string>
+    <string name="step_5">Step 5</string>
+    <string name="incorrect" translatable="false">Incorrect!</string>
+    <string name="correct" translatable="false">Correct!</string>
+    <string name="step3_message">Vervolgens komt er een vraag in de app met 4 antwoor mogelijkheden er onder. Als u uit het antwoord bent kunt u het antwoord bevestigen door op de corresponderende knop bij het LCD scherm te drukken.</string>
+    <string name="back_button_text">Back</string>
+    <string name="wrong_answer_text">The answer yu\'ve just entered is incorrect! The right answer is:</string>
+    <string name="correct_message">The answer you\'ve entered is correct! Congrats!</string>
+    <string name="nextsteps_text">The answer will be submitted to the medal overview. Have fun and keep on collecting medals!</string>
+    <string name="swipe_right"><![CDATA[Swipe  right >]]></string>
+    <string name="step1_text">When you\'ve arrived too one of the displays in the que, press on of the buttons to generate a code</string>
+    <string name="step2_message">You can enter the code that has been generated in the app</string>
+    <string name="step4_message">If the answer is right, you will earn a point. For each attraction you\'ll need 3 points to earn a medal.</string>
+    <string name="step5_message">If you\'ve earned all medals, you will get a code that you can exchange for a little gift at the store</string>
+    <string name="errorConnection">There is already a connection in the making</string>
 </resources>
