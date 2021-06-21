@@ -1,5 +1,6 @@
 package nl.avans.ti.Quiz;
 
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
@@ -11,6 +12,8 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import nl.avans.ti.FeedbackFailed;
+import nl.avans.ti.FeedbackPassed;
 import nl.avans.ti.MQTT.CodeDecryption;
 import nl.avans.ti.MQTT.Connect;
 import nl.avans.ti.MainActivity;
@@ -26,6 +29,7 @@ public class StartQuiz
     private ArrayList<String> messages;
 
 
+
     private boolean quizShown;
 
     private boolean tryingToConnect;
@@ -33,6 +37,7 @@ public class StartQuiz
     public static interface AnswerChecker
     {
         boolean checkAnswer(String string);
+        Question getQuestion();
     }
 
     private AnswerChecker answerChecker;
@@ -115,7 +120,6 @@ public class StartQuiz
         tryingToConnect = false;
         quizShown = false;
         answerChecker = null;
-
     }
 
 
@@ -178,10 +182,13 @@ public class StartQuiz
             }
             else
             {
-                boolean isCorrectAnswer = answerChecker.checkAnswer(recievedMessage);
 
                 if ("ABCD".contains(recievedMessage.toUpperCase()))
                 {
+                    boolean isCorrectAnswer = answerChecker.checkAnswer(recievedMessage);
+                    Question question = answerChecker.getQuestion();
+                    System.out.println(question);
+
                     if (isCorrectAnswer)
                     {
                         connect.publishMessage("correct");
@@ -190,13 +197,35 @@ public class StartQuiz
                     {
                         connect.publishMessage("incorrect");
                     }
+
                     removeConnection();
-                    backToStart();
+                    showAnswerScreen(isCorrectAnswer,question);
+
                 }
             }
 
         }
     }
+
+
+
+    public void showAnswerScreen(boolean answeredCorrect, Question question)
+    {
+        Intent intent;
+        Context baseContext = app.getBaseContext();
+        if (answeredCorrect)
+        {
+            intent = new Intent(baseContext, FeedbackPassed.class);
+        }
+        else
+        {
+            intent = new Intent(baseContext, FeedbackFailed.class);
+        }
+
+        intent.putExtra("Question",question);
+        app.startActivity(intent);
+    }
+
 
     //implement method to go back to start
     public void backToStart()

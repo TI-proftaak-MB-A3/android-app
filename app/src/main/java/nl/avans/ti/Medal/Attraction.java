@@ -24,25 +24,28 @@ public class Attraction {
 
     private Boolean hasCheckpointThree;
 
+
     public Attraction(String attractionImageName, String attractionName, Boolean hasMedal, Boolean hasFirstCheck, Boolean hasSecondCheck, Boolean hasThirdCheck, String iconNameFalse, String iconNameTrue) {
         this.attractionName = attractionName;
         this.attractionImageName = attractionImageName;
+
 
         this.hasMedal = hasMedal;
         this.hasCheckpointOne = hasFirstCheck;
         this.hasCheckpointTwo = hasSecondCheck;
         this.hasCheckpointThree = hasThirdCheck;
 
-        if (hasMedal) {
-            this.iconImageName = iconNameTrue;
-        } else {
-            this.iconImageName = iconNameFalse;
-        }
 
         checkImage();
     }
 
-    private void checkImage() {
+    public void checkImage() {
+        if (hasMedal) {
+            medalResourceId = R.drawable.medal_completed;
+        } else {
+            medalResourceId = R.drawable.medal_progres;
+        }
+
         if (hasCheckpointOne) {
             checkOneResourceID = R.drawable.check_complete;
         } else {
@@ -128,5 +131,28 @@ public class Attraction {
 
     public Boolean getHasCheckpointThree() {
         return hasCheckpointThree;
+    }
+
+    public void setHasMedal(Boolean hasMedal) {
+        this.hasMedal = hasMedal;
+    }
+
+    public void setHasCheckpointOne(Boolean hasCheckpointOne) {
+        this.hasCheckpointOne = hasCheckpointOne;
+    }
+
+    public void setHasCheckpointTwo(Boolean hasCheckpointTwo) {
+        this.hasCheckpointTwo = hasCheckpointTwo;
+    }
+
+    public void setHasCheckpointThree(Boolean hasCheckpointThree) {
+        this.hasCheckpointThree = hasCheckpointThree;
+    }
+
+
+    @Override
+    public String toString()
+    {
+        return "Attraction{" + "hasMedal=" + hasMedal + ", hasCheckpointOne=" + hasCheckpointOne + ", hasCheckpointTwo=" + hasCheckpointTwo + ", hasCheckpointThree=" + hasCheckpointThree + '}';
     }
 }

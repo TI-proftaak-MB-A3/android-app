@@ -1,17 +1,18 @@
 package nl.avans.ti;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
 import nl.avans.ti.MQTT.Connect;
+import nl.avans.ti.Questions.Question;
 import nl.avans.ti.Quiz.StartQuiz;
 
-public class QuestionActivity extends AppCompatActivity
+public class QuestionActivity extends AppCompatActivity implements StartQuiz.AnswerChecker
 {
     private TextView textViewQuestion;
     private TextView textViewOptionA;
@@ -23,6 +24,7 @@ public class QuestionActivity extends AppCompatActivity
 
     private int shuffle;
     String correctAnswer;
+    Question question;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -43,18 +45,20 @@ public class QuestionActivity extends AppCompatActivity
         views.add(this.textViewOptionC);
         views.add(this.textViewOptionD);
 
-        Intent getIntent = getIntent();
-        String question = getIntent.getStringExtra("QUESTION");
-        this.textViewQuestion.setText(question);
 
-        String categorie = getIntent.getStringExtra("CATEGORIE");
+        question = (Question) getIntent().getSerializableExtra("Question");
+
+        String questionString = question.getQuestion();
+        this.textViewQuestion.setText(questionString);
+
+        String categorie = question.getCatogorie();
         this.textViewConnectedTo.setText(categorie);
 
-        ArrayList<String> answers = getIntent.getStringArrayListExtra("ANSWERS");
+        ArrayList<String> answers = question.getAnswers();
 
-        correctAnswer = getIntent.getStringExtra("RIGHT_ANSWER");
+        correctAnswer = question.getCorrectAnswer();
 
-        shuffle = Integer.parseInt(getIntent.getStringExtra("SHUFFLE"));
+        shuffle = Integer.parseInt(question.getShuffle());
 
 
         for (int i = 0; i < views.size(); i++)
@@ -65,7 +69,12 @@ public class QuestionActivity extends AppCompatActivity
         }
 
 
-        Connect.getConnect().getStartQuiz().setAnswerChecker(this::checkAnswer);
+        Connect.getConnect().getStartQuiz().setAnswerChecker(this);
+    }
+
+    public Question getQuestion()
+    {
+        return question;
     }
 
     public boolean checkAnswer(String recievedLetter)
@@ -95,5 +104,8 @@ public class QuestionActivity extends AppCompatActivity
 
     }
 
+    public void onBackPressed() {
+        Toast.makeText(getApplicationContext(), "Disabled Back Press", Toast.LENGTH_SHORT).show();
+    }
 
 }
