@@ -7,9 +7,8 @@ import java.lang.reflect.Field;
 import nl.avans.ti.R;
 
 public class Attraction {
-    private String attractionImageName;
-    private String attractionName;
-    private String iconImageName;
+    private String imageName;
+    private String name;
     private int checkOneResourceID;
     private int checkTwoResourceID;
     private int checkThreeResourceID;
@@ -24,17 +23,14 @@ public class Attraction {
 
     private Boolean hasCheckpointThree;
 
-
-    public Attraction(String attractionImageName, String attractionName, Boolean hasMedal, Boolean hasFirstCheck, Boolean hasSecondCheck, Boolean hasThirdCheck, String iconNameFalse, String iconNameTrue) {
-        this.attractionName = attractionName;
-        this.attractionImageName = attractionImageName;
-
+    public Attraction(String imageName, String name, Boolean hasMedal, Boolean hasFirstCheck, Boolean hasSecondCheck, Boolean hasThirdCheck) {
+        this.name = name;
+        this.imageName = imageName;
 
         this.hasMedal = hasMedal;
         this.hasCheckpointOne = hasFirstCheck;
         this.hasCheckpointTwo = hasSecondCheck;
         this.hasCheckpointThree = hasThirdCheck;
-
 
         checkImage();
     }
@@ -65,8 +61,8 @@ public class Attraction {
         }
     }
 
-    public String getAttractionName() {
-        return attractionName;
+    public String getName() {
+        return name;
     }
 
     public int getCheckOneResourceID() {
@@ -85,30 +81,14 @@ public class Attraction {
         return medalResourceId;
     }
 
-    public int getAttractionImageID() {
-        this.attractionImageName = this.attractionImageName.replace(".jpg", "");
-        this.attractionImageName = this.attractionImageName.trim();
+    public int getAttractionResourceID() {
+        this.imageName = this.imageName.replace(".jpg", "");
+        this.imageName = this.imageName.trim();
         int imageID = 0;
 
         try {
             Class<R.drawable> drawableClass = R.drawable.class;
-            Field image = drawableClass.getDeclaredField(this.attractionImageName);
-            imageID = image.getInt(drawableClass);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return imageID;
-    }
-
-    public int getIconImageID() {
-        this.iconImageName = this.iconImageName.replace(".jpg", "");
-        this.iconImageName = this.iconImageName.trim();
-        int imageID = 0;
-
-        try {
-            Class<R.drawable> drawableClass = R.drawable.class;
-            Field image = drawableClass.getDeclaredField(this.iconImageName);
+            Field image = drawableClass.getDeclaredField(this.imageName);
             imageID = image.getInt(drawableClass);
         } catch (Exception e) {
             e.printStackTrace();
