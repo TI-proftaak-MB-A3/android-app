@@ -207,6 +207,7 @@ public class Connect
         {
             Log.e(LOGTAG, "MQTT exception while publishing topic to MQTT broker, msg: " + e.getMessage() + ", cause: " + e.getCause());
             e.printStackTrace();
+            System.out.println("didn't work");
         }
     }
 
