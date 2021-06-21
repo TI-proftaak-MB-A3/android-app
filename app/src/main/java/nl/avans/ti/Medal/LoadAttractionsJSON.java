@@ -1,8 +1,5 @@
 package nl.avans.ti.Medal;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.storage.StorageManager;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,50 +8,54 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 import nl.avans.ti.Json.JsonFromData;
-import nl.avans.ti.MainActivity;
 
-public class LoadAttractionsJSON {
+public class LoadAttractionsJSON
+{
     private LinkedList<Attraction> attractions;
     private String json;
     private static LoadAttractionsJSON loadAttractionsJSON;
 
-    private LoadAttractionsJSON(AppCompatActivity appCompatActivity) {
+    private static final String TAG = LoadAttractionsJSON.class.getName();
+
+    private LoadAttractionsJSON(AppCompatActivity appCompatActivity)
+    {
         this.attractions = new LinkedList<>();
         json = JsonFromData.JsonDataFromAsset(appCompatActivity, "attractions.json");
     }
 
-    public static LoadAttractionsJSON getInstance(AppCompatActivity appCompatActivity) {
+    public static LoadAttractionsJSON getInstance(AppCompatActivity appCompatActivity)
+    {
         if (loadAttractionsJSON == null)
         {
-            return new LoadAttractionsJSON(appCompatActivity);
+            loadAttractionsJSON = new LoadAttractionsJSON(appCompatActivity);
         }
         return loadAttractionsJSON;
     }
 
-    public void setAttractions(LinkedList<Attraction> attractions) {
+    public void setAttractions(LinkedList<Attraction> attractions)
+    {
         this.attractions = attractions;
     }
 
-    public LinkedList<Attraction> getAttractions() {
+    public LinkedList<Attraction> getAttractions()
+    {
         load();
         return attractions;
     }
 
     private void load()
     {
-        try {
+        try
+        {
+
             JSONObject jsonObject = new JSONObject(json);
             JSONArray jsonArray = jsonObject.getJSONArray("attractions");
 
-            for (int i = 0; i < jsonArray.length(); i++) {
+            for (int i = 0; i < jsonArray.length(); i++)
+            {
                 JSONObject userData = jsonArray.getJSONObject(i);
                 String name = userData.getString("name");
                 String attractionImageName = userData.getString("imageName");
@@ -63,16 +64,19 @@ public class LoadAttractionsJSON {
                 boolean hasSecondCheck = userData.getBoolean("hasSecondCheckpoint");
                 boolean hasThirdCheck = userData.getBoolean("hasThirdCheckpoint");
 
-                this.attractions.add(new Attraction( attractionImageName, name, hasMedal, hasFirstCheck, hasSecondCheck, hasThirdCheck));
+                this.attractions.add(new Attraction(attractionImageName, name, hasMedal, hasFirstCheck, hasSecondCheck, hasThirdCheck));
             }
 
-        } catch (JSONException e) {
+        }
+        catch (JSONException e)
+        {
             e.printStackTrace();
         }
     }
 
-    public void save(LinkedList<Attraction> attractions) {
- //       load();
+    public void save(LinkedList<Attraction> attractions)
+    {
+        //       load();
         SaveDataToAsset(attractions);
 
 
@@ -82,21 +86,21 @@ public class LoadAttractionsJSON {
             Log.d("LoadAttractionsJSON", " " + attraction.toString());
         }
 
-
-
-
     }
 
-    private void SaveDataToAsset(LinkedList<Attraction> attractionLinkedList) {
-
-        try {
-
+    private void SaveDataToAsset(LinkedList<Attraction> attractionLinkedList)
+    {
+        try
+        {
+            Log.d(TAG, "SaveDataToAsset: old json: \n" + json);
             JSONObject jsonObject = new JSONObject(json);
             JSONArray jsonArray = jsonObject.getJSONArray("attractions");
 
-            for (int i = 0; i < jsonArray.length(); i++) {
+            for (int i = 0; i < jsonArray.length(); i++)
+            {
+
                 JSONObject userData = jsonArray.getJSONObject(i);
-                System.out.println(userData);
+                Log.d(TAG, "SaveDataToAsset: user data is");
                 System.out.println("sgderfhjkl");
                 Attraction attraction = attractionLinkedList.get(i);
                 System.out.println(attractionLinkedList.size());
@@ -104,30 +108,36 @@ public class LoadAttractionsJSON {
                 userData.put("hasFirstCheckpoint", attraction.getHasCheckpointOne());
                 userData.put("hasSecondCheckpoint", attraction.getHasCheckpointTwo());
                 userData.put("hasThirdCheckpoint", attraction.getHasCheckpointThree());
-//                writeFileOnInternalStorage(, "attractions.json", json);
+                //                writeFileOnInternalStorage(, "attractions.json", json);
             }
 
-        } catch (JSONException e) {
+            json = jsonObject.toString();
+            Log.d(TAG, "SaveDataToAsset: new json: \n" + json);
+
+
+        }
+        catch (JSONException e)
+        {
             e.printStackTrace();
         }
     }
 
-//    public void writeFileOnInternalStorage(Context mcoContext, String sFileName, String sBody){
-//        File dir = new File(mcoContext.getFilesDir(), "mydir");
-//        if(!dir.exists()){
-//            dir.mkdir();
-//        }
-//
-//        try {
-//            File gpxfile = new File(dir, sFileName);
-//            FileWriter writer = new FileWriter(gpxfile);
-//            writer.append(sBody);
-//            writer.flush();
-//            writer.close();
-//        } catch (Exception e){
-//            e.printStackTrace();
-//        }
-//    }
+    //    public void writeFileOnInternalStorage(Context mcoContext, String sFileName, String sBody){
+    //        File dir = new File(mcoContext.getFilesDir(), "mydir");
+    //        if(!dir.exists()){
+    //            dir.mkdir();
+    //        }
+    //
+    //        try {
+    //            File gpxfile = new File(dir, sFileName);
+    //            FileWriter writer = new FileWriter(gpxfile);
+    //            writer.append(sBody);
+    //            writer.flush();
+    //            writer.close();
+    //        } catch (Exception e){
+    //            e.printStackTrace();
+    //        }
+    //    }
 
 
 }

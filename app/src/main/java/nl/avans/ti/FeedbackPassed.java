@@ -71,6 +71,8 @@ public class FeedbackPassed extends AppCompatActivity
                 }
 
                 System.out.println("it is something" + attraction.getHasCheckpointOne());
+                attraction.checkImage();
+
                 System.out.println(attraction.toString() + " " + i);
             }
 
@@ -81,6 +83,8 @@ public class FeedbackPassed extends AppCompatActivity
         System.out.println("Hoi Hey");
         LoadAttractionsJSON.getInstance(this).save(attractions);
         System.out.println("Hey hoi");
+
+
     }
 
 }

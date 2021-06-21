@@ -32,11 +32,10 @@ public class Attraction {
         this.hasCheckpointTwo = hasSecondCheck;
         this.hasCheckpointThree = hasThirdCheck;
 
-
         checkImage();
     }
 
-    private void checkImage() {
+    public void checkImage() {
         if (hasMedal) {
             medalResourceId = R.drawable.medal_completed;
         } else {
