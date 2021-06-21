@@ -1,6 +1,8 @@
 package nl.avans.ti;
 
+
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -14,18 +16,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.List;
 
 import nl.avans.ti.MQTT.Connect;
+import nl.avans.ti.Questions.Question;
+import nl.avans.ti.Questions.QuestionsLoader;
 import nl.avans.ti.Quiz.StartQuiz;
-import nl.avans.ti.questions.Question;
-import nl.avans.ti.questions.QuestionsLoader;
 
 public class MainActivity extends AppCompatActivity
 {
+
+
     private Connect connect;
 
     EditText editText;
     MenuHandler menuHandler;
-    private StartQuiz startQuiz;
     List<Question> questions;
+    private StartQuiz startQuiz;
 
     @Override
 
@@ -41,13 +45,23 @@ public class MainActivity extends AppCompatActivity
         editText = findViewById(R.id.editTextNumberSigned);
         menuHandler = new MenuHandler(this);
         menuHandler.start();
-        this.connect = new Connect(this);
-        this.startQuiz = new StartQuiz(this.connect);
+        this.connect = Connect.getConnect(this, questions);
+        this.startQuiz = connect.getStartQuiz();
+
+        //        Intent intent = new Intent(MainActivity.this, QuestionActivity.class);
+        //        startActivity(intent);
+
+        if (this.startQuiz.isAlreadyConnected())
+        {
+            startQuizWithIntent();
+        }
+
 
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onDestroy()
+    {
         super.onDestroy();
     }
 
@@ -60,18 +74,50 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(view.getContext(), R.string.errorAboutCodeLength, Toast.LENGTH_LONG).show();
             Log.d(String.valueOf(view.getTag()), "value entered didn't meet the requirments");
         }
+        else
+        {
 
+            if (!this.startQuiz.isTryingToConnect())
+            {
+                if (!this.startQuiz.isAlreadyConnected()  /*|| !this.startQuiz.getCode().equals(enteredCode)*/)
+                {
+                    this.startQuiz.setCode(enteredCode);
+                    this.startQuiz.addConnection();
+                }
+            }
+            else
+            {
+                Toast.makeText(view.getContext(), R.string.errorConnection, Toast.LENGTH_LONG).show();
+            }
 
-        //todo validate code and start activity
-        Intent intent = new Intent();
-        String code = enteredCode;
-        intent.putExtra("placeholder", enteredCode);
-
-
-        if (!this.startQuiz.isAlreadyConnected()){
-            this.startQuiz.setCode(code);
-            this.startQuiz.addConnection();
+            System.out.println(startQuiz.isAlreadyConnected());
         }
+
+    }
+
+
+    public void startQuizWithIntent()
+    {
+        Intent intent = new Intent();
+        intent.putExtra("placeholder", startQuiz.getCode());
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+        {
+            Log.d(this.getAttributionTag(), "startQuizWithIntent: Starting new activity");
+        }
+
+
+        Question question = this.startQuiz.getQuestion();
+
+        Intent intentSend = new Intent(MainActivity.this, QuestionActivity.class);
+        intentSend.putExtra("QUESTION", question.getQuestion());
+        intentSend.putExtra("ANSWERS", question.getAnswers());
+        intentSend.putExtra("RIGHT_ANSWER", question.getCorrectAnswer());
+        intentSend.putExtra("CATEGORIE", question.getCatogorie());
+        intentSend.putExtra("SHUFFLE", question.getShuffle());
+        startActivity(intentSend);
+
         System.out.println(startQuiz.isAlreadyConnected());
     }
 
@@ -80,5 +126,13 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(@NonNull MenuItem item)
     {
         return menuHandler.onOptionsItemSelected(item);
+    }
+
+    public void gotoWaitingscreen()
+    {
+        Intent intent = new Intent(this, WaitingScreen.class);
+        startActivity(intent);
+
+
     }
 }

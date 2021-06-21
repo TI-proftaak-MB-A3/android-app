@@ -34,7 +34,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:textSize="20sp"
-        android:text="Als u alle medailles heeft behaald krijgt u een code in de app. Als u deze code inleverd bij een van onze giftshops krijgt u hier  een kleinigheidje voor."
+
+        android:text="@string/step5_message"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setpOneHeader"
         app:layout_constraintVertical_bias="0.027"

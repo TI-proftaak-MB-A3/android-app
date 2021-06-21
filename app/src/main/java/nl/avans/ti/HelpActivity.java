@@ -12,6 +12,12 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
 
+import nl.avans.ti.Fragments.FragmentFive;
+import nl.avans.ti.Fragments.FragmentFour;
+import nl.avans.ti.Fragments.FragmentOne;
+import nl.avans.ti.Fragments.FragmentThree;
+import nl.avans.ti.Fragments.FragmentTwo;
+
 public class HelpActivity extends AppCompatActivity
 {
 

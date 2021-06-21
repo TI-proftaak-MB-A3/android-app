@@ -35,6 +35,9 @@
         android:layout_marginHorizontal="20dp"
         android:text="Als u dit doet verschijnt er een code op het schermpje. Wanneer u deze code invoerd in de app word er een timer gestart. deze timer loop 30 seconden, binnen deze tijd kunnen er tot 10 verschillende apparaten verbinden."
         android:textSize="20sp"
+
+        android:text="@string/step2_message"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setpTwoHeader"
         app:layout_constraintVertical_bias="0.028"
@@ -43,7 +46,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Swipe naar rechts >"
+        android:text="@string/swipe_right"
         android:textSize="15sp"
         android:textColor="@color/Green_500"
         android:layout_marginHorizontal="20dp"
