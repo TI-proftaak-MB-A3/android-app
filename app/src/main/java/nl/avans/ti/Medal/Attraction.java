@@ -14,6 +14,7 @@ public class Attraction {
     private int checkThreeResourceID;
     private int medalResourceId;
 
+    private String iconImageName;
 
     private Boolean hasMedal;
 
@@ -23,7 +24,7 @@ public class Attraction {
 
     private Boolean hasCheckpointThree;
 
-    public Attraction(String imageName, String name, Boolean hasMedal, Boolean hasFirstCheck, Boolean hasSecondCheck, Boolean hasThirdCheck) {
+    public Attraction(String imageName, String name, Boolean hasMedal, Boolean hasFirstCheck, Boolean hasSecondCheck, Boolean hasThirdCheck, String iconNameFalse, String iconNameTrue) {
         this.name = name;
         this.imageName = imageName;
 
@@ -32,16 +33,17 @@ public class Attraction {
         this.hasCheckpointTwo = hasSecondCheck;
         this.hasCheckpointThree = hasThirdCheck;
 
+        if (hasMedal) {
+            this.iconImageName = iconNameTrue;
+        } else {
+            this.iconImageName = iconNameFalse;
+        }
+
         checkImage();
     }
 
     public void checkImage() {
-        //todo fix this
-        if (hasMedal) {
-            medalResourceId = R.drawable.baron_true;
-        } else {
-            medalResourceId = R.drawable.baron_false;
-        }
+        getMedalID();
 
         if (hasCheckpointOne) {
             checkOneResourceID = R.drawable.check_complete;
@@ -96,6 +98,22 @@ public class Attraction {
         }
 
         return imageID;
+    }
+
+    public void getMedalID() {
+        this.iconImageName = this.iconImageName.replace(".jpg", "");
+        this.iconImageName = this.iconImageName.trim();
+        int imageID = 0;
+
+        try {
+            Class<R.drawable> drawableClass = R.drawable.class;
+            Field image = drawableClass.getDeclaredField(this.iconImageName);
+            imageID = image.getInt(drawableClass);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        this.medalResourceId = imageID;
     }
 
     public Boolean getHasMedal() {

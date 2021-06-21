@@ -80,12 +80,14 @@ public class LoadAttractionsJSON
                 JSONObject userData = jsonArray.getJSONObject(i);
                 String name = userData.getString("name");
                 String attractionImageName = userData.getString("imageName");
+                String iconNameFalse = userData.getString("iconFalse");
+                String iconNameTrue = userData.getString("iconTrue");
                 boolean hasMedal = userData.getBoolean("hasMedal");
                 boolean hasFirstCheck = userData.getBoolean("hasFirstCheckpoint");
                 boolean hasSecondCheck = userData.getBoolean("hasSecondCheckpoint");
                 boolean hasThirdCheck = userData.getBoolean("hasThirdCheckpoint");
 
-                attractions.add(new Attraction(attractionImageName, name, hasMedal, hasFirstCheck, hasSecondCheck, hasThirdCheck));
+                attractions.add(new Attraction(attractionImageName, name, hasMedal, hasFirstCheck, hasSecondCheck, hasThirdCheck, iconNameFalse, iconNameTrue));
             }
 
         }
