@@ -50,7 +50,7 @@ public class FeedbackPassed extends AppCompatActivity
             String name = attraction.getName().toLowerCase();
             String catogorie = question.getCatogorie().toLowerCase();
 
-            if (name.equals(catogorie))
+            if (name.contains(catogorie))
             {
                 System.out.println("Hoegaboega");
                 if (!attraction.getHasCheckpointOne())

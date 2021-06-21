@@ -1,29 +1,23 @@
 package nl.avans.ti.Medal;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.view.MenuItem;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.LinkedList;
-import java.util.Scanner;
 
+import nl.avans.ti.MainActivity;
 import nl.avans.ti.MenuHandler;
 import nl.avans.ti.R;
 
-public class MedalActivity extends AppCompatActivity {
+public class MedalActivity extends AppCompatActivity
+{
     private RecyclerView medalView;
     private MedalListAdapter medalListAdapter;
     private LinkedList<Attraction> attractions = new LinkedList<>();
@@ -32,7 +26,8 @@ public class MedalActivity extends AppCompatActivity {
     private LoadAttractionsJSON load;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medal);
 
@@ -41,9 +36,9 @@ public class MedalActivity extends AppCompatActivity {
 
 
         //Temporary until JSOn was added
-//        for (int i = 0; i < 5; i++) {
-//            this.attractions.add(new Attraction(R.drawable.efteling_vl_hollander, getString(R.string.vliegendeAttractie) + i, R.drawable.check_failed, R.drawable.medal_progres));
-//        }
+        //        for (int i = 0; i < 5; i++) {
+        //            this.attractions.add(new Attraction(R.drawable.efteling_vl_hollander, getString(R.string.vliegendeAttractie) + i, R.drawable.check_failed, R.drawable.medal_progres));
+        //        }
 
         this.medalView = findViewById(R.id.medalView);
         this.medalListAdapter = new MedalListAdapter(this, this.attractions);
@@ -56,10 +51,30 @@ public class MedalActivity extends AppCompatActivity {
         menuHandler.start();
 
 
+        if (hasAllMedals())
+        {
+            //todo start all medals activity
+        }
+
+
+    }
+
+
+    public boolean hasAllMedals()
+    {
+        for (Attraction attraction : attractions)
+        {
+            if (!attraction.getHasMedal())
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onDestroy()
+    {
         super.onDestroy();
     }
 

@@ -34,6 +34,7 @@ public class LoadAttractionsJSON
 
     public static LoadAttractionsJSON getInstance(AppCompatActivity appCompatActivity)
     {
+
         if (loadAttractionsJSON == null)
         {
             loadAttractionsJSON = new LoadAttractionsJSON(appCompatActivity);
@@ -52,17 +53,13 @@ public class LoadAttractionsJSON
     {
         SharedPreferences sharedPref = appCompatActivity.getPreferences(Context.MODE_PRIVATE);
 
-
         String defaultValue = JsonFromData.JsonDataFromAsset(appCompatActivity, "attractions.json");
-        if (sharedPref.contains(jsonSaveKey))
-        {
-            json = sharedPref.getString(jsonSaveKey, "bingo");
-        }
-        else
-        {
-            json = sharedPref.getString(jsonSaveKey, defaultValue);
-        }
+        json = sharedPref.getString(jsonSaveKey, defaultValue);
+
+        //use this for a reset
+        //json = JsonFromData.JsonDataFromAsset(appCompatActivity, "attractions.json");
     }
+
 
 
     private LinkedList<Attraction> loadFromJson()
