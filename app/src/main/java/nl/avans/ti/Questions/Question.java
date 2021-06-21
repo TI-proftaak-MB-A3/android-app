@@ -1,9 +1,8 @@
 package nl.avans.ti.Questions;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Question implements Serializable
+public class Question
 {
     private String question;
     private ArrayList<String> answers;
