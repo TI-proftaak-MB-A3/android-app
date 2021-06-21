@@ -7,6 +7,8 @@ import java.io.InputStream;
 
 public class JsonFromData
 {
+
+
    public static String JsonDataFromAsset(AppCompatActivity appCompatActivity, String file)
     {
         String json = "";
