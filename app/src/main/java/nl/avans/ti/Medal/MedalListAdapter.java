@@ -33,9 +33,9 @@ public class MedalListAdapter extends RecyclerView.Adapter<MedalListAdapter.Proj
     @Override
     public void onBindViewHolder(@NonNull ProjectViewHolder holder, int position) {
         Attraction current = this.attractions.get(position);
-        holder.attractionImage.setImageResource(current.getAttractionImageID());
-        holder.imageViewIcon.setImageResource(current.getIconImageID());
-        holder.attractionName.setText(current.getAttractionName());
+        holder.attractionImage.setImageResource(current.getAttractionResourceID());
+        holder.imageViewIcon.setImageResource(current.getMedalResourceId());
+        holder.attractionName.setText(current.getName());
         holder.imageViewCheckOne.setImageResource(current.getCheckOneResourceID());
         holder.imageViewCheckTwo.setImageResource(current.getCheckTwoResourceID());
         holder.imageViewCheckThree.setImageResource(current.getCheckThreeResourceID());
