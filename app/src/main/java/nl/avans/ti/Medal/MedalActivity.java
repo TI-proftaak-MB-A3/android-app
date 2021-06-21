@@ -73,6 +73,7 @@ public class MedalActivity extends AppCompatActivity {
         menuHandler.start();
 
 
+
     }
 
     @Override
