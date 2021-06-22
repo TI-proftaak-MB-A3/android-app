@@ -32,6 +32,12 @@ public class LoadAttractionsJSON
         save(getAttractions());
     }
 
+    /**
+     * Method which checks if there is already an loaded JSOn file, else
+     * it will create a new file from teh attractions template
+     * @param appCompatActivity
+     * @return
+     */
     public static LoadAttractionsJSON getInstance(AppCompatActivity appCompatActivity)
     {
 
@@ -49,6 +55,9 @@ public class LoadAttractionsJSON
         return loadFromJson();
     }
 
+    /**
+     * Method which loads a previously saved JSON file
+     */
     private void load()
     {
         SharedPreferences sharedPref = appCompatActivity.getPreferences(Context.MODE_PRIVATE);
@@ -61,7 +70,11 @@ public class LoadAttractionsJSON
     }
 
 
-
+    /**
+     * Method which gets all the data for all the attractions
+     * so the Recyclerview and medals can be loaded correctly
+     * @return
+     */
     private LinkedList<Attraction> loadFromJson()
     {
         LinkedList<Attraction> attractions = new LinkedList<>();
@@ -96,6 +109,11 @@ public class LoadAttractionsJSON
         return attractions;
     }
 
+    /**
+     * method which saves the JSON to a SharedPreference so it will be
+     * loaded when the app is opened again
+     * @param attractions
+     */
     public void save(LinkedList<Attraction> attractions)
     {
         SaveDataToAsset(attractions);
@@ -106,6 +124,11 @@ public class LoadAttractionsJSON
         editor.apply();
     }
 
+    /**
+     * Method which saves the current state of each
+     * attraction to a nes JSON object
+     * @param attractionLinkedList
+     */
     private void SaveDataToAsset(LinkedList<Attraction> attractionLinkedList)
     {
         try
@@ -126,7 +149,6 @@ public class LoadAttractionsJSON
                 userData.put("hasFirstCheckpoint", attraction.getHasCheckpointOne());
                 userData.put("hasSecondCheckpoint", attraction.getHasCheckpointTwo());
                 userData.put("hasThirdCheckpoint", attraction.getHasCheckpointThree());
-                //                writeFileOnInternalStorage(, "attractions.json", json);
             }
 
             json = jsonObject.toString();
@@ -139,23 +161,5 @@ public class LoadAttractionsJSON
             e.printStackTrace();
         }
     }
-
-    //    public void writeFileOnInternalStorage(Context mcoContext, String sFileName, String sBody){
-    //        File dir = new File(mcoContext.getFilesDir(), "mydir");
-    //        if(!dir.exists()){
-    //            dir.mkdir();
-    //        }
-    //
-    //        try {
-    //            File gpxfile = new File(dir, sFileName);
-    //            FileWriter writer = new FileWriter(gpxfile);
-    //            writer.append(sBody);
-    //            writer.flush();
-    //            writer.close();
-    //        } catch (Exception e){
-    //            e.printStackTrace();
-    //        }
-    //    }
-
 
 }

@@ -42,6 +42,10 @@ public class Attraction {
         checkImage();
     }
 
+    /**
+     * Method which checks which image needs to be loaded for each
+     * checkpoint, icon and image of the attraction
+     */
     public void checkImage() {
         getMedalID();
 
@@ -84,6 +88,10 @@ public class Attraction {
         return medalResourceId;
     }
 
+    /**
+     * Method which returns the id of the image of the attraction
+     * @return
+     */
     public int getAttractionResourceID() {
         this.imageName = this.imageName.replace(".jpg", "");
         this.imageName = this.imageName.trim();
@@ -100,6 +108,10 @@ public class Attraction {
         return imageID;
     }
 
+    /**
+     * Method which returns the id of the
+     * icon for the attraction
+     */
     public void getMedalID() {
         this.iconImageName = this.iconImageName.replace(".jpg", "");
         this.iconImageName = this.iconImageName.trim();
