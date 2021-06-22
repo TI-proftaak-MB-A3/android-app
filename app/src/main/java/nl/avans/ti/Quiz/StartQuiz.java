@@ -185,16 +185,23 @@ public class StartQuiz
 
         if (quizShown)
         {
-            if (recievedMessage.equals("time_out"))
-            {
-                //methods to go back to main and close connection aka backToStart
-                backToStart();
-                Toast.makeText(app.getBaseContext(), "Closing conection because of timeout", Toast.LENGTH_LONG).show();
-            }
-            else
-            {
+//            if (recievedMessage.equals("time_out"))
+//            {
+//                //methods to go back to main and close connection aka backToStart
+//                Log.d("StartQuiz", "Timed out");
+//
+//                Intent intent;
+//                Context baseContext = app.getBaseContext();
+//
+//                    intent = new Intent(baseContext, FeedbackFailed.class);
+//
+//                intent.putExtra("Question",answerChecker.getQuestion());
+//                app.startActivity(intent);
+//            }
+//            else
+//            {
 
-                if ("ABCD".contains(recievedMessage.toUpperCase()))
+                if ("ABCDE".contains(recievedMessage.toUpperCase()))
                 {
                     boolean isCorrectAnswer = answerChecker.checkAnswer(recievedMessage);
                     Question question = answerChecker.getQuestion();
@@ -213,7 +220,7 @@ public class StartQuiz
                     showAnswerScreen(isCorrectAnswer,question);
 
                 }
-            }
+            //}
 
         }
     }
