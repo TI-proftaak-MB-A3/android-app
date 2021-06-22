@@ -83,7 +83,7 @@
     {
       "name":"Rob de Bob",
       "imageName":"rob.jpg",
-      "iconFalse": "rob_false091212",
+      "iconFalse": "rob_false",
       "iconTrue": "rob_true",
       "hasFirstCheckpoint":"false",
       "hasSecondCheckpoint":"false",
