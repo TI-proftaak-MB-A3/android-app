@@ -30,7 +30,9 @@
     <string name="correcte_vragen">correcte vragen:</string>
     <string name="question">Vraag</string>
     <string name="waiting_on_start">Wachten op start</string>
-    <string name="discount_message">" "</string>
+    <string name="discount_message">Gefeliceerd je hebt al je medailles verdient, je kan deze code inwisselen bij een winkel voor korting</string>
     <string name="allmedals_message">" "</string>
-    <string name="congratulations">" "</string>
+    <string name="congratulations">"Gefeliciteerd"</string>
+    <string name="enter_code">Voer de code in</string>
+    <string name="connect">Verbind</string>
 </resources>
