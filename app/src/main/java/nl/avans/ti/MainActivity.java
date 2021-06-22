@@ -48,9 +48,6 @@ public class MainActivity extends AppCompatActivity
         this.connect = Connect.getConnect(this, questions);
         this.startQuiz = connect.getStartQuiz();
 
-        //        Intent intent = new Intent(MainActivity.this, QuestionActivity.class);
-        //        startActivity(intent);
-
         if (this.startQuiz.isAlreadyConnected())
         {
             startQuizWithIntent();
@@ -65,6 +62,12 @@ public class MainActivity extends AppCompatActivity
         super.onDestroy();
     }
 
+    /**
+     * Method which checks if the code is correct and after that checks if
+     * the button has been pressed before or not, if not, it will add the code
+     * to the startQuiz class and adds an connection
+     * @param view
+     */
     public void onButtonPressed(View view)
     {
         String enteredCode = editText.getText().toString();
@@ -96,26 +99,23 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    /**
+     * Method which send the question as an extra and starts the
+     * QuestionActivity using an Intent
+     */
     public void startQuizWithIntent()
     {
-        Intent intent = new Intent();
-        intent.putExtra("placeholder", startQuiz.getCode());
-
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
         {
             Log.d(this.getAttributionTag(), "startQuizWithIntent: Starting new activity");
         }
 
-
         Question question = this.startQuiz.getQuestion();
 
         Intent intentSend = new Intent(MainActivity.this, QuestionActivity.class);
-        intentSend.putExtra("QUESTION", question.getQuestion());
-        intentSend.putExtra("ANSWERS", question.getAnswers());
-        intentSend.putExtra("RIGHT_ANSWER", question.getCorrectAnswer());
-        intentSend.putExtra("CATEGORIE", question.getCatogorie());
-        intentSend.putExtra("SHUFFLE", question.getShuffle());
+
+        intentSend.putExtra("Question",question);
         startActivity(intentSend);
 
         System.out.println(startQuiz.isAlreadyConnected());
@@ -128,6 +128,9 @@ public class MainActivity extends AppCompatActivity
         return menuHandler.onOptionsItemSelected(item);
     }
 
+    /**
+     * Intent which opens the waiting screen
+     */
     public void gotoWaitingscreen()
     {
         Intent intent = new Intent(this, WaitingScreen.class);

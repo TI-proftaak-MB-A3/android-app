@@ -1,8 +1,9 @@
 package nl.avans.ti.Questions;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Question
+public class Question implements Serializable
 {
     private String question;
     private ArrayList<String> answers;
@@ -15,11 +16,11 @@ public class Question
 
     public Question(String question, ArrayList<String> answers, String correctAnswer, String catogorie, int id)
     {
-        this.question = question;
-        this.answers = answers;
-        this.correctAnswer = correctAnswer;
-        this.catogorie = catogorie;
-        this.id = id;
+        this.question = question;   // the question
+        this.answers = answers;     // an arraylist with multiple choice answers
+        this.correctAnswer = correctAnswer;     // the correct answer of the question
+        this.catogorie = catogorie;             // the attraction from which the question is from
+        this.id = id;                           // question ID
 
     }
 
@@ -29,6 +30,8 @@ public class Question
     {
         return "Qeustion{" + "question='" + question + '\'' + ", answers=" + answers + ", correctAnswer='" + correctAnswer + '\'' + ", catogorie='" + catogorie + '\'' + ", id=" + id + '}';
     }
+
+    //getters and setters for the attributes
 
     public String getQuestion()
     {

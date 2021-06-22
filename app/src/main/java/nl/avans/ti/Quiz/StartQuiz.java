@@ -1,5 +1,6 @@
 package nl.avans.ti.Quiz;
 
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
@@ -11,6 +12,8 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import nl.avans.ti.FeedbackFailed;
+import nl.avans.ti.FeedbackPassed;
 import nl.avans.ti.MQTT.CodeDecryption;
 import nl.avans.ti.MQTT.Connect;
 import nl.avans.ti.MainActivity;
@@ -26,6 +29,7 @@ public class StartQuiz
     private ArrayList<String> messages;
 
 
+
     private boolean quizShown;
 
     private boolean tryingToConnect;
@@ -33,6 +37,7 @@ public class StartQuiz
     public static interface AnswerChecker
     {
         boolean checkAnswer(String string);
+        Question getQuestion();
     }
 
     private AnswerChecker answerChecker;
@@ -72,6 +77,10 @@ public class StartQuiz
         return alreadyConnected;
     }
 
+
+    /**
+     * Tries to add the connection with the topic of the code, if the arduino doen't answer in 8 seconds it automaticaly disconnects
+     */
     public void addConnection()
     {
         tryingToConnect = true;
@@ -106,7 +115,9 @@ public class StartQuiz
         return tryingToConnect;
     }
 
-
+    /**
+     * disconnects from the subscribed topic and sets the default address for the next connection
+     */
     public void removeConnection()
     {
         connect.unsubscribeToTopic();
@@ -115,10 +126,12 @@ public class StartQuiz
         tryingToConnect = false;
         quizShown = false;
         answerChecker = null;
-
     }
 
-
+    /**
+     * gets the question from the code on the arduino
+     * @return  Question question
+     */
     public Question getQuestion()
     {
         CodeDecryption decryption = new CodeDecryption(this.code);
@@ -143,12 +156,14 @@ public class StartQuiz
         return question;
     }
 
-
+    /**
+     * reads the given message from the MQTT server and starts the corresponding method
+     * @param message
+     */
     public void receiveMessage(MqttMessage message)
     {
-        //todo decide what message does what (after the quiz layout is made)
 
-        String recievedMessage = message.toString();
+        String recievedMessage = message.toString().trim();
         Log.d("StartQuiz", "receiveMessage: " + recievedMessage);
 
 
@@ -178,10 +193,13 @@ public class StartQuiz
             }
             else
             {
-                boolean isCorrectAnswer = answerChecker.checkAnswer(recievedMessage);
 
                 if ("ABCD".contains(recievedMessage.toUpperCase()))
                 {
+                    boolean isCorrectAnswer = answerChecker.checkAnswer(recievedMessage);
+                    Question question = answerChecker.getQuestion();
+                    System.out.println(question);
+
                     if (isCorrectAnswer)
                     {
                         connect.publishMessage("correct");
@@ -190,13 +208,35 @@ public class StartQuiz
                     {
                         connect.publishMessage("incorrect");
                     }
+
                     removeConnection();
-                    backToStart();
+                    showAnswerScreen(isCorrectAnswer,question);
+
                 }
             }
 
         }
     }
+
+
+    //Goes to the multiple choice screen when the quiz is started
+    public void showAnswerScreen(boolean answeredCorrect, Question question)
+    {
+        Intent intent;
+        Context baseContext = app.getBaseContext();
+        if (answeredCorrect)
+        {
+            intent = new Intent(baseContext, FeedbackPassed.class);
+        }
+        else
+        {
+            intent = new Intent(baseContext, FeedbackFailed.class);
+        }
+
+        intent.putExtra("Question",question);
+        app.startActivity(intent);
+    }
+
 
     //implement method to go back to start
     public void backToStart()
