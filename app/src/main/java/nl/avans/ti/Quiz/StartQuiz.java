@@ -77,6 +77,10 @@ public class StartQuiz
         return alreadyConnected;
     }
 
+
+    /**
+     * Tries to add the connection with the topic of the code, if the arduino doen't answer in 8 seconds it automaticaly disconnects
+     */
     public void addConnection()
     {
         tryingToConnect = true;
@@ -111,7 +115,9 @@ public class StartQuiz
         return tryingToConnect;
     }
 
-
+    /**
+     * disconnects from the subscribed topic and sets the default address for the next connection
+     */
     public void removeConnection()
     {
         connect.unsubscribeToTopic();
@@ -122,7 +128,10 @@ public class StartQuiz
         answerChecker = null;
     }
 
-
+    /**
+     * gets the question from the code on the arduino
+     * @return  Question question
+     */
     public Question getQuestion()
     {
         CodeDecryption decryption = new CodeDecryption(this.code);
@@ -147,10 +156,12 @@ public class StartQuiz
         return question;
     }
 
-
+    /**
+     * reads the given message from the MQTT server and starts the corresponding method
+     * @param message
+     */
     public void receiveMessage(MqttMessage message)
     {
-        //todo decide what message does what (after the quiz layout is made)
 
         String recievedMessage = message.toString().trim();
         Log.d("StartQuiz", "receiveMessage: " + recievedMessage);
@@ -208,7 +219,7 @@ public class StartQuiz
     }
 
 
-
+    //Goes to the multiple choice screen when the quiz is started
     public void showAnswerScreen(boolean answeredCorrect, Question question)
     {
         Intent intent;

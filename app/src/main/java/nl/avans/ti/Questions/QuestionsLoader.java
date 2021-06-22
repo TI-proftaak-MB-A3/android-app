@@ -21,7 +21,10 @@ public class QuestionsLoader
         this.appCompatActivity = appCompatActivity;
     }
 
-
+    /**
+     *  Reads the given question code from the JSON file
+     * @return the question that has been requested by the code
+     */
     public ArrayList<Question> jsonRead()
     {
         String stringJson = JsonFromData.JsonDataFromAsset(appCompatActivity, "vragen.json");

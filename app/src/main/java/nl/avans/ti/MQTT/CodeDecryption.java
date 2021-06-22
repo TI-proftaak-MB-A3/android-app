@@ -15,12 +15,13 @@ public class CodeDecryption {
         decryptCode();
     }
 
+    //splits the code to get the right question for the attraction
     public void decryptCode(){
         String stringCode = String.valueOf(code);
 
-        this.attraction = "" + stringCode.charAt(0) + stringCode.charAt(1);
-        this.question = "" + stringCode.charAt(2) + stringCode.charAt(3);
-        this.combination = "" + stringCode.charAt(4) + stringCode.charAt(5);
+        this.attraction = "" + stringCode.charAt(0) + stringCode.charAt(1); //which attraction
+        this.question = "" + stringCode.charAt(2) + stringCode.charAt(3);   //which question from the attraction
+        this.combination = "" + stringCode.charAt(4) + stringCode.charAt(5); // random number
     }
 
     public String getCode() {
