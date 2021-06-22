@@ -30,4 +30,7 @@
     <string name="correcte_vragen">correcte vragen:</string>
     <string name="question">Vraag</string>
     <string name="waiting_on_start">Wachten op start</string>
+    <string name="discount_message">" "</string>
+    <string name="allmedals_message">" "</string>
+    <string name="congratulations">" "</string>
 </resources>
