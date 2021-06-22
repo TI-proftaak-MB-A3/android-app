@@ -30,6 +30,12 @@ public class MedalListAdapter extends RecyclerView.Adapter<MedalListAdapter.Proj
         return new ProjectViewHolder(projectView, this);
     }
 
+    /**
+     * Method which gives all the elements in the viewholder the
+     * correct content
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(@NonNull ProjectViewHolder holder, int position) {
         Attraction current = this.attractions.get(position);
@@ -55,6 +61,11 @@ public class MedalListAdapter extends RecyclerView.Adapter<MedalListAdapter.Proj
         public ImageView imageViewIcon;
         public MedalListAdapter adapter;
 
+        /**
+         * Method which creates all the correct fields from the item layout
+         * @param itemView
+         * @param adapter
+         */
         public ProjectViewHolder(View itemView, MedalListAdapter adapter) {
             super(itemView);
             this.attractionImage = itemView.findViewById(R.id.attractionImage);
