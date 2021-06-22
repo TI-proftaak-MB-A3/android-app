@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Attractie: "
+        android:text="@string/attractie"
         android:textColor="@color/Green_400"
         android:textSize="15sp"
         app:layout_constraintEnd_toStartOf="@+id/textViewConnectedTo"
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="40dp"
         android:gravity="center"
-        android:text="Question"
+        android:text="@string/question"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:gravity="center"
-        android:text="Antwoord moet worden gegeven door middel van de drukknoppen die zich onder het LCD scherm bevinden"
+        android:text="@string/questionexplenation"
         android:textSize="17sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +78,6 @@
             android:background="@drawable/border"
             android:gravity="center"
             android:paddingVertical="5dp"
-            android:text="TextView"
             android:textSize="20sp" />
 
         <TextView
@@ -89,7 +88,6 @@
             android:background="@drawable/border"
             android:gravity="center"
             android:paddingVertical="5dp"
-            android:text="TextView"
             android:textSize="20sp" />
 
         <TextView
@@ -100,7 +98,6 @@
             android:background="@drawable/border"
             android:gravity="center"
             android:paddingVertical="5dp"
-            android:text="TextView"
             android:textSize="20sp" />
 
         <TextView
@@ -111,7 +108,6 @@
             android:background="@drawable/border"
             android:gravity="center"
             android:paddingVertical="5dp"
-            android:text="TextView"
             android:textSize="20sp" />
 
     </LinearLayout>
