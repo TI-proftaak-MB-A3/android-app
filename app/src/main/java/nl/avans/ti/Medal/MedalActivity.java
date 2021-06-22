@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.LinkedList;
 
+import nl.avans.ti.Allmedals;
 import nl.avans.ti.MainActivity;
 import nl.avans.ti.MenuHandler;
 import nl.avans.ti.R;
@@ -54,6 +55,8 @@ public class MedalActivity extends AppCompatActivity
         if (hasAllMedals())
         {
             //todo start all medals activity
+            Intent intent = new Intent(this, Allmedals.class);
+            startActivity(intent);
         }
 
 

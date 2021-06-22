@@ -32,4 +32,7 @@
     <string name="attractie">"Attraction: "</string>
     <string name="questionexplenation">The answer must be given via the buttons on the LCD screen</string>
     <string name="correcte_vragen">Correct questions:</string>
+    <string name="congratulations">congratulations</string>
+    <string name="discount_message" >" "</string>
+    <string name="allmedals_message" >" "</string>
 </resources>
