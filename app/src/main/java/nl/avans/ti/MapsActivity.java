@@ -22,19 +22,13 @@ import nl.avans.ti.Medal.MedalListAdapter;
 
 public class MapsActivity extends AppCompatActivity
 {
-
-
-
     private MenuHandler menuHandler;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-
-
 
         menuHandler = new MenuHandler(this);
         menuHandler.start();

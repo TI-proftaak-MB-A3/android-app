@@ -40,6 +40,7 @@ public class HelpActivity extends AppCompatActivity
         list.add(new FragmentFour());
         list.add(new FragmentFive());
 
+        //Pager which uses the elp pages so the user can scroll through them
         this.pager = findViewById(R.id.pager);
         adapter = new Slider(getSupportFragmentManager(), list);
         pager.setAdapter(adapter);

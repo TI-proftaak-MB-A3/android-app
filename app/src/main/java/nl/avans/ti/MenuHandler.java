@@ -20,18 +20,15 @@ public class MenuHandler
 {
 
     private static final String TAG = "Navigation Bar";
-    AppCompatActivity appCompatActivity;
-    HashMap<String, Class<? extends AppCompatActivity>> classHashMap;
-
+    private AppCompatActivity appCompatActivity;
+    private HashMap<String, Class<? extends AppCompatActivity>> classHashMap;
+    private ActionBarDrawerToggle actionBarDrawerToggle;
+    private NavigationView navigationView;
 
     public MenuHandler(AppCompatActivity appCompatActivity)
     {
-
         this.appCompatActivity = appCompatActivity;
     }
-
-    ActionBarDrawerToggle actionBarDrawerToggle;
-    NavigationView navigationView;
 
     public void start()
     {

@@ -8,7 +8,12 @@ import java.io.InputStream;
 public class JsonFromData
 {
 
-
+    /**
+     * Method which creates an String from the JSOn file passed in the paramaters
+     * @param appCompatActivity
+     * @param file
+     * @return
+     */
    public static String JsonDataFromAsset(AppCompatActivity appCompatActivity, String file)
     {
         String json = "";
