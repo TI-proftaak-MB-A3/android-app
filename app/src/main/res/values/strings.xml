@@ -26,5 +26,12 @@
     <string name="step2_message">You can enter the code that has been generated in the app</string>
     <string name="step4_message">If the answer is right, you will earn a point. For each attraction you\'ll need 3 points to earn a medal.</string>
     <string name="step5_message">If you\'ve earned all medals, you will get a code that you can exchange for a little gift at the store</string>
+
+    <string name="errorConnection">there is already a connection in the making</string>
+    <string name="congratulations">!</string>
+    <string name="allmedals_message">Well done! You got all your medals!</string>
+    <string name="discount_message">You can redeem your reward in one of our giftshops!</string>
+
     <string name="errorConnection">There is already a connection in the making</string>
+
 </resources>
