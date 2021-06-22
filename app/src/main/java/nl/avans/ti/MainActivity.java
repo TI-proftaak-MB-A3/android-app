@@ -98,26 +98,18 @@ public class MainActivity extends AppCompatActivity
 
     public void startQuizWithIntent()
     {
-        Intent intent = new Intent();
-        intent.putExtra("placeholder", startQuiz.getCode());
-
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
         {
             Log.d(this.getAttributionTag(), "startQuizWithIntent: Starting new activity");
         }
 
-
         Question question = this.startQuiz.getQuestion();
 
         Intent intentSend = new Intent(MainActivity.this, QuestionActivity.class);
-        intentSend.putExtra("QUESTION", question.getQuestion());
-        intentSend.putExtra("ANSWERS", question.getAnswers());
-        intentSend.putExtra("RIGHT_ANSWER", question.getCorrectAnswer());
-        intentSend.putExtra("CATEGORIE", question.getCatogorie());
-        intentSend.putExtra("SHUFFLE", question.getShuffle());
-        startActivity(intentSend);
 
+        intentSend.putExtra("Question",question);
+        startActivity(intentSend);
 
         System.out.println(startQuiz.isAlreadyConnected());
     }
@@ -131,7 +123,6 @@ public class MainActivity extends AppCompatActivity
 
     public void gotoWaitingscreen()
     {
-        System.out.println("test12314");
         Intent intent = new Intent(this, WaitingScreen.class);
         startActivity(intent);
 

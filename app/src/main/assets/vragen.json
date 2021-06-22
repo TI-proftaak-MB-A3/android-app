@@ -1,30 +1,30 @@
 {
-  "Questions": [
+  "Questions":[
     {
-      "Vraag": "Wanneer is de essteling geopend",
+      "Vraag": "Wanneer is de essteling geopend?",
       "Correct Antwoord": 1952,
       "Fout antwoord 1": 1945,
       "Fout antwoord 2": 1972,
       "Fout antwoord 3": 2001,
-      "Catogorie": "algemeen",
+      "Catogorie": "Algemeen",
       "Id": 0
     },
     {
-      "Vraag": "Hoeveel Mederwerkes heeft de Essteling",
+      "Vraag": "Hoeveel Mederwerkes heeft de Essteling?",
       "Correct Antwoord": 1650,
       "Fout antwoord 1": 1150,
       "Fout antwoord 2": 3100,
       "Fout antwoord 3": 650,
-      "Catogorie": "algemeen",
+      "Catogorie": "Algemeen",
       "Id": 0
     },
     {
-      "Vraag": "Hoeveel Kamers heeft het hotel van de Esteling",
+      "Vraag": "Hoeveel Kamers heeft het hotel van de Esteling?",
       "Correct Antwoord": 122,
       "Fout antwoord 1": 246,
       "Fout antwoord 2": 96,
       "Fout antwoord 3": 45,
-      "Catogorie": "algemeen",
+      "Catogorie": "Algemeen",
       "Id": 0
     },
     {
@@ -55,7 +55,7 @@
       "Id": 1
     },
     {
-      "Vraag": "hoe lang is de Jonkheer 1897",
+      "Vraag": "Hoe lang is de Jonkheer 1897?",
       "Correct Antwoord": "501 meter",
       "Fout antwoord 1": "10 meter",
       "Fout antwoord 2": "1 kilometer",
@@ -64,7 +64,7 @@
       "Id": 1
     },
     {
-      "Vraag": "hoe hoog is de Astrolica",
+      "Vraag": "Hoe hoog is de Astrolica?",
       "Correct Antwoord": "29.8 meter",
       "Fout antwoord 1": "1 meter",
       "Fout antwoord 2": "27 meter",
@@ -73,12 +73,12 @@
       "Id": 2
     },
     {
-      "Vraag": "Wanneer is de zwevende belg geopend",
+      "Vraag": "Wanneer is de zwevende belg geopend?",
       "Correct Antwoord": 2007,
       "Fout antwoord 1": 2006,
       "Fout antwoord 2": 1992,
       "Fout antwoord 3": 2001,
-      "Catogorie": "Zwevende belg",
+      "Catogorie": "De zwevende belg",
       "Id": 3
     },
     {
@@ -87,7 +87,7 @@
       "Fout antwoord 1": "Ruigrijk",
       "Fout antwoord 2": "Wildland",
       "Fout antwoord 3": "Stoertjesland",
-      "Catogorie": "Zwevende belg",
+      "Catogorie": "De zwevende belg",
       "Id": 3
     },
     {
@@ -96,38 +96,38 @@
       "Fout antwoord 1": "Vliegen",
       "Fout antwoord 2": "Zwemmen",
       "Fout antwoord 3": "Rennen",
-      "Catogorie": "Zwevende belg",
+      "Catogorie": "De zwevende belg",
       "Id": 3
     },
     {
-      "Vraag": "hoe lang is de De zwevende belg",
+      "Vraag": "Hoe lang is de De zwevende belg?",
       "Correct Antwoord": "420 meter",
       "Fout antwoord 1": "10 meter",
       "Fout antwoord 2": "1 kilometer",
       "Fout antwoord 3": "10 kilometer",
-      "Catogorie": "De zwevende belgh",
+      "Catogorie": "De zwevende belg",
       "Id": 3
     },
     {
-      "Vraag": "hoeveel bloemen zijn er verwerkt in de droomreis",
+      "Vraag": "Hoeveel bloemen zijn er verwerkt in de droomreis?",
       "Correct Antwoord": "ca. 1,5 miljoen",
       "Fout antwoord 1": "ca. 1,0 miljoen",
       "Fout antwoord 2": "ca. 0,5 miljoen",
       "Fout antwoord 3": "ca. 250 duizend",
-      "Catogorie": "droomreis",
+      "Catogorie": "Droomreis",
       "Id": 4
     },
     {
-      "Vraag": "wanneer is de droomreis geopend",
+      "Vraag": "Wanneer is de droomreis geopend?",
       "Correct Antwoord": "9-mei-93",
       "Fout antwoord 1": "",
       "Fout antwoord 2": "9-nov-01",
       "Fout antwoord 3": "25-dec-61",
-      "Catogorie": "droomreis",
+      "Catogorie": "Droomreis",
       "Id": 4
     },
     {
-      "Vraag": "hoe lang is de Droomreis",
+      "Vraag": "Hoe lang is de Droomreis?",
       "Correct Antwoord": "425 meter",
       "Fout antwoord 1": "10 meter",
       "Fout antwoord 2": "1 kilometer",
@@ -141,7 +141,7 @@
       "Fout antwoord 1": "Ruigrijk",
       "Fout antwoord 2": "Dromenland",
       "Fout antwoord 3": "Ruigland",
-      "Catogorie": "Johan en de Eenhoorn",
+      "Catogorie": "Johan & de eenhoorn",
       "Id": 5
     },
     {
@@ -150,38 +150,38 @@
       "Fout antwoord 1": "Een Eekhoorn",
       "Fout antwoord 2": "Een Minion",
       "Fout antwoord 3": "Een Vogel",
-      "Catogorie": "Johan en de Eenhoorn",
+      "Catogorie": "Johan & de eenhoorn",
       "Id": 5
     },
     {
-      "Vraag": "Wat voor soort atractie is Johan en de Eenhoorn",
-      "Correct Antwoord": "Een Houte Race-Achtbaan",
-      "Fout antwoord 1": "Een Klassieke achtbaan",
-      "Fout antwoord 2": "Een Waterachtbaan",
-      "Fout antwoord 3": "Een Boottocht",
-      "Catogorie": "Johan en de Eenhoorn",
+      "Vraag": "Wat voor soort atractie is Johan en de Eenhoorn?",
+      "Correct Antwoord": "Een houte race-achtbaan",
+      "Fout antwoord 1": "Een klassieke achtbaan",
+      "Fout antwoord 2": "Een waterachtbaan",
+      "Fout antwoord 3": "Een boottocht",
+      "Catogorie": "Johan & de eenhoorn",
       "Id": 5
     },
     {
-      "Vraag": "hoe lang is de Johan & de eenhoorn",
+      "Vraag": "Hoe lang is de Johan & de eenhoorn?",
       "Correct Antwoord": "810 meter",
       "Fout antwoord 1": "10 meter",
       "Fout antwoord 2": "1 kilometer",
       "Fout antwoord 3": "10 kilometer",
-      "Catogorie": "Johan en de Eenhoorn",
+      "Catogorie": "Johan & de eenhoorn",
       "Id": 5
     },
     {
       "Vraag": "In welk rijk staat de Halucinata?",
       "Correct Antwoord": "Eldersrijk",
       "Fout antwoord 1": "Droomenland",
-      "Fout antwoord 2": "ruigland",
+      "Fout antwoord 2": "Ruigland",
       "Fout antwoord 3": "Ruigland",
       "Catogorie": "HaluCinata",
       "Id": 6
     },
     {
-      "Vraag": "hoe lang is de HaluCinata",
+      "Vraag": "Hoe lang is de HaluCinata?",
       "Correct Antwoord": "425 meter",
       "Fout antwoord 1": "10 meter",
       "Fout antwoord 2": "1 kilometer",
@@ -190,30 +190,39 @@
       "Id": 6
     },
     {
-      "Vraag": "Hoe hard gaat de cobra",
+      "Vraag": "Wanneer is de HaluCinata geopend",
+      "Correct Antwoord": 1986,
+      "Fout antwoord 1": 1980,
+      "Fout antwoord 2": 2002,
+      "Fout antwoord 3": 2010,
+      "Catogorie": "HaluCinata",
+      "Id": 6
+    },
+    {
+      "Vraag": "Hoe hard gaat de cobra?",
       "Correct Antwoord": "80-83 km/h",
       "Fout antwoord 1": "120-123 km/h",
       "Fout antwoord 2": "150-153 km/h",
       "Fout antwoord 3": "60-63 km/h",
-      "Catogorie": "cobra",
+      "Catogorie": "Cobra",
       "Id": 7
     },
     {
-      "Vraag": "Op wat is de Cobra gebasseerd",
-      "Correct Antwoord": "Een Slang",
+      "Vraag": "Op wat is de Cobra gebasseerd?",
+      "Correct Antwoord": "Een slang",
       "Fout antwoord 1": "Een olifant",
-      "Fout antwoord 2": "Een Dino",
-      "Fout antwoord 3": "Een BlobVis",
-      "Catogorie": "cobra",
+      "Fout antwoord 2": "Een dino",
+      "Fout antwoord 3": "Een blobvis",
+      "Catogorie": "Cobra",
       "Id": 7
     },
     {
-      "Vraag": "wanneer is de cobra geopend",
+      "Vraag": "Wanneer is de cobra geopend?",
       "Correct Antwoord": 1981,
       "Fout antwoord 1": 2002,
       "Fout antwoord 2": 1972,
       "Fout antwoord 3": 2001,
-      "Catogorie": "cobra",
+      "Catogorie": "Cobra",
       "Id": 7
     },
     {
@@ -222,7 +231,7 @@
       "Fout antwoord 1": "3minuten",
       "Fout antwoord 2": "1 minuut",
       "Fout antwoord 3": "30 seconden",
-      "Catogorie": "cobra",
+      "Catogorie": "Cobra",
       "Id": 7
     },
     {
@@ -231,11 +240,11 @@
       "Fout antwoord 1": "20 Meter",
       "Fout antwoord 2": "10 Meter",
       "Fout antwoord 3": "17,5 Meter",
-      "Catogorie": "cobra",
+      "Catogorie": "Cobra",
       "Id": 7
     },
     {
-      "Vraag": "hoe lang is de Cobra",
+      "Vraag": "Hoe lang is de Cobra?",
       "Correct Antwoord": "750 meter",
       "Fout antwoord 1": "10 meter",
       "Fout antwoord 2": "1 kilometer",
@@ -244,7 +253,7 @@
       "Id": 7
     },
     {
-      "Vraag": "hoe lang is de Uilenrots",
+      "Vraag": "Hoe lang is de Uilenrots?",
       "Correct Antwoord": "643 meter",
       "Fout antwoord 1": "10 meter",
       "Fout antwoord 2": "1 kilometer",
@@ -253,16 +262,34 @@
       "Id": 8
     },
     {
+      "Vraag": "Wat is de maximale snelheid van de Uilendrots?",
+      "Correct Antwoord": "65km/h",
+      "Fout antwoord 1": "45km/h",
+      "Fout antwoord 2": "85km/h",
+      "Fout antwoord 3": "40km/h",
+      "Catogorie": "Uilenrots",
+      "Id": 8
+    },
+    {
+      "Vraag": "Hoe hoog is de Uilenrots?",
+      "Correct Antwoord": "25m",
+      "Fout antwoord 1": "13m",
+      "Fout antwoord 2": "20m",
+      "Fout antwoord 3": "30m",
+      "Catogorie": "Uilenrots",
+      "Id": 8
+    },
+    {
       "Vraag": "Wat is rob?",
       "Correct Antwoord": "Een  Bob",
-      "Fout antwoord 1": "Een Ski‘r",
+      "Fout antwoord 1": "Een SkiÃ«r",
       "Fout antwoord 2": "Een Voetballer",
       "Fout antwoord 3": "Een auto coureur",
       "Catogorie": "Rob de Bob",
       "Id": 9
     },
     {
-      "Vraag": "hoe hoog is Rob de Bob",
+      "Vraag": "Hoe hoog is Rob de Bob?",
       "Correct Antwoord": "22 meter",
       "Fout antwoord 1": "54 meter",
       "Fout antwoord 2": "97 meter",
@@ -280,7 +307,7 @@
       "Id": 9
     },
     {
-      "Vraag": "hoe lang is de Rob",
+      "Vraag": "Hoe lang is de Rob ?",
       "Correct Antwoord": "524 meter",
       "Fout antwoord 1": "10 meter",
       "Fout antwoord 2": "1 kilometer",
@@ -289,7 +316,7 @@
       "Id": 9
     },
     {
-      "Vraag": "Hoeveel wagentjes heeft Festival Overal",
+      "Vraag": "Hoeveel wagentjes heeft Festival Overal?",
       "Correct Antwoord": 118,
       "Fout antwoord 1": 154,
       "Fout antwoord 2": 93,
@@ -298,12 +325,21 @@
       "Id": 10
     },
     {
-      "Vraag": "hoe lang is de Festival Overal",
+      "Vraag": "Hoe lang is de Festival Overal?",
       "Correct Antwoord": "240 meter",
       "Fout antwoord 1": "10 meter",
       "Fout antwoord 2": "1 kilometer",
       "Fout antwoord 3": "10 kilometer",
-      "Catogorie": "festival Overal",
+      "Catogorie": "Festival Overal",
+      "Id": 10
+    },
+    {
+      "Vraag": "Wat is de maximale snelheid van de Festival Overal?",
+      "Correct Antwoord": "1,4km/h",
+      "Fout antwoord 1": "5,7km/h",
+      "Fout antwoord 2": "12,6km/h",
+      "Fout antwoord 3": "18,6km/h",
+      "Catogorie": "Festival Overal",
       "Id": 10
     }
   ]

@@ -34,11 +34,11 @@ public class MedalListAdapter extends RecyclerView.Adapter<MedalListAdapter.Proj
     public void onBindViewHolder(@NonNull ProjectViewHolder holder, int position) {
         Attraction current = this.attractions.get(position);
         holder.attractionImage.setImageResource(current.getAttractionResourceID());
+        holder.imageViewIcon.setImageResource(current.getMedalResourceId());
         holder.attractionName.setText(current.getName());
-        holder.checkOne.setImageResource(current.getCheckOneResourceID());
-        holder.checkTwo.setImageResource(current.getCheckTwoResourceID());
-        holder.checkThree.setImageResource(current.getCheckThreeResourceID());
-        holder.medalCheck.setImageResource(current.getMedalResourceId());
+        holder.imageViewCheckOne.setImageResource(current.getCheckOneResourceID());
+        holder.imageViewCheckTwo.setImageResource(current.getCheckTwoResourceID());
+        holder.imageViewCheckThree.setImageResource(current.getCheckThreeResourceID());
     }
 
     @Override
@@ -49,20 +49,20 @@ public class MedalListAdapter extends RecyclerView.Adapter<MedalListAdapter.Proj
     class ProjectViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public ImageView attractionImage;
         public TextView attractionName;
-        public ImageView checkOne;
-        public ImageView checkTwo;
-        public ImageView checkThree;
-        public ImageView medalCheck;
+        public ImageView imageViewCheckOne;
+        public ImageView imageViewCheckTwo;
+        public ImageView imageViewCheckThree;
+        public ImageView imageViewIcon;
         public MedalListAdapter adapter;
 
         public ProjectViewHolder(View itemView, MedalListAdapter adapter) {
             super(itemView);
             this.attractionImage = itemView.findViewById(R.id.attractionImage);
             this.attractionName = itemView.findViewById(R.id.attractionName);
-            this.checkOne = itemView.findViewById(R.id.checkOne);
-            this.checkTwo = itemView.findViewById(R.id.checkTwo);
-            this.checkThree = itemView.findViewById(R.id.checkThree);
-            this.medalCheck = itemView.findViewById(R.id.medalImage);
+            this.imageViewCheckOne = itemView.findViewById(R.id.checkOne);
+            this.imageViewCheckTwo = itemView.findViewById(R.id.checkTwo);
+            this.imageViewCheckThree = itemView.findViewById(R.id.checkThree);
+            this.imageViewIcon = itemView.findViewById(R.id.medalImage);
             this.adapter = adapter;
 
             itemView.setOnClickListener(this);

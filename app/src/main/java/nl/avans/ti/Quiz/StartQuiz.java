@@ -1,6 +1,9 @@
 package nl.avans.ti.Quiz;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
@@ -9,6 +12,8 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import nl.avans.ti.FeedbackFailed;
+import nl.avans.ti.FeedbackPassed;
 import nl.avans.ti.MQTT.CodeDecryption;
 import nl.avans.ti.MQTT.Connect;
 import nl.avans.ti.MainActivity;
@@ -23,7 +28,24 @@ public class StartQuiz
     private boolean alreadyConnected;
     private ArrayList<String> messages;
 
+
+
+    private boolean quizShown;
+
     private boolean tryingToConnect;
+
+    public static interface AnswerChecker
+    {
+        boolean checkAnswer(String string);
+        Question getQuestion();
+    }
+
+    private AnswerChecker answerChecker;
+
+    public void setAnswerChecker(AnswerChecker answerChecker)
+    {
+        this.answerChecker = answerChecker;
+    }
 
     public StartQuiz(Connect connect, List<Question> questions, MainActivity app)
     {
@@ -82,9 +104,6 @@ public class StartQuiz
         };
         timer.schedule(task, 8000);
 
-
-        System.out.println("doei");
-
     }
 
     public boolean isTryingToConnect()
@@ -95,11 +114,12 @@ public class StartQuiz
 
     public void removeConnection()
     {
-        System.out.println("why");
         connect.unsubscribeToTopic();
         setAlreadyConnected(false);
         setCode("");
         tryingToConnect = false;
+        quizShown = false;
+        answerChecker = null;
     }
 
 
@@ -132,7 +152,7 @@ public class StartQuiz
     {
         //todo decide what message does what (after the quiz layout is made)
 
-        String recievedMessage = message.toString();
+        String recievedMessage = message.toString().trim();
         Log.d("StartQuiz", "receiveMessage: " + recievedMessage);
 
 
@@ -147,30 +167,71 @@ public class StartQuiz
             if (recievedMessage.equals("start"))
             {
                 app.startQuizWithIntent();
+                quizShown = true;
             }
         }
 
 
+        if (quizShown)
+        {
+            if (recievedMessage.equals("time_out"))
+            {
+                //methods to go back to main and close connection aka backToStart
+                backToStart();
+                Toast.makeText(app.getBaseContext(), "Closing conection because of timeout", Toast.LENGTH_LONG).show();
+            }
+            else
+            {
+
+                if ("ABCD".contains(recievedMessage.toUpperCase()))
+                {
+                    boolean isCorrectAnswer = answerChecker.checkAnswer(recievedMessage);
+                    Question question = answerChecker.getQuestion();
+                    System.out.println(question);
+
+                    if (isCorrectAnswer)
+                    {
+                        connect.publishMessage("correct");
+                    }
+                    else
+                    {
+                        connect.publishMessage("incorrect");
+                    }
+
+                    removeConnection();
+                    showAnswerScreen(isCorrectAnswer,question);
+
+                }
+            }
+
+        }
+    }
 
 
-        //        switch (message.toString()){
-        //            case("A") :
-        //                break;
-        //            case("B") :
-        //                break;
-        //            case("C") :
-        //                break;
-        //            case("D") :
-        //                break;
-        //
-        //            case("Start") :
-        //                app.startQuizWithIntent();
-        //                break;
-        //
-        //
-        //
-        //        }
 
+    public void showAnswerScreen(boolean answeredCorrect, Question question)
+    {
+        Intent intent;
+        Context baseContext = app.getBaseContext();
+        if (answeredCorrect)
+        {
+            intent = new Intent(baseContext, FeedbackPassed.class);
+        }
+        else
+        {
+            intent = new Intent(baseContext, FeedbackFailed.class);
+        }
+
+        intent.putExtra("Question",question);
+        app.startActivity(intent);
+    }
+
+
+    //implement method to go back to start
+    public void backToStart()
+    {
+        Intent intent = new Intent(app.getBaseContext(), MainActivity.class);
+        app.startActivity(intent);
     }
 
 

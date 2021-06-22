@@ -13,7 +13,8 @@ public class Attraction {
     private int checkTwoResourceID;
     private int checkThreeResourceID;
     private int medalResourceId;
-    private Context context;
+
+    private String iconImageName;
 
     private Boolean hasMedal;
 
@@ -23,7 +24,7 @@ public class Attraction {
 
     private Boolean hasCheckpointThree;
 
-    public Attraction(Context context, String imageName, String name, Boolean hasMedal, Boolean hasFirstCheck, Boolean hasSecondCheck, Boolean hasThirdCheck) {
+    public Attraction(String imageName, String name, Boolean hasMedal, Boolean hasFirstCheck, Boolean hasSecondCheck, Boolean hasThirdCheck, String iconNameFalse, String iconNameTrue) {
         this.name = name;
         this.imageName = imageName;
 
@@ -32,17 +33,17 @@ public class Attraction {
         this.hasCheckpointTwo = hasSecondCheck;
         this.hasCheckpointThree = hasThirdCheck;
 
-        this.context = context;
+        if (hasMedal) {
+            this.iconImageName = iconNameTrue;
+        } else {
+            this.iconImageName = iconNameFalse;
+        }
 
         checkImage();
     }
 
-    private void checkImage() {
-        if (hasMedal) {
-            medalResourceId = R.drawable.medal_completed;
-        } else {
-            medalResourceId = R.drawable.medal_progres;
-        }
+    public void checkImage() {
+        getMedalID();
 
         if (hasCheckpointOne) {
             checkOneResourceID = R.drawable.check_complete;
@@ -99,6 +100,22 @@ public class Attraction {
         return imageID;
     }
 
+    public void getMedalID() {
+        this.iconImageName = this.iconImageName.replace(".jpg", "");
+        this.iconImageName = this.iconImageName.trim();
+        int imageID = 0;
+
+        try {
+            Class<R.drawable> drawableClass = R.drawable.class;
+            Field image = drawableClass.getDeclaredField(this.iconImageName);
+            imageID = image.getInt(drawableClass);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        this.medalResourceId = imageID;
+    }
+
     public Boolean getHasMedal() {
         return hasMedal;
     }
@@ -113,5 +130,28 @@ public class Attraction {
 
     public Boolean getHasCheckpointThree() {
         return hasCheckpointThree;
+    }
+
+    public void setHasMedal(Boolean hasMedal) {
+        this.hasMedal = hasMedal;
+    }
+
+    public void setHasCheckpointOne(Boolean hasCheckpointOne) {
+        this.hasCheckpointOne = hasCheckpointOne;
+    }
+
+    public void setHasCheckpointTwo(Boolean hasCheckpointTwo) {
+        this.hasCheckpointTwo = hasCheckpointTwo;
+    }
+
+    public void setHasCheckpointThree(Boolean hasCheckpointThree) {
+        this.hasCheckpointThree = hasCheckpointThree;
+    }
+
+
+    @Override
+    public String toString()
+    {
+        return "Attraction{" + "hasMedal=" + hasMedal + ", hasCheckpointOne=" + hasCheckpointOne + ", hasCheckpointTwo=" + hasCheckpointTwo + ", hasCheckpointThree=" + hasCheckpointThree + '}';
     }
 }
