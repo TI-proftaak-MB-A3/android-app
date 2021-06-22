@@ -26,6 +26,10 @@ public class FeedbackFailed extends AppCompatActivity {
 
     }
 
+    /**
+     * Method which opens the home page
+     * @param view
+     */
     public void backToHome(View view) {
         Connect.getConnect().getStartQuiz().backToStart();
     }

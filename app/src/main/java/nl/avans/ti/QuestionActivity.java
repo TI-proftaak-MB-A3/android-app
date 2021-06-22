@@ -47,10 +47,6 @@ public class QuestionActivity extends AppCompatActivity implements StartQuiz.Ans
         views.add(this.textViewOptionC);
         views.add(this.textViewOptionD);
 
-        Intent getIntent = getIntent();
-
-
-
         question = (Question) getIntent().getSerializableExtra("Question");
 
         String questionString = question.getQuestion();
@@ -84,6 +80,12 @@ public class QuestionActivity extends AppCompatActivity implements StartQuiz.Ans
     }
 
 
+    /**
+     * Method which checks if the received letter is equal to
+     * the letters A, B, C or D
+     * @param recievedLetter
+     * @return
+     */
     public boolean checkAnswer(String recievedLetter)
     {
         String answer;

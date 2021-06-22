@@ -16,6 +16,10 @@ public class Allmedals extends AppCompatActivity
         setContentView(R.layout.activity_allmedals);
     }
 
+    /**
+     * Method which opens the home page
+     * @param view
+     */
     public void backToHome(View view)
     {
         Intent intent = new Intent(this,MainActivity.class);

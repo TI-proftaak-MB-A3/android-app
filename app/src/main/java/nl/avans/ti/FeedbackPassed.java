@@ -27,6 +27,10 @@ public class FeedbackPassed extends AppCompatActivity
         updateMedals(question);
     }
 
+    /**
+     * Method which opens the home page
+     * @param view
+     */
     public void backToHome(View view)
     {
         Connect.getConnect().getStartQuiz().backToStart();
@@ -35,10 +39,13 @@ public class FeedbackPassed extends AppCompatActivity
     public void onBackPressed()
     {
         Toast.makeText(getApplicationContext(), "Disabled Back Press", Toast.LENGTH_SHORT).show();
-        //TODO Connect.getConnect().getStartQuiz().backToStart();
     }
 
-
+    /**
+     * Method which compares the correct answer to all the attractions and
+     * checks changes the details of the corresponding attraction
+     * @param question
+     */
     private void updateMedals(Question question)
     {
         LinkedList<Attraction> attractions = LoadAttractionsJSON.getInstance(this).getAttractions();
@@ -52,38 +59,28 @@ public class FeedbackPassed extends AppCompatActivity
 
             if (name.contains(catogorie))
             {
-                System.out.println("Hoegaboega");
                 if (!attraction.getHasCheckpointOne())
                 {
-                    System.out.println("hey 1");
                     attraction.setHasCheckpointOne(true);
                 }
                 else if (attraction.getHasCheckpointOne() && !attraction.getHasCheckpointTwo())
                 {
-                    System.out.println("hey 2");
                     attraction.setHasCheckpointTwo(true);
                 }
                 else if (attraction.getHasCheckpointOne() && attraction.getHasCheckpointTwo() && !attraction.getHasCheckpointThree())
                 {
-                    System.out.println("hey 3");
                     attraction.setHasCheckpointThree(true);
                     attraction.setHasMedal(true);
                 }
 
-                System.out.println("it is something" + attraction.getHasCheckpointOne());
                 attraction.checkImage();
-
                 System.out.println(attraction.toString() + " " + i);
             }
 
             i++;
         }
 
-
-        System.out.println("Hoi Hey");
         LoadAttractionsJSON.getInstance(this).save(attractions);
-        System.out.println("Hey hoi");
-
 
     }
 
